@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C7CF5F481AFA9EA400342E15 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = C7CF5F471AFA9EA400342E15 /* main.c */; };
+		C780D57E1AFFD2F700454A2D /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = C780D57D1AFFD2F700454A2D /* main.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		C7CF5F421AFA9EA400342E15 /* CopyFiles */ = {
+		C780D5781AFFD2F700454A2D /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -23,12 +23,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C7CF5F441AFA9EA400342E15 /* AOHomeTask1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AOHomeTask1; sourceTree = BUILT_PRODUCTS_DIR; };
-		C7CF5F471AFA9EA400342E15 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		C780D57A1AFFD2F700454A2D /* AOHomeTask2 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AOHomeTask2; sourceTree = BUILT_PRODUCTS_DIR; };
+		C780D57D1AFFD2F700454A2D /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		C7CF5F411AFA9EA400342E15 /* Frameworks */ = {
+		C780D5771AFFD2F700454A2D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -38,94 +38,102 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C7CF5F3B1AFA9EA400342E15 = {
+		C780D5711AFFD2F700454A2D = {
 			isa = PBXGroup;
 			children = (
-				C7CF5F461AFA9EA400342E15 /* AOHomeTask1 */,
-				C7CF5F451AFA9EA400342E15 /* Products */,
+				C780D57C1AFFD2F700454A2D /* AOHomeTask2 */,
+				C780D57B1AFFD2F700454A2D /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		C7CF5F451AFA9EA400342E15 /* Products */ = {
+		C780D57B1AFFD2F700454A2D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C7CF5F441AFA9EA400342E15 /* AOHomeTask1 */,
+				C780D57A1AFFD2F700454A2D /* AOHomeTask2 */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C7CF5F461AFA9EA400342E15 /* AOHomeTask1 */ = {
+		C780D57C1AFFD2F700454A2D /* AOHomeTask2 */ = {
 			isa = PBXGroup;
 			children = (
-				C7CF5F471AFA9EA400342E15 /* main.c */,
+				C780D5841AFFD38F00454A2D /* Source */,
 			);
-			path = AOHomeTask1;
+			path = AOHomeTask2;
+			sourceTree = "<group>";
+		};
+		C780D5841AFFD38F00454A2D /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				C780D57D1AFFD2F700454A2D /* main.c */,
+			);
+			name = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C7CF5F431AFA9EA400342E15 /* AOHomeTask1 */ = {
+		C780D5791AFFD2F700454A2D /* AOHomeTask2 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C7CF5F4B1AFA9EA400342E15 /* Build configuration list for PBXNativeTarget "AOHomeTask1" */;
+			buildConfigurationList = C780D5811AFFD2F700454A2D /* Build configuration list for PBXNativeTarget "AOHomeTask2" */;
 			buildPhases = (
-				C7CF5F401AFA9EA400342E15 /* Sources */,
-				C7CF5F411AFA9EA400342E15 /* Frameworks */,
-				C7CF5F421AFA9EA400342E15 /* CopyFiles */,
+				C780D5761AFFD2F700454A2D /* Sources */,
+				C780D5771AFFD2F700454A2D /* Frameworks */,
+				C780D5781AFFD2F700454A2D /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = AOHomeTask1;
-			productName = AOHomeTask1;
-			productReference = C7CF5F441AFA9EA400342E15 /* AOHomeTask1 */;
+			name = AOHomeTask2;
+			productName = AOHomeTask2;
+			productReference = C780D57A1AFFD2F700454A2D /* AOHomeTask2 */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		C7CF5F3C1AFA9EA400342E15 /* Project object */ = {
+		C780D5721AFFD2F700454A2D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "Alina Okhremenko";
 				TargetAttributes = {
-					C7CF5F431AFA9EA400342E15 = {
+					C780D5791AFFD2F700454A2D = {
 						CreatedOnToolsVersion = 6.3.1;
 					};
 				};
 			};
-			buildConfigurationList = C7CF5F3F1AFA9EA400342E15 /* Build configuration list for PBXProject "AOHomeTask1" */;
+			buildConfigurationList = C780D5751AFFD2F700454A2D /* Build configuration list for PBXProject "AOHomeTask2" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = C7CF5F3B1AFA9EA400342E15;
-			productRefGroup = C7CF5F451AFA9EA400342E15 /* Products */;
+			mainGroup = C780D5711AFFD2F700454A2D;
+			productRefGroup = C780D57B1AFFD2F700454A2D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C7CF5F431AFA9EA400342E15 /* AOHomeTask1 */,
+				C780D5791AFFD2F700454A2D /* AOHomeTask2 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		C7CF5F401AFA9EA400342E15 /* Sources */ = {
+		C780D5761AFFD2F700454A2D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7CF5F481AFA9EA400342E15 /* main.c in Sources */,
+				C780D57E1AFFD2F700454A2D /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		C7CF5F491AFA9EA400342E15 /* Debug */ = {
+		C780D57F1AFFD2F700454A2D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -167,7 +175,7 @@
 			};
 			name = Debug;
 		};
-		C7CF5F4A1AFA9EA400342E15 /* Release */ = {
+		C780D5801AFFD2F700454A2D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -202,14 +210,14 @@
 			};
 			name = Release;
 		};
-		C7CF5F4C1AFA9EA400342E15 /* Debug */ = {
+		C780D5821AFFD2F700454A2D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		C7CF5F4D1AFA9EA400342E15 /* Release */ = {
+		C780D5831AFFD2F700454A2D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -219,24 +227,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C7CF5F3F1AFA9EA400342E15 /* Build configuration list for PBXProject "AOHomeTask1" */ = {
+		C780D5751AFFD2F700454A2D /* Build configuration list for PBXProject "AOHomeTask2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C7CF5F491AFA9EA400342E15 /* Debug */,
-				C7CF5F4A1AFA9EA400342E15 /* Release */,
+				C780D57F1AFFD2F700454A2D /* Debug */,
+				C780D5801AFFD2F700454A2D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C7CF5F4B1AFA9EA400342E15 /* Build configuration list for PBXNativeTarget "AOHomeTask1" */ = {
+		C780D5811AFFD2F700454A2D /* Build configuration list for PBXNativeTarget "AOHomeTask2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C7CF5F4C1AFA9EA400342E15 /* Debug */,
-				C7CF5F4D1AFA9EA400342E15 /* Release */,
+				C780D5821AFFD2F700454A2D /* Debug */,
+				C780D5831AFFD2F700454A2D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = C7CF5F3C1AFA9EA400342E15 /* Project object */;
+	rootObject = C780D5721AFFD2F700454A2D /* Project object */;
 }
