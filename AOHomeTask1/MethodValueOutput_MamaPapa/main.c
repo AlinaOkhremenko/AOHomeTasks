@@ -12,6 +12,7 @@ int MethodValueOutput (int value) {
     
     int result;
     
+    
     if (value % 15 == 0){
         printf ("mamapapa\n");
         result = 2;
