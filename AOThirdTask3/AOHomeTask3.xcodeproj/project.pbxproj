@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C7676F681B11B032001A98D4 /* BitwiseOutput.c in Sources */ = {isa = PBXBuildFile; fileRef = C7676F661B11B032001A98D4 /* BitwiseOutput.c */; };
 		C780D51C1AFE623900454A2D /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = C780D51B1AFE623900454A2D /* main.c */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C7676F661B11B032001A98D4 /* BitwiseOutput.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = BitwiseOutput.c; sourceTree = "<group>"; };
+		C7676F671B11B032001A98D4 /* BitwiseOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BitwiseOutput.h; sourceTree = "<group>"; };
 		C780D5181AFE623900454A2D /* AOHomeTask3 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AOHomeTask3; sourceTree = BUILT_PRODUCTS_DIR; };
 		C780D51B1AFE623900454A2D /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,6 +69,8 @@
 			isa = PBXGroup;
 			children = (
 				C780D51B1AFE623900454A2D /* main.c */,
+				C7676F661B11B032001A98D4 /* BitwiseOutput.c */,
+				C7676F671B11B032001A98D4 /* BitwiseOutput.h */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -126,6 +131,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7676F681B11B032001A98D4 /* BitwiseOutput.c in Sources */,
 				C780D51C1AFE623900454A2D /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
