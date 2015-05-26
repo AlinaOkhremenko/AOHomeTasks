@@ -13,58 +13,73 @@
 #include <stdbool.h>
 
 typedef enum AOHumanGender{
-    Male,
-    Female,
-    Undefined,
+    AOHumanGenderMale,
+    AOHumanGenderFemale,
+    AOHumanGenderUndefined,
 } AOHumanGender;
 
 typedef struct AOHumanStruct{
     char _humanName[64];
-    int _age;
+    uint _age;
     AOHumanGender _gender;
     struct AOHumanStruct* _children[20];
+    int _childrenCount;
     bool _isMarried;
     struct AOHumanStruct* _partner;
     struct AOHumanStruct* _mother;
     struct AOHumanStruct* _father;
+    uint _referenceCount;
+    void (*_deallocator)(struct AOHumanStruct*);
     
 } AOHumanStruct;
 
 extern
-AOHumanStruct* AOHumanStructCreateMan (char *name, int age, AOHumanGender gender);
+AOHumanStruct *AOHumanStructRetain(AOHumanStruct *man);
 
 extern
-void AOHumanStructMarriage (AOHumanStruct *man, AOHumanStruct *woman);
+void AOHumanStructRelease(AOHumanStruct *man);
 
 extern
-void AOHumanStructDivorce (AOHumanStruct *man, AOHumanStruct *woman);
+AOHumanStruct* AOHumanStructCreateMan (char *name, uint age, AOHumanGender gender);
 
 extern
-AOHumanStruct* AOHumanStructChildBirth (AOHumanStruct *man, AOHumanStruct *woman);
+void AOHumanStructMarriage (AOHumanStruct* man, AOHumanStruct* woman);
 
 extern
-void AOHumanSetPartner(AOHumanStruct *man, AOHumanStruct *woman);
+void AOHumanStructDivorce (AOHumanStruct* man, AOHumanStruct* woman);
 
 extern
-void AOHumanSetMarried(AOHumanStruct *man, bool married);
+AOHumanStruct* AOHumanStructChildBirth (AOHumanStruct* man, AOHumanStruct* woman, char *name, AOHumanGender gender);
 
 extern
-void AOHumanSetGender(AOHumanStruct *man, AOHumanGender gender);
+AOHumanStruct* AOHumanSetBabies(AOHumanStruct* man);
 
 extern
-AOHumanGender AOHumanGetGender(AOHumanStruct *man);
+AOHumanStruct* AOHumanGetFirstBaby(AOHumanStruct* man);
 
 extern
-void AOHumanSetAge(AOHumanStruct *man, int age);
+void AOHumanSetPartner(AOHumanStruct* man, AOHumanStruct* woman);
 
 extern
-void AOHumanSetName(AOHumanStruct *man, char *newName);
+void AOHumanSetMarried(AOHumanStruct* man, bool married);
 
 extern
-void AOHumanSetFather(AOHumanStruct *man, AOHumanStruct *father);
+void AOHumanSetGender(AOHumanStruct* man, AOHumanGender gender);
 
 extern
-void AOHumanSetMother(AOHumanStruct *man, AOHumanStruct *mother);
+AOHumanGender AOHumanGetGender(AOHumanStruct* man);
+
+extern
+void AOHumanSetAge(AOHumanStruct* man, uint age);
+
+extern
+void AOHumanSetName(AOHumanStruct* man, char *newName);
+
+extern
+void AOHumanSetFather(AOHumanStruct* man, AOHumanStruct* father);
+
+extern
+void AOHumanSetMother(AOHumanStruct* man, AOHumanStruct* mother);
 
 
 

@@ -6,12 +6,35 @@
 //  Copyright (c) 2015 Alina Okhremenko. All rights reserved.
 //
 #include <string.h>
+#include <stdlib.h>
 #include "AOHumanStructure.h"
 
 
-AOHumanStruct* AOHumanStructCreateMan (char *name, int age, AOHumanGender gender){
+void AOHumanDeallocation(AOHumanStruct* man){
+    free((void*)man);
+}
+
+AOHumanStruct* AOHumanStructRetain(AOHumanStruct* man){
+    if (NULL != man) {
+        ((AOHumanStruct *)man)->_referenceCount++;
+    }
+    return man;
+}
+
+void AOHumanStructRelease(AOHumanStruct* man){
+    if (NULL != man) {
+        uint count = ((AOHumanStruct *)man)->_referenceCount - 1;
+        ((AOHumanStruct *)man)->_referenceCount = count;
     
-    AOHumanStruct *man;
+        if (0 == count) {
+            ((AOHumanStruct *)man)->_deallocator(man);
+        }
+    }
+}
+
+AOHumanStruct* AOHumanStructCreateMan (char *name, uint age, AOHumanGender gender){
+    
+    AOHumanStruct* man;
     
     man = (AOHumanStruct*) calloc (1, sizeof(AOHumanStruct));
     
@@ -19,28 +42,68 @@ AOHumanStruct* AOHumanStructCreateMan (char *name, int age, AOHumanGender gender
     AOHumanSetAge(man, age);
     AOHumanSetName(man, name);
     
-    return man;
+    man->_referenceCount = 1;
+    man->_deallocator = &AOHumanDeallocation;
+    man->_childrenCount = 0;
     
+    return man;
 }
 
-AOHumanStruct *AOHumanStructChildBirth (AOHumanStruct *mother, AOHumanStruct *father){
+AOHumanStruct* AOHumanStructChildBirth (AOHumanStruct* mother,
+                                        AOHumanStruct* father,
+                                        char *name, AOHumanGender gender){
 
-    AOHumanStruct *child;
+    AOHumanStruct* child;
     
-    child = (AOHumanStruct*) calloc (1, sizeof(AOHumanStruct));
+    child = AOHumanStructCreateMan(name,0,gender);
     
     AOHumanSetMother(child, mother);
     AOHumanSetFather(child, father);
     
-    return child;
-    
+       return child;
+}
+
+void AOHumanAddChild(AOHumanStruct* parent, AOHumanStruct* child){
+    if(child != NULL && parent != NULL) {
+        parent->_children[parent->_childrenCount] = child;
+        parent->_childrenCount++;
+        
+       child = AOHumanStructRetain(child);
+    }
+}
+
+void AOHumanRemoveChild(AOHumanStruct* parent, AOHumanStruct* child){
+    if (child == NULL) {
+        for (int iterator = 0; iterator < (parent->_childrenCount); iterator++) {
+            if (parent->_children[iterator] == child) {
+                AOHumanStructRelease(child);
+                parent->_children[iterator] = NULL;
+                parent->_childrenCount--;
+                for (int j = iterator; j < (parent->_childrenCount); j++){
+                    parent->_children[j] = parent->_children[j+1];
+
+                }
+                break;
+            }
+           
+        }
+    }
 }
 
 
-void AOHumanStructMarriage(AOHumanStruct *man, AOHumanStruct *woman) {
+AOHumanStruct* AOHumanGetFirstBaby(AOHumanStruct* man){
+    AOHumanStruct* firstBaby;
+    firstBaby = man;
+    man->_childrenCount++;
+    return firstBaby;
+}
+
+
+void AOHumanStructMarriage(AOHumanStruct* man, AOHumanStruct* woman) {
     if(man != NULL && woman != NULL){
         AOHumanSetPartner(man, woman);
         AOHumanSetPartner(woman, man);
+        
         AOHumanSetMarried(man, 1);
         AOHumanSetMarried(woman, 1);
     }
@@ -49,8 +112,7 @@ void AOHumanStructMarriage(AOHumanStruct *man, AOHumanStruct *woman) {
     }
 }
 
-
-void AOHumanStructDivorce(AOHumanStruct *man, AOHumanStruct *woman){
+void AOHumanStructDivorce(AOHumanStruct* man, AOHumanStruct* woman){
     if(man != NULL && woman != NULL){
         AOHumanSetPartner(man, NULL);
         AOHumanSetPartner(woman, NULL);
@@ -62,51 +124,54 @@ void AOHumanStructDivorce(AOHumanStruct *man, AOHumanStruct *woman){
     }
 }
 
-void AOHumanSetPartner(AOHumanStruct *man, AOHumanStruct *partner){
-    if (man != NULL){
-        man->_partner = partner;
+void AOHumanSetPartner(AOHumanStruct* man, AOHumanStruct* partner){
+    if (man != NULL && man->_partner != partner) {
+        man->_partner = AOHumanStructRetain(partner);
+    }
+    
+    if (partner == NULL && man != NULL) {
+        AOHumanStructRelease(partner);
     }
 }
 
-void AOHumanSetMarried(AOHumanStruct *man, bool married){
+void AOHumanSetMarried(AOHumanStruct* man, bool married){
     if (man != NULL){
         man->_isMarried = married;
     }
 }
 
-
-void AOHumanSetGender(AOHumanStruct *man, AOHumanGender gender){
+void AOHumanSetGender(AOHumanStruct* man, AOHumanGender gender){
     if (man != NULL){
         man->_gender = gender;
     }
-    
 }
 
-AOHumanGender AOHumanGetGender(AOHumanStruct *man){
-    if (man != NULL){
+AOHumanGender AOHumanGetGender(AOHumanStruct* man){
+    if(man != NULL){
         return man->_gender;
+    }
+    return AOHumanGenderUndefined;
 }
-};
 
-void AOHumanSetAge(AOHumanStruct *man, int age){
-     if (man != NULL){
+void AOHumanSetAge(AOHumanStruct* man, uint age){
+     if(man != NULL){
          man->_age = age;
      }
 }
     
-void AOHumanSetName(AOHumanStruct *man, char *newName){
-    if (man != NULL){
+void AOHumanSetName(AOHumanStruct* man, char *newName){
+    if(man != NULL){
         strcpy (man->_humanName, newName);
     }
 }
 
-void AOHumanSetFather(AOHumanStruct *child, AOHumanStruct *father){
+void AOHumanSetFather(AOHumanStruct* child, AOHumanStruct* father){
     if (child != NULL){
         child->_father = father;
     }
 }
 
-void AOHumanSetMother(AOHumanStruct *child, AOHumanStruct *mother){
+void AOHumanSetMother(AOHumanStruct* child, AOHumanStruct* mother){
     if (child != NULL){
         child->_mother = mother;
     }
