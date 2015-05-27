@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E3251C41B15E1C000978E30 /* AOObject.c in Sources */ = {isa = PBXBuildFile; fileRef = 3E3251C21B15E1C000978E30 /* AOObject.c */; };
+		3E3251D31B15F7F400978E30 /* AOHumanTest.c in Sources */ = {isa = PBXBuildFile; fileRef = 3E3251D11B15F7F400978E30 /* AOHumanTest.c */; };
 		C7FD9FA91B08EF5A00A5D1D4 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = C7FD9FA81B08EF5A00A5D1D4 /* main.c */; };
 		C7FD9FB11B08EF7200A5D1D4 /* AOHumanStructure.c in Sources */ = {isa = PBXBuildFile; fileRef = C7FD9FAF1B08EF7200A5D1D4 /* AOHumanStructure.c */; };
 /* End PBXBuildFile section */
@@ -24,8 +26,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3E3251C21B15E1C000978E30 /* AOObject.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = AOObject.c; sourceTree = "<group>"; };
+		3E3251C31B15E1C000978E30 /* AOObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOObject.h; sourceTree = "<group>"; };
+		3E3251D11B15F7F400978E30 /* AOHumanTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = AOHumanTest.c; path = AOHomeTask5/Test/AOHumanTest/AOHumanTest.c; sourceTree = SOURCE_ROOT; };
+		3E3251D21B15F7F400978E30 /* AOHumanTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AOHumanTest.h; path = AOHomeTask5/Test/AOHumanTest/AOHumanTest.h; sourceTree = SOURCE_ROOT; };
 		C7FD9FA51B08EF5A00A5D1D4 /* AOHomeTask5 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AOHomeTask5; sourceTree = BUILT_PRODUCTS_DIR; };
-		C7FD9FA81B08EF5A00A5D1D4 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		C7FD9FA81B08EF5A00A5D1D4 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = main.c; path = Source/main.c; sourceTree = "<group>"; };
 		C7FD9FAF1B08EF7200A5D1D4 /* AOHumanStructure.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = AOHumanStructure.c; sourceTree = "<group>"; };
 		C7FD9FB01B08EF7200A5D1D4 /* AOHumanStructure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOHumanStructure.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -41,6 +47,60 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E3251C51B15F07000978E30 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				3E3251D41B15F81900978E30 /* AOHumanTest */,
+				3E3251CD1B15F55000978E30 /* AOObjectTest */,
+			);
+			name = Test;
+			sourceTree = "<group>";
+		};
+		3E3251CA1B15F49000978E30 /* AOObject */ = {
+			isa = PBXGroup;
+			children = (
+				3E3251C21B15E1C000978E30 /* AOObject.c */,
+				3E3251C31B15E1C000978E30 /* AOObject.h */,
+			);
+			path = AOObject;
+			sourceTree = "<group>";
+		};
+		3E3251CB1B15F4C900978E30 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				3E3251CC1B15F4F200978E30 /* AOHumanStructure */,
+				3E3251CA1B15F49000978E30 /* AOObject */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		3E3251CC1B15F4F200978E30 /* AOHumanStructure */ = {
+			isa = PBXGroup;
+			children = (
+				C7FD9FAF1B08EF7200A5D1D4 /* AOHumanStructure.c */,
+				C7FD9FB01B08EF7200A5D1D4 /* AOHumanStructure.h */,
+			);
+			path = AOHumanStructure;
+			sourceTree = "<group>";
+		};
+		3E3251CD1B15F55000978E30 /* AOObjectTest */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = AOObjectTest;
+			path = Test/AOObjectTest;
+			sourceTree = "<group>";
+		};
+		3E3251D41B15F81900978E30 /* AOHumanTest */ = {
+			isa = PBXGroup;
+			children = (
+				3E3251D11B15F7F400978E30 /* AOHumanTest.c */,
+				3E3251D21B15F7F400978E30 /* AOHumanTest.h */,
+			);
+			name = AOHumanTest;
+			path = Test/AOHumanTest;
+			sourceTree = "<group>";
+		};
 		C7FD9F9C1B08EF5A00A5D1D4 = {
 			isa = PBXGroup;
 			children = (
@@ -60,9 +120,9 @@
 		C7FD9FA71B08EF5A00A5D1D4 /* AOHomeTask5 */ = {
 			isa = PBXGroup;
 			children = (
+				3E3251CB1B15F4C900978E30 /* Source */,
 				C7FD9FA81B08EF5A00A5D1D4 /* main.c */,
-				C7FD9FAF1B08EF7200A5D1D4 /* AOHumanStructure.c */,
-				C7FD9FB01B08EF7200A5D1D4 /* AOHumanStructure.h */,
+				3E3251C51B15F07000978E30 /* Test */,
 			);
 			path = AOHomeTask5;
 			sourceTree = "<group>";
@@ -123,8 +183,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E3251C41B15E1C000978E30 /* AOObject.c in Sources */,
 				C7FD9FA91B08EF5A00A5D1D4 /* main.c in Sources */,
 				C7FD9FB11B08EF7200A5D1D4 /* AOHumanStructure.c in Sources */,
+				3E3251D31B15F7F400978E30 /* AOHumanTest.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +303,7 @@
 				C7FD9FAE1B08EF5A00A5D1D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -9,41 +9,25 @@
 #include <stdlib.h>
 #include "AOHumanStructure.h"
 
+# pragma mark -
+# pragma mark Private
 
-void AOHumanDeallocation(AOHumanStruct* man){
-    free((void*)man);
-}
 
-AOHumanStruct* AOHumanStructRetain(AOHumanStruct* man){
-    if (NULL != man) {
-        ((AOHumanStruct *)man)->_referenceCount++;
-    }
-    return man;
-}
-
-void AOHumanStructRelease(AOHumanStruct* man){
-    if (NULL != man) {
-        uint count = ((AOHumanStruct *)man)->_referenceCount - 1;
-        ((AOHumanStruct *)man)->_referenceCount = count;
+void __AOHumanStructDeallocate(void *object){
+    __AOObjectDeallocate(object);
     
-        if (0 == count) {
-            ((AOHumanStruct *)man)->_deallocator(man);
-        }
-    }
 }
+# pragma mark -
+# pragma mark Public
 
 AOHumanStruct* AOHumanStructCreateMan (char *name, uint age, AOHumanGender gender){
     
-    AOHumanStruct* man;
-    
-    man = (AOHumanStruct*) calloc (1, sizeof(AOHumanStruct));
+    AOHumanStruct* man = AOObjectCreateOfType(AOHumanStruct);
     
     AOHumanSetGender(man, gender);
     AOHumanSetAge(man, age);
     AOHumanSetName(man, name);
     
-    man->_referenceCount = 1;
-    man->_deallocator = &AOHumanDeallocation;
     man->_childrenCount = 0;
     
     return man;
@@ -62,6 +46,42 @@ AOHumanStruct* AOHumanStructChildBirth (AOHumanStruct* mother,
     
        return child;
 }
+
+void AOHumanStructMarriage(AOHumanStruct *partner1, AOHumanStruct *partner2) {
+    if (partner1 != NULL && partner2 != NULL){
+        if (AOHumanGetGender(partner1) != AOHumanGetGender(partner2)) {
+        
+            AOHumanStruct *woman = (AOHumanGetGender(partner1) == AOHumanGenderFemale)
+                                    ? partner1
+                                    : partner2;
+            AOHumanStruct *man = (woman != partner1) ? partner1 : partner2;
+        
+            if (woman->_partner != NULL && woman->_partner != man) {
+            AOHumanStructDivorce(woman, woman->_partner);
+            }
+            if (man->_partner != NULL && man->_partner != woman) {
+              AOHumanStructDivorce(man, man->_partner);
+            }
+            if (woman->_partner != man){
+                AOObjectRetain(man);
+                woman->_partner = man;
+            }
+            if (man->_partner != woman){
+                man->_partner = woman;
+            }
+
+        }
+        else { printf("Spiritual clamps in action");
+        }
+    }
+
+    else {
+        printf("AOHumanStructDivorce: man and woman can't be NULL\n");
+    }
+}
+
+
+/*
 
 void AOHumanAddChild(AOHumanStruct* parent, AOHumanStruct* child){
     if(child != NULL && parent != NULL) {
@@ -98,19 +118,7 @@ AOHumanStruct* AOHumanGetFirstBaby(AOHumanStruct* man){
     return firstBaby;
 }
 
-
-void AOHumanStructMarriage(AOHumanStruct* man, AOHumanStruct* woman) {
-    if(man != NULL && woman != NULL){
-        AOHumanSetPartner(man, woman);
-        AOHumanSetPartner(woman, man);
-        
-        AOHumanSetMarried(man, 1);
-        AOHumanSetMarried(woman, 1);
-    }
-    else{
-        printf("AOHumanStructDivorce: man and woman can't be NULL\n");
-    }
-}
+*/
 
 void AOHumanStructDivorce(AOHumanStruct* man, AOHumanStruct* woman){
     if(man != NULL && woman != NULL){
@@ -126,19 +134,11 @@ void AOHumanStructDivorce(AOHumanStruct* man, AOHumanStruct* woman){
 
 void AOHumanSetPartner(AOHumanStruct* man, AOHumanStruct* partner){
     if (man != NULL && man->_partner != partner) {
-        man->_partner = AOHumanStructRetain(partner);
+        man->_partner = partner;
     }
     
-    if (partner == NULL && man != NULL) {
-        AOHumanStructRelease(partner);
-    }
 }
 
-void AOHumanSetMarried(AOHumanStruct* man, bool married){
-    if (man != NULL){
-        man->_isMarried = married;
-    }
-}
 
 void AOHumanSetGender(AOHumanStruct* man, AOHumanGender gender){
     if (man != NULL){
