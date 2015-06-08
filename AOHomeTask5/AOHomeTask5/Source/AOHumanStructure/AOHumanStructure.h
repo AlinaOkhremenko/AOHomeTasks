@@ -19,82 +19,88 @@ typedef enum AOHumanGender{
     AOHumanGenderFemale
 } AOHumanGender;
 
-typedef struct AOHumanStruct AOHumanStruct;
+typedef struct AOHuman AOHuman;
 
-struct AOHumanStruct {
+struct AOHuman {
     AOObject _super;
        
     char _humanName[64];
     uint _age;
     AOHumanGender _gender;
-     AOHumanStruct *_children[20];
+    AOHuman *_children[20];
     int _childrenCount;
-    AOHumanStruct *_partner;
-    AOHumanStruct *_mother;
-    AOHumanStruct *_father;
-    
+    AOHuman *_partner;
+    AOHuman *_mother;
+    AOHuman *_father;
 };
 
+extern
+AOHuman *AOHumanCreateMan(char *name, uint age, AOHumanGender gender);
 
 extern
-AOHumanStruct *AOHumanStructCreateMan(char *name, uint age, AOHumanGender gender);
+AOHuman *AOHumanChildCreate(AOHuman *man, AOHuman *woman, char *name, AOHumanGender gender);
 
 extern
-void AOHumanStructMarriage(AOHumanStruct *human, AOHumanStruct *partner);
+void AOHumanMarriage(AOHuman *human, AOHuman *partner);
 
 extern
-void AOHumanAddChild(AOHumanStruct *parent, AOHumanStruct *child);
+void AOHumanAddChild(AOHuman *parent, AOHuman *child);
 
 extern
-AOHumanStruct *AOHumanStructChildBirth(AOHumanStruct *man, AOHumanStruct* woman, char *name, AOHumanGender gender);
+void AOHumanRemoveChildAtIndex(AOHuman *parent, int index);
 
 extern
-void AOHumanStructDivorce(AOHumanStruct *man, AOHumanStruct *woman);
+void AOHumanDivorce(AOHuman *human, AOHuman *partner);
+
 
 # pragma mark -
 # pragma mark Accessors
 
 
 extern
-AOHumanStruct *AOHumanGetFirstBaby(AOHumanStruct *man);
+void AOHumanSetPartner(AOHuman *man, AOHuman *woman);
 
 extern
-void AOHumanSetPartner(AOHumanStruct *man, AOHumanStruct *woman);
+AOHuman *AOHumanGetPartner(AOHuman *man);
 
 extern
-void AOHumanGetPartner(AOHumanStruct *man);
+void AOHumanSetName(AOHuman *man, char *newName);
 
 extern
-void AOHumanSetName(AOHumanStruct *man, char *newName);
+char *AOHumanGetName(AOHuman *man);
 
 extern
-char AOHumanGetName(AOHumanStruct *man);
+void AOHumanSetGender(AOHuman *man, AOHumanGender gender);
 
 extern
-void AOHumanSetGender(AOHumanStruct* man, AOHumanGender gender);
+AOHumanGender AOHumanGetGender(AOHuman *man);
 
 extern
-AOHumanGender AOHumanGetGender(AOHumanStruct *man);
+void AOHumanSetAge(AOHuman *man, uint age);
 
 extern
-void AOHumanSetAge(AOHumanStruct *man, uint age);
+int AOHumanGetAge(AOHuman *man);
 
 extern
-int AOHumanGetAge(AOHumanStruct *man);
+void AOHumanSetFather(AOHuman *man, AOHuman *father);
 
 extern
-void AOHumanSetFather(AOHumanStruct *man, AOHumanStruct *father);
+void AOHumanSetMother(AOHuman *man, AOHuman *mother);
 
 extern
-void AOHumanSetMother(AOHumanStruct *man, AOHumanStruct *mother);
+AOHuman *AOHumanGetMother(AOHuman *man);
 
 extern
-AOHumanStruct *AOHumanGetMother(AOHumanStruct *man);
+AOHuman *AOHumanGetFather(AOHuman *man);
 
 extern
-AOHumanStruct *AOHumanGetFather(AOHumanStruct *man);
+bool AOHumanGetIsMarried(AOHuman *man);
 
+extern
+void AOHumanSetChildAtIndex(AOHuman *man, AOHuman *child, uint index);
 
+extern
+AOHuman *AOHumanGetChildAtIndex(AOHuman *man, uint index);
 
 
 
