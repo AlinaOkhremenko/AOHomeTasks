@@ -10,10 +10,12 @@
 #include "AOHumanStructure.h"
 #include "AOHumanTest.h"
 
-int main(int argc, const char * argv[]) {
+int main(int argc, const char *argv[]) {
 
     
     AOHumanTest();
+    AOArrayTest();
+    
     
     return 0;
 }

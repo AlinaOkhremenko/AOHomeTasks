@@ -13,7 +13,7 @@
     if (var != NULL) {\
     return var->_iVar;\
     }\
-    return NULL;\
+    return 0;\
 }
 
 #define AOHumanAssignSetter(var,_iVar, newValue){\
@@ -25,23 +25,58 @@
 static const int kMaxChildrenCount = 20;
 
 # pragma mark -
-# pragma mark Private
+# pragma mark Private Accessors
+
+struct AOHuman {
+    AOObject _super;
+    
+    char _humanName[64];
+    uint _age;
+    AOHumanGender _gender;
+    AOHuman *_children[20];
+    int _childrenCount;
+    AOHuman *_partner;
+    AOHuman *_mother;
+    AOHuman *_father;
+};
 
 
+static
+void AOHumanSetPartner(AOHuman *man, AOHuman *woman);
 
-void __AOHumanDeallocate(void *object){
+static
+AOHuman *AOHumanGetPartner(AOHuman *man);
+
+static
+void AOHumanSetName(AOHuman *man, char *newName);
+
+static
+char *AOHumanGetName(AOHuman *man);
+
+static
+void AOHumanSetGender(AOHuman *man, AOHumanGender gender);
+
+static
+AOHumanGender AOHumanGetGender(AOHuman *man);
+
+static
+void AOHumanSetAge(AOHuman *man, uint age);
+
+static
+int AOHumanGetAge(AOHuman *man);
+
+//static
+//void AOHumanSetFather(AOHuman *man, AOHuman *father);
+//
+//static
+//void AOHumanSetMother(AOHuman *man, AOHuman *mother);
+
+
+void __AOHumanDeallocate(AOHuman *object){
     
-    if (AOHumanGetGender((AOHuman *)object) == AOHumanGenderFemale) {
-        AOObjectRelease(AOHumanGetPartner(object));
-    }
-    
-    for (int i = 0; i < ((AOHuman *)object)->_childrenCount; i++) {
-        
-        AOHuman *child = AOHumanGetChildAtIndex((AOHuman *)object, i);
-        AOObjectRelease(child);
-    }
-    
-    free(object);
+    AOHumanDivorce(object, AOHumanGetPartner(object));
+   
+    __AOObjectDeallocate(object);
     
 }
 
@@ -166,7 +201,8 @@ void AOHumanAddChild(AOHuman *parent, AOHuman *child){
 void AOHumanSetChildAtIndex(AOHuman *man, AOHuman *child, uint index){
     if (man != NULL){
         man->_children[index] = child;
-    }
+ //вставить сюда ритейн и релиз ребенка так как может быть инсерт в массив  }
+}
 }
 
 AOHuman *AOHumanGetChildAtIndex(AOHuman *man, uint index){
@@ -176,7 +212,7 @@ AOHuman *AOHumanGetChildAtIndex(AOHuman *man, uint index){
     return NULL;
 }
 
-void AOHumanRemoveChildAtIndex(AOHuman *parent, int index){
+void AOHumanRemoveChildAtIndex(AOHuman *parent, uint index){
     if (parent != NULL) {
         
         if (index < parent->_childrenCount){
@@ -220,37 +256,36 @@ void AOHumanSetGender(AOHuman *man, AOHumanGender gender){
     AOHumanAssignSetter(man,_gender, gender);
 }
 
-AOHumanGender AOHumanGetGender(AOHuman *man){
+AOHumanGender AOHumanGetGender(AOHuman *man) {
     AOHumanAssignGetter(man, _gender);
 }
 
-void AOHumanSetAge(AOHuman *man, uint age){
+void AOHumanSetAge(AOHuman *man, uint age) {
     AOHumanAssignSetter(man, _age, age);
 }
 
-int AOHumanGetAge(AOHuman *man){
+int AOHumanGetAge(AOHuman *man) {
     AOHumanAssignGetter(man, _age);
 }
 
-void AOHumanSetFather(AOHuman *child, AOHuman *father){
+void AOHumanSetFather(AOHuman *child, AOHuman *father) {
     AOHumanAssignSetter(child, _father, father);
 }
 
-void AOHumanSetMother(AOHuman *child, AOHuman *mother){
+void AOHumanSetMother(AOHuman *child, AOHuman *mother) {
     AOHumanAssignSetter(child, _mother, mother);
 }
 
-AOHuman *AOHumanGetMother(AOHuman *man){
+AOHuman *AOHumanGetMother(AOHuman *man) {
     AOHumanAssignGetter(man, _mother);
 }
 
-AOHuman *AOHumanGetFather(AOHuman *man){
-     AOHumanAssignGetter(man, _father);}
+AOHuman *AOHumanGetFather(AOHuman *man) {
+     AOHumanAssignGetter(man, _father);
+}
 
-bool AOHumanGetIsMarried(AOHuman *man){
+bool AOHumanGetIsMarried(AOHuman *man) {
     return (man != NULL && man->_partner != NULL);
     
 }
-
-
 

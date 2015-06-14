@@ -21,18 +21,7 @@ typedef enum AOHumanGender{
 
 typedef struct AOHuman AOHuman;
 
-struct AOHuman {
-    AOObject _super;
-       
-    char _humanName[64];
-    uint _age;
-    AOHumanGender _gender;
-    AOHuman *_children[20];
-    int _childrenCount;
-    AOHuman *_partner;
-    AOHuman *_mother;
-    AOHuman *_father;
-};
+
 
 extern
 AOHuman *AOHumanCreateMan(char *name, uint age, AOHumanGender gender);
@@ -47,7 +36,7 @@ extern
 void AOHumanAddChild(AOHuman *parent, AOHuman *child);
 
 extern
-void AOHumanRemoveChildAtIndex(AOHuman *parent, int index);
+void AOHumanRemoveChildAtIndex(AOHuman *parent, uint index);
 
 extern
 void AOHumanDivorce(AOHuman *human, AOHuman *partner);
@@ -55,37 +44,6 @@ void AOHumanDivorce(AOHuman *human, AOHuman *partner);
 
 # pragma mark -
 # pragma mark Accessors
-
-
-extern
-void AOHumanSetPartner(AOHuman *man, AOHuman *woman);
-
-extern
-AOHuman *AOHumanGetPartner(AOHuman *man);
-
-extern
-void AOHumanSetName(AOHuman *man, char *newName);
-
-extern
-char *AOHumanGetName(AOHuman *man);
-
-extern
-void AOHumanSetGender(AOHuman *man, AOHumanGender gender);
-
-extern
-AOHumanGender AOHumanGetGender(AOHuman *man);
-
-extern
-void AOHumanSetAge(AOHuman *man, uint age);
-
-extern
-int AOHumanGetAge(AOHuman *man);
-
-extern
-void AOHumanSetFather(AOHuman *man, AOHuman *father);
-
-extern
-void AOHumanSetMother(AOHuman *man, AOHuman *mother);
 
 extern
 AOHuman *AOHumanGetMother(AOHuman *man);
@@ -101,7 +59,5 @@ void AOHumanSetChildAtIndex(AOHuman *man, AOHuman *child, uint index);
 
 extern
 AOHuman *AOHumanGetChildAtIndex(AOHuman *man, uint index);
-
-
 
 #endif /* defined(__AOHomeTask5__AOHumanStructure__) */
