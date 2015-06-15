@@ -100,11 +100,12 @@ void AOArrayRemoveObjectAtIndex(AOArray *array, uint index) {
 }
 
 void AOArraySetObjectAtIndex(AOArray *array, AOArray *object, uint index) {
+    проверка индекса count
     if (NULL != array && NULL != object) {
         AOArray *existedObject = array->_data[index];
         if (existedObject != object) {
             AOObjectRetain(object);
-            AOObjectRelease(object);
+            AOObjectRelease(existedObject);
             
             array->_data[index] = object;
         }

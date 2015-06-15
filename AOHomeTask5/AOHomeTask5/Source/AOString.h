@@ -10,5 +10,23 @@
 #define __AOHomeTask5__AOString__
 
 #include <stdio.h>
+#include <stdbool.h>
+#include "AOObject.h"
+
+typedef struct {
+    AOObject _super;
+    
+    uint _length;
+    char *_data;
+    
+} AOString;
+
+AOString *AOStringCreateWithString(char *string);
+
+bool AOStringIsEmpty(AOString *object);
+
+int AOStringGetLength(AOString *object);
+
+char *AOStringGetString(AOString *object);
 
 #endif /* defined(__AOHomeTask5__AOString__) */
