@@ -10,5 +10,13 @@
 #define __AOHomeTask5__AOStringTest__
 
 #include <stdio.h>
+#include "AOString.h"
+
+void AOStringTests(void);
+
+
+
+
+
 
 #endif /* defined(__AOHomeTask5__AOStringTest__) */

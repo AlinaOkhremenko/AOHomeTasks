@@ -9,13 +9,13 @@
 #include <stdio.h>
 #include "AOHumanStructure.h"
 #include "AOHumanTest.h"
-
+#include "AOStringTest.h"
 int main(int argc, const char *argv[]) {
 
     
-    AOHumanTest();
+   // AOHumanTest();
     AOArrayTest();
-    
+    AOStringTests();
     
     return 0;
 }
