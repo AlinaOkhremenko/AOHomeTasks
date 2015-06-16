@@ -16,20 +16,20 @@
 typedef struct {
     AOObject _super;
     
-    uint _arrayCapacity;
-    uint _arrayCount;
+    uint64_t _arrayCapacity;
+    uint64_t _arrayCount;
     void **_data;
     
 } AOArray;
 
 
-AOArray *AOArrayCreatewithCapacity(uint arrayCapacity);
+AOArray *AOArrayCreatewithCapacity(uint64_t arrayCapacity);
 
 void AOArrayAddObject(AOArray *array, void *object);
 
-void AOArrayRemoveObjectAtIndex(AOArray *array, uint index);
+void AOArrayRemoveObjectAtIndex(AOArray *array, uint64_t index);
 
-AOArray *AOArrayAddObjectAtIndex(AOArray *array, void *object, uint index);
+//AOArray *AOArrayAddObjectAtIndex(AOArray *array, void *object, uint64_t index);
 
 uint AOArrayGetCapacity(AOArray *array);
 
@@ -37,12 +37,13 @@ uint AOArrayGetCount(AOArray *array);
 
 bool AOArrayContainsObject (AOArray *array, void *object);
 
-void *AOArrayGetObjectAtIndex(AOArray *array, uint index);
+void *AOArrayGetObjectAtIndex(AOArray *array, uint64_t index);
 
 uint64_t AOArrayGetIndexOfObject(AOArray *array, void *object);
 
+void AOArrayRemoveAllObjects(AOArray *array);
 
-
+void AOArraySetObjectAtIndex(AOArray *array, void *object, uint64_t index);
 
 
 

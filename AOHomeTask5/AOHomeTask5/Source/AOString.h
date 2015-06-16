@@ -25,8 +25,10 @@ AOString *AOStringCreateWithString(char *string);
 
 bool AOStringIsEmpty(AOString *object);
 
-int AOStringGetLength(AOString *object);
+uint AOStringGetLength(AOString *object);
 
 char *AOStringGetString(AOString *object);
+
+void AOStringSetString(AOString *object, char *data);
 
 #endif /* defined(__AOHomeTask5__AOString__) */

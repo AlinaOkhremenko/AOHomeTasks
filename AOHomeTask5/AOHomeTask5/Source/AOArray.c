@@ -5,7 +5,7 @@
 //  Created by Alina Okhremenko on 09.06.15.
 //  Copyright (c) 2015 Alina Okhremenko. All rights reserved.
 //
-
+#include <assert.h>
 #include "AOArray.h"
 #include "AOObject.h"
 
@@ -15,6 +15,7 @@
         }\
         return 0;\
     }
+#define kCapacityDelta 10;
 
 static const uint64_t kAOIndexNotFound = UINT64_MAX;
 
@@ -22,36 +23,32 @@ static
 void __AOArrayDeallocate(void *object);
 
 static
-void AOArraySetCapacity(AOArray *array, uint capacity);
+void AOArraySetCapacity(AOArray *array, uint64_t capacity);
 
 static
 void AOArrayResizeIfNeeded(AOArray *array);
 
 static
-void AOArraySetCount(AOArray *array, uint count);
+bool AOArrayShouldResize(AOArray *array);
 
 static
-void AOArraySetObjectAtIndex(AOArray *array, AOArray *object, uint index);
+uint64_t AOArrayPrefferedCapacity(AOArray *array);
 
 static
-void AOArrayRemoveAllObjects(AOArray *array);
+void AOArraySetCount(AOArray *array, uint64_t count);
 
 
 void __AOArrayDeallocate(void *object) {
 
     AOArray *array = object;
-    AOArrayRemoveAllObjects(array);
     
-    if (NULL != array->_data) {
-        free(array->_data);
-        array->_data = NULL;
-    }
+    AOArrayRemoveAllObjects(array);
     
     __AOObjectDeallocate(object);
 }
 
 
-AOArray *AOArrayCreatewithCapacity(uint arrayCapacity) {
+AOArray *AOArrayCreatewithCapacity(uint64_t arrayCapacity) {
     
     AOArray *newArray = AOObjectCreateOfType(AOArray);
     
@@ -63,7 +60,7 @@ AOArray *AOArrayCreatewithCapacity(uint arrayCapacity) {
 
 void AOArrayAddObject(AOArray *array, void *object) {
     if (NULL != array && NULL != object) {
-        uint currentCount = AOArrayGetCount(array);
+        uint64_t currentCount = AOArrayGetCount(array);
         AOArraySetCount(array, currentCount + 1);
         AOArraySetObjectAtIndex(array, object, currentCount);
         AOObjectRetain(object);
@@ -72,7 +69,7 @@ void AOArrayAddObject(AOArray *array, void *object) {
 
 void AOArrayRemoveAllObjects(AOArray *array) {
     if (NULL != array) {
-        uint currentCount = AOArrayGetCount(array);
+        uint64_t currentCount = AOArrayGetCount(array);
         for (int i = 0; i < currentCount; i++) {
             AOArraySetObjectAtIndex(array, NULL, i);
         }
@@ -80,18 +77,15 @@ void AOArrayRemoveAllObjects(AOArray *array) {
     }
 }
 
-void AOArrayRemoveObjectAtIndex(AOArray *array, uint index) {
+void AOArrayRemoveObjectAtIndex(AOArray *array, uint64_t index) {
     if (NULL != array) {
-        uint currentCount = AOArrayGetCount(array);
+        uint64_t currentCount = AOArrayGetCount(array);
         if (index < currentCount) {
-            void *objectToRemove = AOArrayGetObjectAtIndex(array, index);
-            AOObjectRelease(objectToRemove);
             AOArraySetObjectAtIndex(array, NULL, index);
-            
             AOArraySetCount(array, currentCount - 1);
-            AOObjectRelease(objectToRemove);
+           
             
-            for (int i = index; i < (currentCount - 1); i++) {
+            for (uint64_t i = index; i < (currentCount - 1); i++) {
                 array->_data[i] = array->_data[i+1];
             }
             array->_data[currentCount -1] = NULL;
@@ -99,9 +93,8 @@ void AOArrayRemoveObjectAtIndex(AOArray *array, uint index) {
     }
 }
 
-void AOArraySetObjectAtIndex(AOArray *array, AOArray *object, uint index) {
-    проверка индекса count
-    if (NULL != array && NULL != object) {
+void AOArraySetObjectAtIndex(AOArray *array, void *object, uint64_t index) {
+    if (NULL != array) {
         AOArray *existedObject = array->_data[index];
         if (existedObject != object) {
             AOObjectRetain(object);
@@ -112,7 +105,7 @@ void AOArraySetObjectAtIndex(AOArray *array, AOArray *object, uint index) {
     }
 }
 
-void *AOArrayGetObjectAtIndex(AOArray *array, uint index) {
+void *AOArrayGetObjectAtIndex(AOArray *array, uint64_t index) {
     if (NULL != array) {
         return array->_data[index];
     }
@@ -121,7 +114,7 @@ void *AOArrayGetObjectAtIndex(AOArray *array, uint index) {
 
 uint64_t AOArrayGetIndexOfObject(AOArray *array, void *object) {
     if (NULL != array) {
-        uint currentCount = AOArrayGetCount(array);
+        uint64_t currentCount = AOArrayGetCount(array);
         for (int i = 0; i < currentCount; i++) {
             void *currentObject = array->_data[i];
             if (currentObject == object) {
@@ -137,7 +130,7 @@ bool AOArrayContainsObject (AOArray *array, void *object) {
 }
 
 
-void AOArraySetCapacity(AOArray *array, uint capacity) {
+void AOArraySetCapacity(AOArray *array, uint64_t capacity) {
     
     if (NULL != array && array->_arrayCapacity != capacity) {
         
@@ -154,18 +147,18 @@ void AOArraySetCapacity(AOArray *array, uint capacity) {
     array->_arrayCapacity = capacity;
 }
 
+
 void AOArrayResizeIfNeeded(AOArray *array){
     
     if (NULL != array) {
         
-        uint currentCount = AOArrayGetCount(array);
-        uint currentCapacity = AOArrayGetCapacity(array);
+        uint64_t currentCount = AOArrayGetCount(array);
+        uint64_t currentCapacity = AOArrayGetCapacity(array);
         
         if (currentCount > currentCapacity) {
-            
-            uint newCapacity = currentCapacity * 2;
-            size_t size = newCapacity*(sizeof(*array->_data));
-            array->_data = realloc(array->_data, size);
+            uint64_t newCapacity = currentCount + kCapacityDelta;
+            assert(newCapacity == kAOIndexNotFound);
+            AOArraySetCapacity(array, newCapacity);
         }
     }
 }
@@ -174,8 +167,9 @@ uint AOArrayGetCapacity(AOArray *array) {
     AOHumanAssignGetter(array, _arrayCapacity);
 }
 
-void AOArraySetCount(AOArray *array, uint count) {
+void AOArraySetCount(AOArray *array, uint64_t count) {
     if (NULL != array) {
+        assert(kAOIndexNotFound >= count);
         array->_arrayCount = count;
         AOArrayResizeIfNeeded(array);
     }
