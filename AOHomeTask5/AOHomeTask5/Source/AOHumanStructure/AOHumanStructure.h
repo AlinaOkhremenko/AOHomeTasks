@@ -12,6 +12,8 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include "AOObject.h"
+#include "AOString.h"
+#include "AOArray.h"
 
 typedef enum AOHumanGender{
     AOHumanGenderUndefined,
@@ -37,6 +39,9 @@ void AOHumanAddChild(AOHuman *parent, AOHuman *child);
 
 extern
 void AOHumanRemoveChildAtIndex(AOHuman *parent, uint index);
+
+extern
+void AOHumanRemoveAllChildren(AOHuman *parent);
 
 extern
 void AOHumanDivorce(AOHuman *human, AOHuman *partner);

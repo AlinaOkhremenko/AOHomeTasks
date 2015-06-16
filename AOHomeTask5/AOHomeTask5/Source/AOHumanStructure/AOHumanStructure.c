@@ -8,6 +8,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include "AOHumanStructure.h"
+#include "AOArray.h"
 
 #define AOHumanAssignGetter(var,_iVar){\
     if (var != NULL) {\
@@ -30,16 +31,15 @@ static const int kMaxChildrenCount = 20;
 struct AOHuman {
     AOObject _super;
     
-    char _humanName[64];
+    AOString *_name;
     uint _age;
     AOHumanGender _gender;
-    AOHuman *_children[20];
+    AOArray *_children;
     int _childrenCount;
     AOHuman *_partner;
     AOHuman *_mother;
     AOHuman *_father;
 };
-
 
 static
 void AOHumanSetPartner(AOHuman *man, AOHuman *woman);
@@ -86,9 +86,10 @@ void __AOHumanDeallocate(AOHuman *object){
 AOHuman *AOHumanCreateMan (char *name, uint age, AOHumanGender gender){
     
     AOHuman *man = AOObjectCreateOfType(AOHuman);
-    
+
     AOHumanSetGender(man, gender);
     AOHumanSetAge(man, age);
+    
     AOHumanSetName(man, name);
     
     return man;
@@ -123,7 +124,6 @@ void AOHumanMarriage(AOHuman *human, AOHuman *partner) {
                 AOHuman *woman = (humanGender == AOHumanGenderFemale) ? human : partner;
                 AOHuman *man = (humanGender == AOHumanGenderMale) ? human : partner;
                 AOObjectRetain(man);
-                AOObjectRetain(woman);
                 if (AOHumanGetPartner(woman) != man) {
                     AOHumanDivorce(AOHumanGetPartner(man), man);
                     AOHumanDivorce(AOHumanGetPartner(woman), woman);
@@ -132,7 +132,6 @@ void AOHumanMarriage(AOHuman *human, AOHuman *partner) {
                     woman->_partner = man;
                 }
                 AOObjectRelease(man);
-                AOObjectRelease(woman);
             }
             else{
                 printf("Spiritual clamps in action");
@@ -180,6 +179,7 @@ void AOHumanDivorce(AOHuman *human, AOHuman *partner){
 }
 
 void AOHumanAddChild(AOHuman *parent, AOHuman *child){
+    
     if(child != NULL && parent != NULL) {
         
         if ( AOHumanGetGender(parent) == AOHumanGenderFemale) {
@@ -189,44 +189,37 @@ void AOHumanAddChild(AOHuman *parent, AOHuman *child){
             child->_father = parent;
         }
         
-        if (parent->_childrenCount < kMaxChildrenCount){
-            AOHumanSetChildAtIndex(parent, child, parent->_childrenCount);
-            parent->_childrenCount++;
-            
-            child = AOObjectRetain(child);
-        }
+        AOArrayAddObject(parent->_children, child);
+        AOArraySetObjectAtIndex(parent->_children, child, parent->_childrenCount);
+        parent->_childrenCount++;
+        
     }
 }
 
 void AOHumanSetChildAtIndex(AOHuman *man, AOHuman *child, uint index){
     if (man != NULL){
-        man->_children[index] = child;
- //вставить сюда ритейн и релиз ребенка так как может быть инсерт в массив  }
+        AOArraySetObjectAtIndex(man->_children, child, index);
 }
 }
 
 AOHuman *AOHumanGetChildAtIndex(AOHuman *man, uint index){
     if (man != NULL){
-        return man->_children[index];
+        return AOArrayGetObjectAtIndex(man->_children, index);
     }
     return NULL;
 }
 
 void AOHumanRemoveChildAtIndex(AOHuman *parent, uint index){
     if (parent != NULL) {
-        
-        if (index < parent->_childrenCount){
-            
-            AOHuman *child = AOHumanGetChildAtIndex(parent, index);
-            AOHumanSetChildAtIndex(parent, NULL, index);
-            AOObjectRelease(child);
-            parent->_childrenCount--;
-            
-            for (int j = index; j < (parent->_childrenCount); j++){
-                parent->_children[j] = parent->_children[j+1];
-            }
-        }
+        AOArrayRemoveObjectAtIndex(parent->_children, index);
     }
+}
+
+void AOHumanRemoveAllChildren(AOHuman *parent){
+    if (parent != NULL) {
+        AOArrayRemoveAllObjects(parent->_children);
+    }
+    
 }
 
 void AOHumanSetPartner(AOHuman *man, AOHuman *partner){
@@ -238,15 +231,20 @@ AOHuman *AOHumanGetPartner(AOHuman *man){
     AOHumanAssignGetter(man,_partner);
 }
     
-void AOHumanSetName(AOHuman *man, char *newName){
+void AOHumanSetName(AOHuman *man,char *newName){
     if(man != NULL){
-        strcpy (man->_humanName, newName);
+        AOString *currentName = man->_name;
+        AOStringCreateWithString(newName);
+        man->_name = AOStringCreateWithString(newName);
+        AOObjectRetain(newName);
+        AOObjectRelease(currentName);
+        
     }
 }
 
 char *AOHumanGetName(AOHuman *man){
     if (man != NULL) {
-        return man->_humanName;
+        return AOStringGetString(man->_name);
     }
     
     return NULL;
