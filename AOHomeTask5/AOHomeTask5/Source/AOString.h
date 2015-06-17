@@ -16,16 +16,18 @@
 typedef struct {
     AOObject _super;
     
-    uint _length;
+    size_t _length;
     char *_data;
     
 } AOString;
+
+void __AOStringDeallocate(void *object);
 
 AOString *AOStringCreateWithString(char *string);
 
 bool AOStringIsEmpty(AOString *object);
 
-uint AOStringGetLength(AOString *object);
+size_t AOStringGetLength(AOString *object);
 
 char *AOStringGetString(AOString *object);
 

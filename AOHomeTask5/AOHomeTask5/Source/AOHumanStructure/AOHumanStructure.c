@@ -23,7 +23,6 @@
     }\
 }
 
-static const int kMaxChildrenCount = 20;
 
 # pragma mark -
 # pragma mark Private Accessors
@@ -188,38 +187,29 @@ void AOHumanAddChild(AOHuman *parent, AOHuman *child){
         else{
             child->_father = parent;
         }
-        
-        AOArrayAddObject(parent->_children, child);
-        AOArraySetObjectAtIndex(parent->_children, child, parent->_childrenCount);
-        parent->_childrenCount++;
-        
+        AOArrayAddObject(AOHumanGetChildren(parent), child);
     }
 }
 
 void AOHumanSetChildAtIndex(AOHuman *man, AOHuman *child, uint index){
-    if (man != NULL){
-        AOArraySetObjectAtIndex(man->_children, child, index);
-}
+        AOArraySetObjectAtIndex(AOHumanGetChildren(man), child, index);
 }
 
 AOHuman *AOHumanGetChildAtIndex(AOHuman *man, uint index){
-    if (man != NULL){
-        return AOArrayGetObjectAtIndex(man->_children, index);
-    }
-    return NULL;
+        return AOArrayGetObjectAtIndex(AOHumanGetChildren(man), index);
+
 }
 
 void AOHumanRemoveChildAtIndex(AOHuman *parent, uint index){
-    if (parent != NULL) {
-        AOArrayRemoveObjectAtIndex(parent->_children, index);
-    }
+        AOArrayRemoveObjectAtIndex(AOHumanGetChildren(parent), index);
 }
 
 void AOHumanRemoveAllChildren(AOHuman *parent){
-    if (parent != NULL) {
-        AOArrayRemoveAllObjects(parent->_children);
-    }
-    
+        AOArrayRemoveAllObjects(AOHumanGetChildren(parent));
+}
+
+AOArray *AOHumanGetChildren(AOHuman *man){
+    return NULL != man ? man->_children : NULL;
 }
 
 void AOHumanSetPartner(AOHuman *man, AOHuman *partner){
@@ -233,11 +223,9 @@ AOHuman *AOHumanGetPartner(AOHuman *man){
     
 void AOHumanSetName(AOHuman *man,char *newName){
     if(man != NULL){
-        AOString *currentName = man->_name;
-        AOStringCreateWithString(newName);
-        man->_name = AOStringCreateWithString(newName);
-        AOObjectRetain(newName);
-        AOObjectRelease(currentName);
+        AOObjectRelease(man->_name);
+        AOString *string = AOStringCreateWithString(newName);
+        man->_name = string;
         
     }
 }

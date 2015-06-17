@@ -9,12 +9,9 @@
 #include <string.h>
 #include "AOString.h"
 
-static
-void __AOStringDeallocate(void *object);
 
 
 
-static
 void __AOStringDeallocate(void *object) {
     
     AOStringSetString(object, NULL);
@@ -38,8 +35,14 @@ AOString *AOStringCreateWithString(char *string) {
 
 void AOStringSetString(AOString *object, char *data) {
     if (NULL != object && NULL != data) {
+        if (NULL != object->_data){
+            free(object->_data);
+            object->_data = NULL;
+        }
+        if (NULL != data){
         object->_data = strdup(data);
         assert(NULL != object->_data);
+        }
     }
 }
 
@@ -54,12 +57,7 @@ bool AOStringIsEmpty(AOString *object) {
     return (0 == AOStringGetLength(object)) ? true : false;
 }
 
-uint AOStringGetLength(AOString *object) {
-    if (NULL != object) {
-        char *string = AOStringGetString(object);
-        return (uint)strlen(string);
-    }else
-    {
-    return 0;
-    }
+size_t AOStringGetLength(AOString *object) {
+    return (NULL != object) ? strlen(AOStringGetString(object)) : 0;
+    
 }
