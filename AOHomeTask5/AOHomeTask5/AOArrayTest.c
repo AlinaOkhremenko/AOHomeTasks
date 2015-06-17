@@ -85,7 +85,7 @@ void AOArrayBehaviourTestMethod(){
     assert(kAOIndexNotFount == AOArrayGetIndexOfObject(array, human));
     
     //      object reference count must be decremented by 1
-    assert(3 == AOObjectGetReferenceCount(human));
+    assert(2 == AOObjectGetReferenceCount(human));
     
     //      array must not contain an object
     assert(false == AOArrayContainsObject(array, human));
@@ -148,5 +148,5 @@ void AOArrayMultipleObjectBehaviourTest(void) {
     
     //      array must no contain origin object ang object2
     assert(false == AOArrayContainsObject(array, human));
-    assert(true == AOArrayContainsObject(array, human2));
+    assert(false == AOArrayContainsObject(array, human2));
 }

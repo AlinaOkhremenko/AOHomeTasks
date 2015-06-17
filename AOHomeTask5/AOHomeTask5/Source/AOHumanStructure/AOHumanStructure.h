@@ -50,7 +50,7 @@ void AOHumanDivorce(AOHuman *human, AOHuman *partner);
 # pragma mark -
 # pragma mark Accessors
 extern
-AOArray *AOHumanGetChildren(AOHuman *man);
+AOHuman *AOHumanGetChildren(AOHuman *man);
 
 extern
 AOHuman *AOHumanGetMother(AOHuman *man);
