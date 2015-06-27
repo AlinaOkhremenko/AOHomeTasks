@@ -16,7 +16,7 @@ static
 AOLinkedListNode *AOLinkedListGetHead(AOLinkedList *list);
 
 
-void __AOLinkedListDeallocate(AOLinkedList *object) {
+void __AOLinkedListDeallocate(void *object) {
 
     AOLinkedListSetHead(object, NULL);
     
@@ -35,10 +35,7 @@ AOLinkedList *AOLinkedListCreateWithObject(void *object) {
 }
 
 void AOLinkedListSetHead(AOLinkedList *list, AOLinkedListNode *head) {
-    if (NULL != list && NULL != head) {
-        AOObjectRetain(head);
-        AOObjectRetain(list->_head);
-        
+    if (NULL != list) {
          list->_head = head;
     }
 }
@@ -51,11 +48,7 @@ AOLinkedListNode *AOLinkedListGetHead(AOLinkedList *list) {
 }
 
 void AOLinkedListSetCount(AOLinkedList *list, uint count) {
-    if (count == 0) {
-        AOLinkedListSetHead(list, NULL);
-    }
     list->_count = count;
-    
 }
 
 uint AOLinkedListGetCount(AOLinkedList *list) {
@@ -66,16 +59,22 @@ uint AOLinkedListGetCount(AOLinkedList *list) {
 }
 
 void AOLinkedListAddObject(AOLinkedList *list, void *object) {
-    if (NULL != list && NULL != object) {
+    if (NULL != list) {
         
         AOLinkedListNode *newLinkedListNodeWithObject = AOLinkedListNodeCreateWithData(object);
         AOLinkedListNode *head = AOLinkedListGetHead(list);
-        AOLinkedListNodeSetNextNode(newLinkedListNodeWithObject, head);
-        AOLinkedListSetHead(list, newLinkedListNodeWithObject);
+        if (NULL == head) {
+            AOLinkedListSetHead(list, newLinkedListNodeWithObject);
+        }
+        else {
+            AOLinkedListNodeSetNextNode(newLinkedListNodeWithObject, head);
+            AOLinkedListSetHead(list, newLinkedListNodeWithObject);
+        }
+        
         AOLinkedListSetCount(list, (AOLinkedListGetCount(list) + 1));
-                             
     }
 }
+
 
 void AOLinkedListRemoveFirstObject(AOLinkedList *list) {
     if (NULL != list) {
@@ -83,18 +82,17 @@ void AOLinkedListRemoveFirstObject(AOLinkedList *list) {
         AOLinkedListNode *head = AOLinkedListGetHead(list);
         AOLinkedListNode *nextNode = AOLinkedListNodeGetNextNode(head);
         AOLinkedListSetHead(list, nextNode);
-        AOLinkedListSetCount(list, (AOLinkedListGetCount(list) - 1));
         
+        AOLinkedListSetCount(list, (AOLinkedListGetCount(list) - 1));
+        AOObjectRelease(head);
     }
 }
 
 void AOLinkedListRemoveAllObjects(AOLinkedList *list) {
-    if (NULL != list) {
-        
-        AOLinkedListSetCount(list, 0);
+    while (AOLinkedListIsNotEmpty(list)) {
+        AOLinkedListRemoveFirstObject(list);
     }
 }
-
 
 AOObject *AOLinkedListGetObjectBeforeObject(AOLinkedList *list, void *object, AOLinkedListSearchError *error) {
     if (NULL != list && NULL != object) {

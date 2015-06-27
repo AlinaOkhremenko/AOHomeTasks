@@ -17,6 +17,7 @@
 		C7DC3EAE1B31958800DFE8DA /* AOLinkedListNode.c in Sources */ = {isa = PBXBuildFile; fileRef = C7DC3EAC1B31958800DFE8DA /* AOLinkedListNode.c */; };
 		C7DC3EB11B3195A000DFE8DA /* AOLinkedListEnumerator.c in Sources */ = {isa = PBXBuildFile; fileRef = C7DC3EAF1B3195A000DFE8DA /* AOLinkedListEnumerator.c */; };
 		C7DC3EB71B31A4E500DFE8DA /* AOLinkedListNodeTest.c in Sources */ = {isa = PBXBuildFile; fileRef = C7DC3EB51B31A4E500DFE8DA /* AOLinkedListNodeTest.c */; };
+		C7F6A6521B3ECBAB003FB864 /* AOLinkedListTest.c in Sources */ = {isa = PBXBuildFile; fileRef = C7F6A6501B3ECBAB003FB864 /* AOLinkedListTest.c */; };
 		C7FD9FA91B08EF5A00A5D1D4 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = C7FD9FA81B08EF5A00A5D1D4 /* main.c */; };
 		C7FD9FB11B08EF7200A5D1D4 /* AOHumanStructure.c in Sources */ = {isa = PBXBuildFile; fileRef = C7FD9FAF1B08EF7200A5D1D4 /* AOHumanStructure.c */; };
 /* End PBXBuildFile section */
@@ -54,6 +55,8 @@
 		C7DC3EB21B31A43100DFE8DA /* AOLinkedListNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOLinkedListNode.h; sourceTree = "<group>"; };
 		C7DC3EB51B31A4E500DFE8DA /* AOLinkedListNodeTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = AOLinkedListNodeTest.c; sourceTree = "<group>"; };
 		C7DC3EB61B31A4E500DFE8DA /* AOLinkedListNodeTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOLinkedListNodeTest.h; sourceTree = "<group>"; };
+		C7F6A6501B3ECBAB003FB864 /* AOLinkedListTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = AOLinkedListTest.c; sourceTree = "<group>"; };
+		C7F6A6511B3ECBAB003FB864 /* AOLinkedListTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOLinkedListTest.h; sourceTree = "<group>"; };
 		C7FD9FA51B08EF5A00A5D1D4 /* AOHomeTask5 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AOHomeTask5; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7FD9FA81B08EF5A00A5D1D4 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = main.c; path = Source/main.c; sourceTree = "<group>"; };
 		C7FD9FAF1B08EF7200A5D1D4 /* AOHumanStructure.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = AOHumanStructure.c; sourceTree = "<group>"; };
@@ -200,6 +203,8 @@
 			isa = PBXGroup;
 			children = (
 				C7DC3EB41B31A4C500DFE8DA /* AOLinkedListNodeTest */,
+				C7F6A6501B3ECBAB003FB864 /* AOLinkedListTest.c */,
+				C7F6A6511B3ECBAB003FB864 /* AOLinkedListTest.h */,
 			);
 			name = AOLinkedListTest;
 			sourceTree = "<group>";
@@ -301,6 +306,7 @@
 				C7FD9FB11B08EF7200A5D1D4 /* AOHumanStructure.c in Sources */,
 				C7DC3EB71B31A4E500DFE8DA /* AOLinkedListNodeTest.c in Sources */,
 				C7D4D7381B26E4720078FE07 /* AOArray.c in Sources */,
+				C7F6A6521B3ECBAB003FB864 /* AOLinkedListTest.c in Sources */,
 				C7D4D7401B26E4C80078FE07 /* AOArrayTest.c in Sources */,
 				C7DC3EB11B3195A000DFE8DA /* AOLinkedListEnumerator.c in Sources */,
 				C7DC3EA91B3193C000DFE8DA /* AOLinkedList.c in Sources */,

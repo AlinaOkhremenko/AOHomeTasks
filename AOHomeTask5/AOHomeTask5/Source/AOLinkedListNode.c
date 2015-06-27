@@ -30,9 +30,10 @@ void AOLinkedListNodeSetData(AOLinkedListNode *node, void *data) {
     if (NULL != node && data != node->_nodeData) {
         
         AOLinkedListNode *currentNodeData = node->_nodeData;
-        currentNodeData = data;
         AOObjectRetain(data);
         AOObjectRelease(currentNodeData);
+        
+        node->_nodeData = data;
     }
 }
 
@@ -57,13 +58,12 @@ void AOLinkedListNodeSetNextNode(AOLinkedListNode *node, AOLinkedListNode *newNe
     }
 }
 
-AOLinkedListNode *AOLinkedListGetNextNode(AOLinkedListNode *node){
+AOLinkedListNode *AOLinkedListNodeGetNextNode(AOLinkedListNode *node) {
     if (NULL != node) {
         
         return node->_nextNode;
-    } else {
+    }
         
         return NULL;
-    }
 }
 

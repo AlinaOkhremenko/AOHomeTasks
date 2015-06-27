@@ -31,7 +31,7 @@ typedef struct {
     
 } AOLinkedList;
 
-void _AOLinkedListDeallocate(AOObject *object);
+void __AOLinkedListDeallocate(void *object);
 
 AOLinkedList *AOLinkedListCreateWithObject(void *object);
 
@@ -49,7 +49,7 @@ void AOLinkedListRemoveFirstObject(AOLinkedList *list);
 
 void AOLinkedListRemoveAllObjects(AOLinkedList *list);
 
-bool AOLinkedListIsEmpty(AOLinkedList *list);
+bool AOLinkedListIsNotEmpty(AOLinkedList *list);
 
 bool AOLinkedListContainsObject(AOLinkedList *list, void *object);
 
