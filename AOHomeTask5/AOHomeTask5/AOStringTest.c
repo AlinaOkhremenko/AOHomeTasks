@@ -65,5 +65,6 @@ void AOStringBehaviourTest(void){
     //      emptyString after releasing has reference count = 0;
     assert(0 == AOObjectGetReferenceCount(emptyString));
  
-    
+    AOObjectRelease(string);
+    AOObjectRelease(emptyString);
 }

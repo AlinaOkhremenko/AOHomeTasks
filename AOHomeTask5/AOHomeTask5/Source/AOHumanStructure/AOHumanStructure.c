@@ -208,7 +208,7 @@ void AOHumanRemoveAllChildren(AOHuman *parent){
         AOArrayRemoveAllObjects(AOHumanGetChildren(parent));
 }
 
-AOArray *AOHumanGetChildren(AOHuman *man){
+AOHuman *AOHumanGetChildren(AOHuman *man){
     return NULL != man ? man->_children : NULL;
 }
 

@@ -10,12 +10,14 @@
 #include "AOHumanStructure.h"
 #include "AOHumanTest.h"
 #include "AOStringTest.h"
+#include "AOLinkedListTest.h"
 int main(int argc, const char *argv[]) {
 
     
    // AOHumanTest();
     AOArrayTest();
     AOStringTests();
+    AOLinkedListBehaviorTest();
     
     return 0;
 }
