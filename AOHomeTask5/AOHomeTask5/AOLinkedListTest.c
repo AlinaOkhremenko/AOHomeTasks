@@ -9,15 +9,54 @@
 #include "AOLinkedListTest.h"
 #include "AOLinkedList.h"
 #include "AOObject.h"
+#include "AOEnumerator.h"
+
 
 
 static
 void AOLinkedListObjectsTest(void);
 
+static
+void AOLinkedListEnumeratorTest(void);
+
 void AOLinkedListBehaviorTest(void){
     AOLinkedListObjectsTest();
+    AOLinkedListEnumeratorTest();
+    
 }
 
+void AOLinkedListEnumeratorTest(){
+    
+    //  after list was created with 10 objects
+    AOLinkedList *newLinkedList = AOObjectCreateOfType(AOLinkedList);
+    for (int index; index< 10; index++) {
+        AOObject *object = AOObjectCreateOfType(AOObject);
+        AOLinkedListAddObject(newLinkedList, object);
+        AOObjectRelease(object);
+    }
+    
+    //  list reference count must be 1
+    assert(1 == AOObjectGetReferenceCount(newLinkedList));
+    
+    // list count must be equal 10
+    assert(10 == AOLinkedListGetCount(newLinkedList));
+    
+    //after enumerator was created
+    AOLinkedListEnumerator *newEnumerator = AOLinkedListEnumeratorFromList(newLinkedList);
+    
+    //  list reference count must be 2
+     assert(2 == AOObjectGetReferenceCount(newLinkedList));
+    
+    //  enumerator reference count must be 1
+    assert(1 == AOObjectGetReferenceCount(newEnumerator));
+    
+    // enumerator iterations count must be equal to 10
+    AOObjectRelease(newEnumerator);
+    AOObjectRelease(newLinkedList);
+    
+
+    
+}
 
 void AOLinkedListObjectsTest(void){
      //  after list was created
