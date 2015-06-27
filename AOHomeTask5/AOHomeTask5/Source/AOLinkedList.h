@@ -14,6 +14,9 @@
 #include "AOObject.h"
 #include "AOLinkedListNode.h"
 
+typedef struct AOLinkedListEnumerator AOLinkedListEnumerator;
+typedef struct AOLinkedList AOLinkedList;
+
 typedef enum {
     AOLinkedListSearchErrorNoError = 0,
     AOLinkedListSearchErrorObjectIsHead,
@@ -23,15 +26,18 @@ typedef enum {
 } AOLinkedListSearchError;
 
 
-typedef struct {
+struct AOLinkedList {
     AOObject _super;
     
     AOLinkedListNode *_head;
     uint _count;
+    uint64_t _mutationsCount;
     
-} AOLinkedList;
+};
 
 void __AOLinkedListDeallocate(void *object);
+
+AOLinkedListEnumerator *AOLinkedListEnumeratorFromList(AOLinkedList *list);
 
 AOLinkedList *AOLinkedListCreateWithObject(void *object);
 

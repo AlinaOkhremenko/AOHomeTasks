@@ -8,6 +8,7 @@
 
 #include "AOLinkedList.h"
 #include "AOLinkedListNode.h"
+#include "AOEnumerator.h"
 
 static
 void AOLinkedListSetHead(AOLinkedList *list, AOLinkedListNode *head);
@@ -22,6 +23,10 @@ void __AOLinkedListDeallocate(void *object) {
     
 
     __AOObjectDeallocate(object);
+}
+
+struct AOLinkedListEnumerator *AOLinkedListEnumeratorFromList(AOLinkedList *list) {
+    return AOLinkedListEnumeratorCreateWithList(list);
 }
 
 AOLinkedList *AOLinkedListCreateWithObject(void *object) {
