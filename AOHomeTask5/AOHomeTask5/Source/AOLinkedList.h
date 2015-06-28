@@ -59,6 +59,6 @@ bool AOLinkedListIsNotEmpty(AOLinkedList *list);
 
 bool AOLinkedListContainsObject(AOLinkedList *list, void *object);
 
-
+uint64_t AOLinkedListGetMutationsCount(AOLinkedList *list);
 
 #endif /* defined(__AOHomeTask5__AOLinkedList__) */

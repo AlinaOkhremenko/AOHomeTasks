@@ -195,3 +195,10 @@ bool AOLinkedListIsNotEmpty(AOLinkedList *list) {
     return (NULL != list) && (NULL != AOLinkedListGetHead(list));
 }
 
+uint64_t AOLinkedListGetMutationsCount(AOLinkedList *list) {
+    if (NULL != list) {
+        return list->_mutationsCount;
+    }
+    return NULL;
+}
+

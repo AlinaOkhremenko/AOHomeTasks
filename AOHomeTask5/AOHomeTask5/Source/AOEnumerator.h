@@ -15,7 +15,6 @@
 
 typedef struct AOLinkedListNode AOLinkedListNode;
 typedef struct AOLinkedList AOLinkedList;
-typedef struct AOLinkedListEnumerator AOLinkedListEnumerator;
 
 struct AOLinkedListEnumerator{
     AOObject *_super;
@@ -23,9 +22,10 @@ struct AOLinkedListEnumerator{
     AOLinkedList *_list;
     AOLinkedListNode *_currentNode;
     uint64_t _mutationsCount;
-    bool _isValid;
-    
-} ;
+    bool _isValid;    
+};
+
+typedef struct AOLinkedListEnumerator AOLinkedListEnumerator;
 
 extern
 AOLinkedListEnumerator *AOLinkedListEnumeratorCreateWithList(AOLinkedList *list);

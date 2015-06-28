@@ -5,7 +5,7 @@
 //  Created by Alina Okhremenko on 27.06.15.
 //  Copyright (c) 2015 Alina Okhremenko. All rights reserved.
 //
-
+#include <assert.h>
 #include "AOEnumerator.h"
 #include "AOLinkedList.h"
 #include "AOLinkedListNode.h"
@@ -31,6 +31,9 @@ uint64_t AOLinkedListEnumeratorGetMutationsCount(AOLinkedListEnumerator *enumera
 static
 void AOLinkedListEnumeratorSetValid(AOLinkedListEnumerator *enumerator, bool isValid);
 
+static
+bool AOLinkedListEnumeratorMutationsValidate(AOLinkedListEnumerator *enumerator);
+
                                                       
 void __AOLinkedListEnumeratorDeallocate(void *object) {
     
@@ -42,24 +45,56 @@ void __AOLinkedListEnumeratorDeallocate(void *object) {
 
 
 AOLinkedListEnumerator *AOLinkedListEnumeratorCreateWithList(AOLinkedList *list) {
-    AOLinkedListEnumerator *enumerator = AOObjectCreateOfType(AOLinkedListEnumerator);
-    
-    AOLinkedListEnumeratorSetList(enumerator, list);
-    AOLinkedListEnumeratorSetMutationsCount(enumerator, AOLinkedListEnumeratorGetMutationsCount(enumerator));
-    AOLinkedListEnumeratorSetValid(enumerator, true);
-    
-    return enumerator;
+    if (NULL != list){
+        AOLinkedListEnumerator *enumerator = AOObjectCreateOfType(AOLinkedListEnumerator);
+        printf("%d", enumerator->_super->_referenceCount);
+        enumerator->_list = NULL;
+        AOLinkedListEnumeratorSetList(enumerator, list);
+        
+        AOLinkedListEnumeratorSetMutationsCount(enumerator,AOLinkedListEnumeratorGetMutationsCount(enumerator));
+        
+        AOLinkedListEnumeratorSetValid(enumerator, true);
+        
+        return enumerator;
+    }
+    return NULL;
 }
 
 
 void *AOLinkedListEnumeratorGetNextObject(AOLinkedListEnumerator *enumerator) {
-    AOLinkedListNode *currentNode = AOLinkedListEnumeratorGetNode(enumerator);
+    if (NULL != enumerator){
+        if (true == AOLinkedListEnumeratorMutationsValidate(enumerator)) {
+            
+            AOLinkedListNode *currentNode = AOLinkedListEnumeratorGetNode(enumerator);
+            AOLinkedListNode *nextNode = AOLinkedListNodeGetNextNode(currentNode);
+            AOLinkedListEnumeratorSetNode(enumerator, nextNode);
+        
+        if (NULL == nextNode) {
+            
+            AOLinkedListEnumeratorSetValid(enumerator, false);
+        }
+    
+            return AOLinkedListNodeGetData(nextNode);
+    }
+    }
+    return NULL;
+}
 
+
+bool AOLinkedListEnumeratorMutationsValidate(AOLinkedListEnumerator *enumerator) {
+    if (NULL != enumerator) {
+        AOLinkedList *list = AOLinkedListEnumeratorGetList(enumerator);
+        assert(AOLinkedListEnumeratorGetMutationsCount(enumerator) == AOLinkedListGetMutationsCount(list));
+        return true;
+    }
+    return false;
 }
 
 
 bool AOLinkedListEnumeratorIsValid(AOLinkedListEnumerator *enumerator) {
+    return (NULL != enumerator)&& (enumerator->_isValid);
 }
+
 
 void AOLinkedListEnumeratorSetValid(AOLinkedListEnumerator *enumerator, bool isValid) {
     if (NULL != enumerator) {

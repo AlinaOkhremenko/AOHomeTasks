@@ -29,7 +29,7 @@ void AOLinkedListEnumeratorTest(){
     
     //  after list was created with 10 objects
     AOLinkedList *newLinkedList = AOObjectCreateOfType(AOLinkedList);
-    for (int index; index< 10; index++) {
+    for (int index = 0; index< 10; index++) {
         AOObject *object = AOObjectCreateOfType(AOObject);
         AOLinkedListAddObject(newLinkedList, object);
         AOObjectRelease(object);
@@ -51,6 +51,7 @@ void AOLinkedListEnumeratorTest(){
     assert(1 == AOObjectGetReferenceCount(newEnumerator));
     
     // enumerator iterations count must be equal to 10
+    
     AOObjectRelease(newEnumerator);
     AOObjectRelease(newLinkedList);
     
