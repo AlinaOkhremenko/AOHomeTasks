@@ -16,6 +16,9 @@ void AOLinkedListSetHead(AOLinkedList *list, AOLinkedListNode *head);
 static
 AOLinkedListNode *AOLinkedListGetHead(AOLinkedList *list);
 
+static
+void AOLinkedListSetCount(AOLinkedList *list, uint count);
+
 
 void __AOLinkedListDeallocate(void *object) {
     AOLinkedListRemoveAllObjects(object);
@@ -26,6 +29,12 @@ void __AOLinkedListDeallocate(void *object) {
 
 struct AOLinkedListEnumerator *AOLinkedListEnumeratorFromList(AOLinkedList *list) {
     return AOLinkedListEnumeratorCreateWithList(list);
+}
+
+AOLinkedList *AOLinkedListCreateEmptyList(){
+    AOLinkedList *newLinkedList = AOObjectCreateOfType(AOLinkedList);
+    
+    return newLinkedList;
 }
 
 AOLinkedList *AOLinkedListCreateWithObject(void *object) {
@@ -80,6 +89,16 @@ void AOLinkedListAddObject(AOLinkedList *list, void *object) {
     }
 }
 
+void *AOLinkedListGetFirstObject(AOLinkedList *list) {
+    if (NULL != list) {
+        AOLinkedListNode *head = AOLinkedListGetHead(list);
+        void *object = AOLinkedListNodeGetData(head);
+        
+        return object;
+    }
+    
+    return NULL;
+}
 
 void AOLinkedListRemoveFirstObject(AOLinkedList *list) {
     if (NULL != list) {
