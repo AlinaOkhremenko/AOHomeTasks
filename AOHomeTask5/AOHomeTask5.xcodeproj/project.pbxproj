@@ -95,7 +95,7 @@
 		3E3251CB1B15F4C900978E30 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				C7F6A6571B4077C1003FB864 /* New Group */,
+				C7F6A6571B4077C1003FB864 /* AOAutoreleasePool */,
 				C7DC3EA61B31939400DFE8DA /* AOLinkedList */,
 				C7D4D7391B26E4820078FE07 /* AOString */,
 				C7D4D7351B26E4590078FE07 /* AOArray */,
@@ -206,11 +206,11 @@
 			name = AOEnumerator;
 			sourceTree = "<group>";
 		};
-		C7F6A6571B4077C1003FB864 /* New Group */ = {
+		C7F6A6571B4077C1003FB864 /* AOAutoreleasePool */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = "New Group";
+			name = AOAutoreleasePool;
 			sourceTree = "<group>";
 		};
 		C7FD9F9C1B08EF5A00A5D1D4 = {
