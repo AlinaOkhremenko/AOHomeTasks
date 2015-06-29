@@ -47,11 +47,9 @@ void __AOLinkedListEnumeratorDeallocate(void *object) {
 AOLinkedListEnumerator *AOLinkedListEnumeratorCreateWithList(AOLinkedList *list) {
     if (NULL != list){
         AOLinkedListEnumerator *enumerator = AOObjectCreateOfType(AOLinkedListEnumerator);
-        printf("%d", enumerator->_super->_referenceCount);
-        enumerator->_list = NULL;
         AOLinkedListEnumeratorSetList(enumerator, list);
         
-        AOLinkedListEnumeratorSetMutationsCount(enumerator,AOLinkedListEnumeratorGetMutationsCount(enumerator));
+        AOLinkedListEnumeratorSetMutationsCount(enumerator,AOLinkedListGetMutationsCount(list));
         
         AOLinkedListEnumeratorSetValid(enumerator, true);
         

@@ -17,7 +17,7 @@ typedef struct AOLinkedListNode AOLinkedListNode;
 typedef struct AOLinkedList AOLinkedList;
 
 struct AOLinkedListEnumerator{
-    AOObject *_super;
+    AOObject _super;
     
     AOLinkedList *_list;
     AOLinkedListNode *_currentNode;

@@ -18,9 +18,7 @@ AOLinkedListNode *AOLinkedListGetHead(AOLinkedList *list);
 
 
 void __AOLinkedListDeallocate(void *object) {
-
-    AOLinkedListSetHead(object, NULL);
-    
+    AOLinkedListRemoveAllObjects(object);
 
     __AOObjectDeallocate(object);
 }
@@ -89,22 +87,25 @@ void AOLinkedListRemoveFirstObject(AOLinkedList *list) {
         AOLinkedListSetHead(list, nextNode);
         
         AOLinkedListSetCount(list, (AOLinkedListGetCount(list) - 1));
-        AOObjectRelease(head);
+       
     }
 }
 
 void AOLinkedListRemoveAllObjects(AOLinkedList *list) {
     while (AOLinkedListIsNotEmpty(list)) {
         AOLinkedListRemoveFirstObject(list);
+        //AOObjectRelease(head);
     }
 }
 
 AOObject *AOLinkedListGetObjectBeforeObject(AOLinkedList *list, void *object, AOLinkedListSearchError *error) {
     if (NULL != list && NULL != object) {
         
-        AOLinkedListNode *head = AOLinkedListGetHead(list);
-        if (NULL == head) {
+        AOLinkedListNode *node = AOLinkedListGetHead(list);
+        if (NULL == node) {
+            if (NULL != error) {
             *error = AOLinkedListErrorLinkedListIsEmpty;
+            }
             
             return NULL;
         }
@@ -112,26 +113,31 @@ AOObject *AOLinkedListGetObjectBeforeObject(AOLinkedList *list, void *object, AO
         AOObject *currentObject = NULL;
         AOObject *previousObject;
         int count = 0;
-        while (NULL != head) {
+        while (NULL != node) {
             previousObject = currentObject;
-            currentObject = AOLinkedListNodeGetData(head);
+            currentObject = AOLinkedListNodeGetData(node);
             
             if (currentObject == object) {
                 if (count == 0) {
+                    if (NULL != error) {
                     *error = AOLinkedListSearchErrorObjectIsHead;
+                    }
                 }
                 else {
+                    if (NULL != error) {
                     *error = AOLinkedListSearchErrorNoError;
+                    }
                 }
                 
                 return previousObject;
             }
             count++;
-            head = AOLinkedListNodeGetNextNode(head);
+            node = AOLinkedListNodeGetNextNode(node);
         }
+          *error = AOLinkedListSearchErrorObjectNotFound;
     }
     
-    *error = AOLinkedListSearchErrorObjectNotFound;
+  
     
     return NULL;
 }
@@ -139,8 +145,8 @@ AOObject *AOLinkedListGetObjectBeforeObject(AOLinkedList *list, void *object, AO
 AOObject *AOLinkedListGetObjectAfterObject(AOLinkedList *list, void *object, AOLinkedListSearchError *error) {
     if (NULL != list && NULL != object) {
         
-        AOLinkedListNode *head = AOLinkedListGetHead(list);
-        if (NULL == head) {
+        AOLinkedListNode *node = AOLinkedListGetHead(list);
+        if (NULL == node) {
             *error = AOLinkedListErrorLinkedListIsEmpty;
             
             return NULL;
@@ -148,9 +154,9 @@ AOObject *AOLinkedListGetObjectAfterObject(AOLinkedList *list, void *object, AOL
         AOObject *nextObject = NULL;
         AOObject *currentObject;
         int count = 0;
-        while (NULL != head) {
+        while (NULL != node) {
             currentObject  = nextObject;
-            nextObject = AOLinkedListNodeGetData(head);
+            nextObject = AOLinkedListNodeGetData(node);
             if (currentObject == object) {
                 if (count == 0) {
                     *error = AOLinkedListSearchErrorObjectIsHead;
@@ -163,29 +169,30 @@ AOObject *AOLinkedListGetObjectAfterObject(AOLinkedList *list, void *object, AOL
                 return nextObject;
             }
             count++;
-            head = AOLinkedListNodeGetNextNode(head);
+            node = AOLinkedListNodeGetNextNode(node);
+        }
+    
+        if(NULL != error) {
+            *error = AOLinkedListSearchErrorObjectNotFound;
         }
     }
-    
-    *error = AOLinkedListSearchErrorObjectNotFound;
-    
     return NULL;
 }
 
 bool AOLinkedListContainsObject(AOLinkedList *list, void *object) {
     if (NULL != list && NULL != object) {
-      AOLinkedListNode *head = AOLinkedListGetHead(list);
-        if (NULL == head){
+      AOLinkedListNode *node = AOLinkedListGetHead(list);
+        if (NULL == node){
             return false;
         }
         AOObject *currentObject;
-        while (NULL != head) {
-            currentObject = AOLinkedListNodeGetData(head);
+        while (NULL != node) {
+            currentObject = AOLinkedListNodeGetData(node);
             if (currentObject == object) {
                 
                 return true;
             }
-            head = AOLinkedListNodeGetNextNode(head);
+            node = AOLinkedListNodeGetNextNode(node);
         }
     }
     return false;
@@ -199,6 +206,6 @@ uint64_t AOLinkedListGetMutationsCount(AOLinkedList *list) {
     if (NULL != list) {
         return list->_mutationsCount;
     }
-    return NULL;
+    return 0;
 }
 

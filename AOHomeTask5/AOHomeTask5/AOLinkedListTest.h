@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 #include "AOObject.h"
-#include "AOLinkedListEnumerator.h"
+#include "AOEnumerator.h"
 extern
 void AOLinkedListBehaviorTest(void);
 

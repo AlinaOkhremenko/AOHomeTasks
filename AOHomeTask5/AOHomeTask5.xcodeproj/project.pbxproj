@@ -15,7 +15,6 @@
 		C7D4D7441B26E4E60078FE07 /* AOStringTest.c in Sources */ = {isa = PBXBuildFile; fileRef = C7D4D7421B26E4E60078FE07 /* AOStringTest.c */; };
 		C7DC3EA91B3193C000DFE8DA /* AOLinkedList.c in Sources */ = {isa = PBXBuildFile; fileRef = C7DC3EA71B3193C000DFE8DA /* AOLinkedList.c */; };
 		C7DC3EAE1B31958800DFE8DA /* AOLinkedListNode.c in Sources */ = {isa = PBXBuildFile; fileRef = C7DC3EAC1B31958800DFE8DA /* AOLinkedListNode.c */; };
-		C7DC3EB11B3195A000DFE8DA /* AOLinkedListEnumerator.c in Sources */ = {isa = PBXBuildFile; fileRef = C7DC3EAF1B3195A000DFE8DA /* AOLinkedListEnumerator.c */; };
 		C7F6A6521B3ECBAB003FB864 /* AOLinkedListTest.c in Sources */ = {isa = PBXBuildFile; fileRef = C7F6A6501B3ECBAB003FB864 /* AOLinkedListTest.c */; };
 		C7F6A6561B3EF499003FB864 /* AOEnumerator.c in Sources */ = {isa = PBXBuildFile; fileRef = C7F6A6541B3EF499003FB864 /* AOEnumerator.c */; };
 		C7FD9FA91B08EF5A00A5D1D4 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = C7FD9FA81B08EF5A00A5D1D4 /* main.c */; };
@@ -50,8 +49,6 @@
 		C7DC3EA71B3193C000DFE8DA /* AOLinkedList.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = AOLinkedList.c; sourceTree = "<group>"; };
 		C7DC3EA81B3193C000DFE8DA /* AOLinkedList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOLinkedList.h; sourceTree = "<group>"; };
 		C7DC3EAC1B31958800DFE8DA /* AOLinkedListNode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = AOLinkedListNode.c; sourceTree = "<group>"; };
-		C7DC3EAF1B3195A000DFE8DA /* AOLinkedListEnumerator.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = AOLinkedListEnumerator.c; sourceTree = "<group>"; };
-		C7DC3EB01B3195A000DFE8DA /* AOLinkedListEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOLinkedListEnumerator.h; sourceTree = "<group>"; };
 		C7DC3EB21B31A43100DFE8DA /* AOLinkedListNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOLinkedListNode.h; sourceTree = "<group>"; };
 		C7F6A6501B3ECBAB003FB864 /* AOLinkedListTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = AOLinkedListTest.c; sourceTree = "<group>"; };
 		C7F6A6511B3ECBAB003FB864 /* AOLinkedListTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOLinkedListTest.h; sourceTree = "<group>"; };
@@ -98,6 +95,7 @@
 		3E3251CB1B15F4C900978E30 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				C7F6A6571B4077C1003FB864 /* New Group */,
 				C7DC3EA61B31939400DFE8DA /* AOLinkedList */,
 				C7D4D7391B26E4820078FE07 /* AOString */,
 				C7D4D7351B26E4590078FE07 /* AOArray */,
@@ -175,20 +173,10 @@
 			children = (
 				C7F6A6531B3EF463003FB864 /* AOEnumerator */,
 				C7DC3EAB1B31956500DFE8DA /* AOLinkedListNode */,
-				C7DC3EAA1B31955700DFE8DA /* AOLinkedListEnumerator */,
 				C7DC3EA71B3193C000DFE8DA /* AOLinkedList.c */,
 				C7DC3EA81B3193C000DFE8DA /* AOLinkedList.h */,
 			);
 			name = AOLinkedList;
-			sourceTree = "<group>";
-		};
-		C7DC3EAA1B31955700DFE8DA /* AOLinkedListEnumerator */ = {
-			isa = PBXGroup;
-			children = (
-				C7DC3EAF1B3195A000DFE8DA /* AOLinkedListEnumerator.c */,
-				C7DC3EB01B3195A000DFE8DA /* AOLinkedListEnumerator.h */,
-			);
-			name = AOLinkedListEnumerator;
 			sourceTree = "<group>";
 		};
 		C7DC3EAB1B31956500DFE8DA /* AOLinkedListNode */ = {
@@ -216,6 +204,13 @@
 				C7F6A6551B3EF499003FB864 /* AOEnumerator.h */,
 			);
 			name = AOEnumerator;
+			sourceTree = "<group>";
+		};
+		C7F6A6571B4077C1003FB864 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
 			sourceTree = "<group>";
 		};
 		C7FD9F9C1B08EF5A00A5D1D4 = {
@@ -308,7 +303,6 @@
 				C7F6A6561B3EF499003FB864 /* AOEnumerator.c in Sources */,
 				C7F6A6521B3ECBAB003FB864 /* AOLinkedListTest.c in Sources */,
 				C7D4D7401B26E4C80078FE07 /* AOArrayTest.c in Sources */,
-				C7DC3EB11B3195A000DFE8DA /* AOLinkedListEnumerator.c in Sources */,
 				C7DC3EA91B3193C000DFE8DA /* AOLinkedList.c in Sources */,
 				C7D4D73C1B26E4940078FE07 /* AOString.c in Sources */,
 				C7D4D7441B26E4E60078FE07 /* AOStringTest.c in Sources */,

@@ -14,6 +14,7 @@ void __AOLinkedListNodeDeallocate(void *object) {
     AOLinkedListNodeSetData(object, NULL);
     AOLinkedListNodeSetNextNode(object, NULL);
     
+    
     __AOObjectDeallocate(object);
 }
 
