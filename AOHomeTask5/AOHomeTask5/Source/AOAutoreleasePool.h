@@ -10,15 +10,15 @@
 #define __AOHomeTask5__AOAutoreleasePool__
 
 #include <stdio.h>
-#include "AOLinkedList.h"
 #include "AOObject.h"
 
 typedef struct AOAutoreleasePool AOAutoreleasePool;
+typedef struct AOAutoreleasingLinkedListNode AOAutoreleasingLinkedListNode;
 
 struct AOAutoreleasePool{
     AOObject _super;
     
-    AOLinkedList *_list;
+    AOAutoreleasingLinkedListNode *_listHead;
 };
 
 extern

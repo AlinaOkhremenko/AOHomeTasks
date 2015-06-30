@@ -24,7 +24,6 @@ void *__AOObjectCreate(size_t objectSize, AOObjectDeallocatorCallback deallocate
     return object;
 }
 
-inline
 void *AOObjectRetain(void *object) {
     if (NULL != object) {
         ((AOObject *)object)->_referenceCount++;
@@ -33,7 +32,6 @@ void *AOObjectRetain(void *object) {
     return object;
 }
 
-inline
 void AOObjectRelease(void *object) {
     if (NULL != object) {
         uint64_t count = ((AOObject *)object)->_referenceCount - 1;

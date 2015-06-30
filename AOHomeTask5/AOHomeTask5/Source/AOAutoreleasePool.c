@@ -8,17 +8,23 @@
 
 #include "AOAutoreleasePool.h"
 
+struct AOAutoreleasingLinkedListNode {
+    AOAutoreleasingLinkedListNode *_next;
+    AOObject *_objectToRelease;
+};
+
+
 
 void __AOAutoreleasePoolDeallocate(void *object) {
     AOAutoreleaseDrainPool(object);
-
+    
     __AOObjectDeallocate(object);
 }
 
+
 AOAutoreleasePool *AOAutoreleasePoolCreateEmptyPool() {
     AOAutoreleasePool *pool = AOObjectCreateOfType(AOAutoreleasePool);
-    AOLinkedList *list = AOLinkedListCreateEmptyList();
-    pool->_list = list;
+    pool->_listHead = NULL;
     
     return pool;
 }
@@ -26,17 +32,24 @@ AOAutoreleasePool *AOAutoreleasePoolCreateEmptyPool() {
 void AOAutoreleasePoolAddObjectToRelease(AOAutoreleasePool *pool,void *object) {
     if (NULL != pool && NULL != object) {
         
-        AOLinkedListAddObject(pool->_list, object);
+        AOAutoreleasingLinkedListNode *newNode = malloc(sizeof(AOAutoreleasingLinkedListNode));
+        newNode->_objectToRelease = object;
+        newNode->_next = pool->_listHead;
         
+        pool->_listHead = newNode;
     }
 }
 
 void AOAutoreleaseDrainPool(AOAutoreleasePool *pool){
     if (NULL != pool) {
-        while (AOLinkedListIsNotEmpty(pool->_list)) {
-            void *object = AOLinkedListGetFirstObject(pool->_list);
+        while (pool->_listHead != NULL) {
+            AOAutoreleasingLinkedListNode *head = pool->_listHead;
+            
+            AOObject *object = head->_objectToRelease;
             AOObjectRelease(object);
-            AOLinkedListRemoveFirstObject(pool->_list);
+            
+            pool->_listHead = head->_next;
+            free(head);
         }
     }
 }

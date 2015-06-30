@@ -41,7 +41,7 @@ void AOAutoreleasePoolOneObjectTest(void) {
     AOAutoreleasePoolAddObjectToRelease(pool, human);
     
     //    human's reference count must be equal to 3
-    assert(3 == AOObjectGetReferenceCount(human));
+    assert(2 == AOObjectGetReferenceCount(human));
     
     // after AutoreleasePool was drained
     AOAutoreleaseDrainPool(pool);
