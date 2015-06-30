@@ -25,10 +25,10 @@ void *__AOObjectCreate(size_t objectSize, AOObjectDeallocatorCallback deallocate
 #define AOObjectCreateOfType(type) \
 __AOObjectCreate(sizeof(type), (AOObjectDeallocatorCallback)__##type##Deallocate)
 
-extern
+extern inline
 void *AOObjectRetain(void *object);
 
-extern
+extern inline
 void AOObjectRelease(void *object);
 
 extern

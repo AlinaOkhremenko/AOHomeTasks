@@ -105,6 +105,7 @@ void AOLinkedListRemoveFirstObject(AOLinkedList *list) {
         
         AOLinkedListNode *head = AOLinkedListGetHead(list);
         AOLinkedListNode *nextNode = AOLinkedListNodeGetNextNode(head);
+        
         AOLinkedListSetHead(list, nextNode);
         AOObjectRelease(head);
         AOLinkedListSetCount(list, (AOLinkedListGetCount(list) - 1));

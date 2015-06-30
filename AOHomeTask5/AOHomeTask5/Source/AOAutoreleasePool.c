@@ -10,6 +10,7 @@
 
 
 void __AOAutoreleasePoolDeallocate(void *object) {
+    AOAutoreleaseDrainPool(object);
 
     __AOObjectDeallocate(object);
 }
@@ -22,7 +23,7 @@ AOAutoreleasePool *AOAutoreleasePoolCreateEmptyPool() {
     return pool;
 }
 
-void AOAoutoreleasePoolAddObjectToRelease(AOAutoreleasePool *pool,void *object) {
+void AOAutoreleasePoolAddObjectToRelease(AOAutoreleasePool *pool,void *object) {
     if (NULL != pool && NULL != object) {
         
         AOLinkedListAddObject(pool->_list, object);

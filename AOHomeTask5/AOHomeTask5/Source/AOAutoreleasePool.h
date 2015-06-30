@@ -28,7 +28,7 @@ extern
 AOAutoreleasePool *AOAutoreleasePoolCreateEmptyPool();
 
 extern
-void AOAoutoreleasePoolAddObjectToRelease(AOAutoreleasePool *pool,void *object);
+void AOAutoreleasePoolAddObjectToRelease(AOAutoreleasePool *pool,void *object);
 
 extern
 void AOAutoreleaseDrainPool(AOAutoreleasePool *pool);
