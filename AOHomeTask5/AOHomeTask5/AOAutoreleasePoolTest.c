@@ -58,7 +58,7 @@ void AOAutoreleasePoolFullTest(void) {
     AOAutoreleasePool *pool = AOAutoreleasePoolCreateEmptyPool();
     
     //    create as many pointers as possible, and add them to the pool
-    uint64_t count = UINT32_MAX >> 12;
+    uint64_t count = UINT32_MAX >> 6;
     
     for (uint64_t i = 0; i < count; i++) {
         AOAutoreleasePoolAddObjectToRelease(pool, AOObjectCreateOfType(AOObject));
