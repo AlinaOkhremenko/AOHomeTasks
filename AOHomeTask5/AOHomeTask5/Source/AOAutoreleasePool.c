@@ -6,11 +6,14 @@
 //  Copyright (c) 2015 Alina Okhremenko. All rights reserved.
 //
 
+#define kChunkSize 4096
+
 #include "AOAutoreleasePool.h"
 
 struct AOAutoreleasingLinkedListNode {
     AOAutoreleasingLinkedListNode *_next;
-    AOObject *_objectToRelease;
+    AOObject* _objectsToRelease[kChunkSize];
+    int currentSize;
 };
 
 
@@ -32,11 +35,19 @@ AOAutoreleasePool *AOAutoreleasePoolCreateEmptyPool() {
 void AOAutoreleasePoolAddObjectToRelease(AOAutoreleasePool *pool,void *object) {
     if (NULL != pool && NULL != object) {
         
-        AOAutoreleasingLinkedListNode *newNode = malloc(sizeof(AOAutoreleasingLinkedListNode));
-        newNode->_objectToRelease = object;
-        newNode->_next = pool->_listHead;
+        AOAutoreleasingLinkedListNode *currentHead = pool->_listHead;
+        if (currentHead == NULL || currentHead->currentSize == kChunkSize)
+        {
+            AOAutoreleasingLinkedListNode *newChunk = malloc(sizeof(AOAutoreleasingLinkedListNode));
+            newChunk->currentSize = 0;
+            newChunk->_next = currentHead;
+            pool->_listHead = newChunk;
+            
+            currentHead = pool->_listHead;
+        }
         
-        pool->_listHead = newNode;
+        currentHead->_objectsToRelease[currentHead->currentSize] = object;
+        currentHead->currentSize++;
     }
 }
 
@@ -45,8 +56,12 @@ void AOAutoreleaseDrainPool(AOAutoreleasePool *pool){
         while (pool->_listHead != NULL) {
             AOAutoreleasingLinkedListNode *head = pool->_listHead;
             
-            AOObject *object = head->_objectToRelease;
-            AOObjectRelease(object);
+            while (head->currentSize > 0) {
+                
+                AOObject *object = head->_objectsToRelease[head->currentSize-1];
+                AOObjectRelease(object);
+                head->currentSize--;
+            }
             
             pool->_listHead = head->_next;
             free(head);

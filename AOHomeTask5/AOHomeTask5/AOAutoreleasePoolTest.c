@@ -12,6 +12,7 @@
 #include "AOAutoreleasePool.h"
 #include "AOHumanStructure.h"
 #include "AOObject.h"
+#include "AOTimeProfiler.h"
 
 static
 void AOAutoreleasePoolOneObjectTest(void);
@@ -22,8 +23,8 @@ void AOAutoreleasePoolFullTest(void);
 
 
 void AOAutoreleasePoolTests(void) {
-    AOAutoreleasePoolOneObjectTest();
-    AOAutoreleasePoolFullTest();
+    AOTimeProfilingForFunction(AOAutoreleasePoolOneObjectTest, "AOAutoreleasePoolOneObjectTest");
+    AOTimeProfilingForFunction(AOAutoreleasePoolFullTest, "AOAutoreleasePoolFullTest");
 }
 
 void AOAutoreleasePoolOneObjectTest(void) {

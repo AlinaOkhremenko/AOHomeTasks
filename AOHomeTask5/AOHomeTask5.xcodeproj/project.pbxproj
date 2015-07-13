@@ -19,6 +19,7 @@
 		C7F6A6561B3EF499003FB864 /* AOEnumerator.c in Sources */ = {isa = PBXBuildFile; fileRef = C7F6A6541B3EF499003FB864 /* AOEnumerator.c */; };
 		C7F6A65A1B41DE90003FB864 /* AOAutoreleasePool.c in Sources */ = {isa = PBXBuildFile; fileRef = C7F6A6581B41DE90003FB864 /* AOAutoreleasePool.c */; };
 		C7F6A65E1B42CFB4003FB864 /* AOAutoreleasePoolTest.c in Sources */ = {isa = PBXBuildFile; fileRef = C7F6A65C1B42CFB4003FB864 /* AOAutoreleasePoolTest.c */; };
+		C7F6A6641B45D17B003FB864 /* AOTimeProfiler.c in Sources */ = {isa = PBXBuildFile; fileRef = C7F6A6621B45D17B003FB864 /* AOTimeProfiler.c */; };
 		C7FD9FA91B08EF5A00A5D1D4 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = C7FD9FA81B08EF5A00A5D1D4 /* main.c */; };
 		C7FD9FB11B08EF7200A5D1D4 /* AOHumanStructure.c in Sources */ = {isa = PBXBuildFile; fileRef = C7FD9FAF1B08EF7200A5D1D4 /* AOHumanStructure.c */; };
 /* End PBXBuildFile section */
@@ -60,6 +61,8 @@
 		C7F6A6591B41DE90003FB864 /* AOAutoreleasePool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOAutoreleasePool.h; sourceTree = "<group>"; };
 		C7F6A65C1B42CFB4003FB864 /* AOAutoreleasePoolTest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = AOAutoreleasePoolTest.c; sourceTree = "<group>"; };
 		C7F6A65D1B42CFB4003FB864 /* AOAutoreleasePoolTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOAutoreleasePoolTest.h; sourceTree = "<group>"; };
+		C7F6A6621B45D17B003FB864 /* AOTimeProfiler.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = AOTimeProfiler.c; path = Test/AOTimeProfiler.c; sourceTree = "<group>"; };
+		C7F6A6631B45D17B003FB864 /* AOTimeProfiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AOTimeProfiler.h; path = Test/AOTimeProfiler.h; sourceTree = "<group>"; };
 		C7FD9FA51B08EF5A00A5D1D4 /* AOHomeTask5 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AOHomeTask5; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7FD9FA81B08EF5A00A5D1D4 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = main.c; path = Source/main.c; sourceTree = "<group>"; };
 		C7FD9FAF1B08EF7200A5D1D4 /* AOHumanStructure.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = AOHumanStructure.c; sourceTree = "<group>"; };
@@ -86,6 +89,8 @@
 				C7D4D73D1B26E4B20078FE07 /* AOArrayTest */,
 				3E3251D41B15F81900978E30 /* AOHumanTest */,
 				3E3251CD1B15F55000978E30 /* AOObjectTest */,
+				C7F6A6621B45D17B003FB864 /* AOTimeProfiler.c */,
+				C7F6A6631B45D17B003FB864 /* AOTimeProfiler.h */,
 			);
 			name = Test;
 			sourceTree = "<group>";
@@ -322,6 +327,7 @@
 				C7F6A6521B3ECBAB003FB864 /* AOLinkedListTest.c in Sources */,
 				C7D4D7401B26E4C80078FE07 /* AOArrayTest.c in Sources */,
 				C7DC3EA91B3193C000DFE8DA /* AOLinkedList.c in Sources */,
+				C7F6A6641B45D17B003FB864 /* AOTimeProfiler.c in Sources */,
 				C7D4D73C1B26E4940078FE07 /* AOString.c in Sources */,
 				C7D4D7441B26E4E60078FE07 /* AOStringTest.c in Sources */,
 				C7F6A65A1B41DE90003FB864 /* AOAutoreleasePool.c in Sources */,
