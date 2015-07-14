@@ -23,8 +23,8 @@ typedef NS_ENUM(NSUInteger, AOCreatureGender) {
 
 -(id)childCreateWithWeight:(uint)weight andAge :(uint)age
                andGender :(AOCreatureGender)gender;
-//-(void)addChild:(AOCreature *)child;
-//-(void)removeChild:(AOCreature *)child;
+-(void)addChild:(AOCreature *)child;
+-(void)removeChild:(AOCreature *)child fromArray: (NSMutableArray *)arrayOfChildren;
 -(void)sayHello;
 -(void)goneMakeWar;
 

@@ -28,9 +28,15 @@
     return child;
 }
 
-//-(void)removeChild:(AOCreature *)child {
+-(void)addChild:(AOCreature *)child {
+    NSMutableArray *arrayOfChildren = [[NSMutableArray alloc]init];
+    [arrayOfChildren addObject:_children];
     
-//}
+}
+
+-(void)removeChild:(AOCreature *)child fromArray: (NSMutableArray *)arrayOfChildren {
+    [arrayOfChildren removeObject:_children];
+}
 
 -(void)sayHello {
     NSLog(@"HELLO");
