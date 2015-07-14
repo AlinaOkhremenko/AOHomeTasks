@@ -44,7 +44,11 @@
 }
 
 -(void)goneMakeWar {
-    NSLog(@"Gone make war");
+    if (AOCreatureGenderMale == self.gender) {
+        NSLog(@"Gone make war");
+    } else {
+        NSLog(@"I will not make war");
+    }
 }
 
 @end
