@@ -19,7 +19,7 @@ typedef NS_ENUM(NSUInteger, AOCreatureGender) {
 @property(nonatomic, retain) NSString *name;
 @property(nonatomic) uint weight;
 @property(nonatomic) uint age;
-@property (nonatomic,copy) NSArray *children;
+@property (nonatomic,copy, readonly) NSArray *children;
 
 -(id)childCreateWithWeight:(uint)weight andAge :(uint)age
                andGender :(AOCreatureGender)gender;

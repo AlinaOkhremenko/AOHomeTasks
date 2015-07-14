@@ -10,6 +10,7 @@
 
 @implementation AOCreature
 
+
 -(id)initWithWeight:(uint)weight andAge :(uint)age andGender: (AOCreatureGender)gender {
     self = [super init];
     if (self != nil) {
@@ -30,12 +31,12 @@
 
 -(void)addChild:(AOCreature *)child {
     NSMutableArray *arrayOfChildren = [[NSMutableArray alloc]init];
-    [arrayOfChildren addObject:_children];
+    [self.children addObject:child];
     
 }
 
 -(void)removeChild:(AOCreature *)child fromArray: (NSMutableArray *)arrayOfChildren {
-    [arrayOfChildren removeObject:_children];
+    [self.children removeObject:child];
 }
 
 -(void)sayHello {
