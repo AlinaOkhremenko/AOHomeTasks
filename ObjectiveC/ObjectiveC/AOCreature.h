@@ -21,12 +21,15 @@ typedef NS_ENUM(NSUInteger, AOCreatureGender) {
 @property(nonatomic,assign)     uint                age;
 @property(nonatomic,readonly)   NSArray             *children;
 
-- (id)childCreateWithWeight:(uint)weight
-                     andAge:(uint)age
-                  andGender:(AOCreatureGender)gender
-                   andArray:(NSMutableArray*)array;
++ (id)creatureWithWeight:(uint)weight
+                  andAge:(uint)age
+               andGender:(AOCreatureGender)gender;
+
+- (id)initWithWeight:(uint)weight
+              andAge:(uint)age
+           andGender:(AOCreatureGender)gender;
 - (void)addChild:(AOCreature *)child;
-- (void)removeChild:(AOCreature *)child fromArray:(NSMutableArray *)arrayOfChildren;
+- (void)removeChild:(AOCreature *)child;
 - (void)sayHello;
 - (void)goneMakeWar;
 

@@ -29,41 +29,36 @@
 - (void)testAOCreature {
     AOCreature *olya = [[AOCreature alloc]initWithWeight:48
                                                   andAge:27
-                                               andGender:(AOCreatureGenderFemale)
-                                                andArray:];
-    AOCreature *nikita = [AOCreature alloc]initWithWeight:48
+                                               andGender:(AOCreatureGenderFemale)];
+    AOCreature *nikita = [[AOCreature alloc]initWithWeight:48
                                                    andAge:27
-                                                andGender:(AOCreatureGenderMale)
-                                                 andArray:];
+                                                andGender:(AOCreatureGenderMale)];
     
     NSString *name = @"Olya";
     olya.name = name;
-    NSString *name = @"Nikita";
-    nikita.name = name;
+    NSString *newName = @"Nikita";
+    nikita.name = newName;
     
     [olya sayHello];
     [nikita sayHello];
     [olya goneMakeWar];
     [nikita goneMakeWar];
     
-    NSMutableArray *array = @[@"Polina", @"Vova"];
     
     AOCreature *childFirst = [[AOCreature alloc]initWithWeight:4
                                                         andAge:0
-                                                     andGender:(AOCreatureGenderMale)
-                                                      andArray:]];
+                                                     andGender:(AOCreatureGenderMale)];
     [olya addChild:childFirst];
-    NSString *name = @"Vova";
-    childFirst.name = name;
+    NSString *childNameFirst = @"Vova";
+    childFirst.name = childNameFirst;
     
     AOCreature *childSecond = [[AOCreature alloc]initWithWeight:5
                                                          andAge:0
-                                                      andGender:(AOCreatureGenderFemale)
-                                                       andArray:]];
+                                                      andGender:(AOCreatureGenderFemale)];
     
     [olya addChild:childSecond];
-    NSString *name = @"Polina";
-    childSecond.name = name;
+    NSString *childNameSecond = @"Polina";
+    childSecond.name = childNameSecond;
     
     NSArray *children = [olya children];
     NSLog(@"Olya's children %@", children);
@@ -74,7 +69,8 @@
     
 
     
-    [olya removeChild:childFirst fromArray:children];
+    [olya removeChild:childFirst];
+
     
     
 

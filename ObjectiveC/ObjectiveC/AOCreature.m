@@ -15,6 +15,25 @@
 
 @implementation AOCreature
 
+-(void)dealloc {
+    self.name = nil;
+    self.mutableChildren = nil;
+    
+    [super dealloc];
+}
+
++ (id)creatureWithWeight:(uint)weight
+                  andAge:(uint)age
+               andGender:(AOCreatureGender)gender
+{
+    
+    AOCreature *creature = [[[AOCreature alloc]initWithWeight:0
+                                                       andAge:0
+                                                    andGender:AOCreatureGenderMale]autorelease];
+    
+    return creature;
+}
+
 @dynamic children;
 
 - (NSArray *)children {
@@ -24,7 +43,6 @@
 - (id)initWithWeight:(uint)weight
               andAge:(uint)age
            andGender:(AOCreatureGender)gender
-            andArray:(NSMutableArray*)array
 {
     
     self = [super init];
@@ -38,20 +56,6 @@
     
 }
 
-- (id)childCreateWithWeight:(uint)weight
-                     andAge:(uint)age
-                  andGender:(AOCreatureGender)gender
-                   andArray:(NSMutableArray*)array
-{
-    
-    AOCreature *child = [[[AOCreature alloc]initWithWeight:0
-                                                    andAge:0
-                                                 andGender:AOCreatureGenderMale
-                                                  andArray:array]autorelease];
-    
-    return child;
-}
-
 
 - (void)addChild:(AOCreature *)child {
     if (nil == child) {
@@ -59,16 +63,14 @@
     }
 }
 
-- (void)removeChild:(AOCreature *)child
-          fromArray:(NSMutableArray *)arrayOfChildren
-{
+- (void)removeChild:(AOCreature *)child {
     [self.mutableChildren removeObject:child];
 }
 
 - (void)sayHello {
     NSLog(@"HELLO");
     NSArray *children = self.children;
-    if([children count]) {
+    if([children count] > 0) {
         NSLog(@"Children let's say HELLO");
         for (AOCreature *creature in children) {
             [creature sayHello];
