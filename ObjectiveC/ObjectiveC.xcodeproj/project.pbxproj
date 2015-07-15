@@ -9,10 +9,21 @@
 /* Begin PBXBuildFile section */
 		C7DC11A51B543526007F5ACD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DC11A41B543526007F5ACD /* main.m */; };
 		C7DC11B21B544E09007F5ACD /* AOCreature.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DC11B11B544E09007F5ACD /* AOCreature.m */; };
+		C7DC11CB1B568414007F5ACD /* AOCreatureTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DC11CA1B568414007F5ACD /* AOCreatureTests.m */; };
+		C7DC11CF1B568C4A007F5ACD /* AOCreature.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DC11B11B544E09007F5ACD /* AOCreature.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		C7DC119F1B543526007F5ACD /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		C7DC11B91B568362007F5ACD /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -28,10 +39,28 @@
 		C7DC11A41B543526007F5ACD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C7DC11AE1B54389B007F5ACD /* AOCreature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOCreature.h; sourceTree = "<group>"; };
 		C7DC11B11B544E09007F5ACD /* AOCreature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AOCreature.m; sourceTree = "<group>"; };
+		C7DC11BB1B568362007F5ACD /* AOCreatureTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = AOCreatureTest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7DC11C61B568414007F5ACD /* AOCreatureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AOCreatureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7DC11C91B568414007F5ACD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C7DC11CA1B568414007F5ACD /* AOCreatureTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AOCreatureTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		C7DC119E1B543526007F5ACD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C7DC11B81B568362007F5ACD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C7DC11C31B568414007F5ACD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -45,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				C7DC11A31B543526007F5ACD /* ObjectiveC */,
+				C7DC11C71B568414007F5ACD /* AOCreatureTests */,
 				C7DC11A21B543526007F5ACD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,6 +83,8 @@
 			isa = PBXGroup;
 			children = (
 				C7DC11A11B543526007F5ACD /* ObjectiveC */,
+				C7DC11BB1B568362007F5ACD /* AOCreatureTest */,
+				C7DC11C61B568414007F5ACD /* AOCreatureTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -91,6 +123,23 @@
 			name = AOCreature;
 			sourceTree = "<group>";
 		};
+		C7DC11C71B568414007F5ACD /* AOCreatureTests */ = {
+			isa = PBXGroup;
+			children = (
+				C7DC11CA1B568414007F5ACD /* AOCreatureTests.m */,
+				C7DC11C81B568414007F5ACD /* Supporting Files */,
+			);
+			path = AOCreatureTests;
+			sourceTree = "<group>";
+		};
+		C7DC11C81B568414007F5ACD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C7DC11C91B568414007F5ACD /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -111,6 +160,40 @@
 			productReference = C7DC11A11B543526007F5ACD /* ObjectiveC */;
 			productType = "com.apple.product-type.tool";
 		};
+		C7DC11BA1B568362007F5ACD /* AOCreatureTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C7DC11BF1B568362007F5ACD /* Build configuration list for PBXNativeTarget "AOCreatureTest" */;
+			buildPhases = (
+				C7DC11B71B568362007F5ACD /* Sources */,
+				C7DC11B81B568362007F5ACD /* Frameworks */,
+				C7DC11B91B568362007F5ACD /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AOCreatureTest;
+			productName = AOCreatureTest;
+			productReference = C7DC11BB1B568362007F5ACD /* AOCreatureTest */;
+			productType = "com.apple.product-type.tool";
+		};
+		C7DC11C51B568414007F5ACD /* AOCreatureTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C7DC11CC1B568414007F5ACD /* Build configuration list for PBXNativeTarget "AOCreatureTests" */;
+			buildPhases = (
+				C7DC11C21B568414007F5ACD /* Sources */,
+				C7DC11C31B568414007F5ACD /* Frameworks */,
+				C7DC11C41B568414007F5ACD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AOCreatureTests;
+			productName = AOCreatureTests;
+			productReference = C7DC11C61B568414007F5ACD /* AOCreatureTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -121,6 +204,12 @@
 				ORGANIZATIONNAME = "Alina Okhremenko";
 				TargetAttributes = {
 					C7DC11A01B543526007F5ACD = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					C7DC11BA1B568362007F5ACD = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					C7DC11C51B568414007F5ACD = {
 						CreatedOnToolsVersion = 6.4;
 					};
 				};
@@ -138,9 +227,21 @@
 			projectRoot = "";
 			targets = (
 				C7DC11A01B543526007F5ACD /* ObjectiveC */,
+				C7DC11BA1B568362007F5ACD /* AOCreatureTest */,
+				C7DC11C51B568414007F5ACD /* AOCreatureTests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C7DC11C41B568414007F5ACD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C7DC119D1B543526007F5ACD /* Sources */ = {
@@ -149,6 +250,22 @@
 			files = (
 				C7DC11B21B544E09007F5ACD /* AOCreature.m in Sources */,
 				C7DC11A51B543526007F5ACD /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C7DC11B71B568362007F5ACD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C7DC11C21B568414007F5ACD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7DC11CF1B568C4A007F5ACD /* AOCreature.m in Sources */,
+				C7DC11CB1B568414007F5ACD /* AOCreatureTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +365,56 @@
 			};
 			name = Release;
 		};
+		C7DC11C01B568362007F5ACD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C7DC11C11B568362007F5ACD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		C7DC11CD1B568414007F5ACD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = AOCreatureTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C7DC11CE1B568414007F5ACD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = AOCreatureTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -265,6 +432,22 @@
 			buildConfigurations = (
 				C7DC11A91B543526007F5ACD /* Debug */,
 				C7DC11AA1B543526007F5ACD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C7DC11BF1B568362007F5ACD /* Build configuration list for PBXNativeTarget "AOCreatureTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C7DC11C01B568362007F5ACD /* Debug */,
+				C7DC11C11B568362007F5ACD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C7DC11CC1B568414007F5ACD /* Build configuration list for PBXNativeTarget "AOCreatureTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C7DC11CD1B568414007F5ACD /* Debug */,
+				C7DC11CE1B568414007F5ACD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
