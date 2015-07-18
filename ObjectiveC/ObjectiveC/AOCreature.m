@@ -22,17 +22,10 @@
     [super dealloc];
 }
 
-+ (id)creatureWithWeight:(uint)weight
-                  andAge:(uint)age
-               andGender:(AOCreatureGender)gender
-{
+
+- (void)performGenderSpecificOperation {
     
-    AOCreature *creature = [[[AOCreature alloc]initWithWeight:0
-                                                       andAge:0
-                                                    andGender:AOCreatureGenderMale]autorelease];
-    
-    return creature;
-}
+};
 
 @dynamic children;
 
@@ -42,20 +35,16 @@
 
 - (id)initWithWeight:(uint)weight
               andAge:(uint)age
-           andGender:(AOCreatureGender)gender
 {
-    
     self = [super init];
     if (self != nil) {
         self.age = age;
         self.weight = weight;
-        self.gender = gender;
-        self.mutableChildren = [[NSMutableArray alloc] init];
+        self.mutableChildren = [NSMutableArray object];
     }
     return self;
     
 }
-
 
 - (void)addChild:(AOCreature *)child {
     if (nil == child) {
@@ -78,12 +67,5 @@
     }
 }
 
-- (void)goneMakeWar {
-    if (AOCreatureGenderMale == self.gender) {
-        NSLog(@"Gone make war");
-    } else {
-        NSLog(@"I will not make war");
-    }
-}
 
 @end

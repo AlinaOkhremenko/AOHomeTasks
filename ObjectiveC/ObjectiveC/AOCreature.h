@@ -7,30 +7,26 @@
 //
 
 #import <Foundation/Foundation.h>
-
-typedef NS_ENUM(NSUInteger, AOCreatureGender) {
-    AOCreatureGenderMale,
-    AOCreatureGenderFemale
-};
-
+#import "AOCreatureNSObjectCategory.h"
 @interface AOCreature : NSObject
 
-@property(nonatomic,assign)     AOCreatureGender    gender;
+typedef NS_ENUM(NSUInteger, AOCreatureGender) {
+    AOCreatureMaleGender,
+    AOCreatureFemaleGender
+};
+
 @property(nonatomic,copy)       NSString            *name;
 @property(nonatomic,assign)     uint                weight;
 @property(nonatomic,assign)     uint                age;
 @property(nonatomic,readonly)   NSArray             *children;
 
-+ (id)creatureWithWeight:(uint)weight
-                  andAge:(uint)age
-               andGender:(AOCreatureGender)gender;
 
+- (void)performGenderSpecificOperation;
 - (id)initWithWeight:(uint)weight
-              andAge:(uint)age
-           andGender:(AOCreatureGender)gender;
+              andAge:(uint)age;
 - (void)addChild:(AOCreature *)child;
 - (void)removeChild:(AOCreature *)child;
 - (void)sayHello;
-- (void)goneMakeWar;
+
 
 @end
