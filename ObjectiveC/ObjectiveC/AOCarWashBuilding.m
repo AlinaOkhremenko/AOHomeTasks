@@ -12,10 +12,12 @@
 
 @implementation AOCarWashBuilding
 
-- (id)initWithRoom:(AORoom*)room {
+- (id)initWithRoom:(AORoom*)room
+          andPrice:(float)price
+{
     self = [super initWithRooms:@[room]];
     if (self) {
-        
+        self.price = price;
     }
     
     return self;

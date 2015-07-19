@@ -14,10 +14,10 @@
 @property(nonatomic, copy)      NSString*       experience;
 @property(nonatomic, copy)      NSString*       name;
 @property(nonatomic,assign)     float           cash;
-@property(nonatomic, assign)    AOBuildingType  office;
+@property(nonatomic, assign)    AOBuilding*     office;
 
 - (id)initWithName: (NSString*)name
      andExperience: (NSString*)experience
-       andBuilding: (AOBuildingType)office;
+       andBuilding: (AOBuilding*)office;
 
 @end

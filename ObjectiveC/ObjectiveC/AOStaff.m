@@ -12,7 +12,7 @@
 
 - (id)initWithName: (NSString*)name
      andExperience: (NSString*)experience
-       andBuilding: (AOBuildingType)office
+       andBuilding: (AOBuilding*)office
 {
     self = [super init];
     if (nil != self) {

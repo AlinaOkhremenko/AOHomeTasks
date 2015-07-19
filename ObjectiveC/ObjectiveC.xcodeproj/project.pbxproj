@@ -17,6 +17,15 @@
 		C7E1816D1B5B0688008CD7AE /* AOCreatureFemale.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E181641B5AE604008CD7AE /* AOCreatureFemale.m */; };
 		C7E1816E1B5B068D008CD7AE /* AOCreatureMale.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E181671B5AE618008CD7AE /* AOCreatureMale.m */; };
 		C7E1816F1B5B08A0008CD7AE /* AOCreatureNSObjectCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E1816B1B5AFA20008CD7AE /* AOCreatureNSObjectCategory.m */; };
+		C7E1817B1B5BD3D7008CD7AE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E1817A1B5BD3D7008CD7AE /* main.m */; };
+		C7E181841B5BD844008CD7AE /* AORoom.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E181831B5BD844008CD7AE /* AORoom.m */; };
+		C7E181861B5BDA1D008CD7AE /* AOBuilding.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E181851B5BDA1D008CD7AE /* AOBuilding.m */; };
+		C7E181891B5BDCF1008CD7AE /* AOAdminBuilding.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E181881B5BDCF1008CD7AE /* AOAdminBuilding.m */; };
+		C7E1818C1B5BDD1C008CD7AE /* AOCarWashBuilding.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E1818B1B5BDD1B008CD7AE /* AOCarWashBuilding.m */; };
+		C7E181921B5BE524008CD7AE /* AOStaff.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E181911B5BE524008CD7AE /* AOStaff.m */; };
+		C7E181951B5BE537008CD7AE /* AOCar.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E181941B5BE537008CD7AE /* AOCar.m */; };
+		C7E181981B5C3605008CD7AE /* AOWasher.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E181971B5C3605008CD7AE /* AOWasher.m */; };
+		C7E1819B1B5C3B96008CD7AE /* AOManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E1819A1B5C3B96008CD7AE /* AOManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,6 +39,15 @@
 			runOnlyForDeploymentPostprocessing = 1;
 		};
 		C7DC11B91B568362007F5ACD /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		C7E181761B5BD3D7008CD7AE /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -55,6 +73,24 @@
 		C7E181671B5AE618008CD7AE /* AOCreatureMale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AOCreatureMale.m; sourceTree = "<group>"; };
 		C7E1816A1B5AFA20008CD7AE /* AOCreatureNSObjectCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOCreatureNSObjectCategory.h; sourceTree = "<group>"; };
 		C7E1816B1B5AFA20008CD7AE /* AOCreatureNSObjectCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AOCreatureNSObjectCategory.m; sourceTree = "<group>"; };
+		C7E181711B5BD048008CD7AE /* AOBuilding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOBuilding.h; sourceTree = "<group>"; };
+		C7E181781B5BD3D7008CD7AE /* CarWash */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CarWash; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7E1817A1B5BD3D7008CD7AE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C7E181821B5BD844008CD7AE /* AORoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AORoom.h; sourceTree = "<group>"; };
+		C7E181831B5BD844008CD7AE /* AORoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AORoom.m; sourceTree = "<group>"; };
+		C7E181851B5BDA1D008CD7AE /* AOBuilding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AOBuilding.m; sourceTree = "<group>"; };
+		C7E181871B5BDCF1008CD7AE /* AOAdminBuilding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOAdminBuilding.h; sourceTree = "<group>"; };
+		C7E181881B5BDCF1008CD7AE /* AOAdminBuilding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AOAdminBuilding.m; sourceTree = "<group>"; };
+		C7E1818A1B5BDD1B008CD7AE /* AOCarWashBuilding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOCarWashBuilding.h; sourceTree = "<group>"; };
+		C7E1818B1B5BDD1B008CD7AE /* AOCarWashBuilding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AOCarWashBuilding.m; sourceTree = "<group>"; };
+		C7E181901B5BE524008CD7AE /* AOStaff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOStaff.h; sourceTree = "<group>"; };
+		C7E181911B5BE524008CD7AE /* AOStaff.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AOStaff.m; sourceTree = "<group>"; };
+		C7E181931B5BE537008CD7AE /* AOCar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOCar.h; sourceTree = "<group>"; };
+		C7E181941B5BE537008CD7AE /* AOCar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AOCar.m; sourceTree = "<group>"; };
+		C7E181961B5C3605008CD7AE /* AOWasher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOWasher.h; sourceTree = "<group>"; };
+		C7E181971B5C3605008CD7AE /* AOWasher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AOWasher.m; sourceTree = "<group>"; };
+		C7E181991B5C3B96008CD7AE /* AOManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOManager.h; sourceTree = "<group>"; };
+		C7E1819A1B5C3B96008CD7AE /* AOManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AOManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +115,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C7E181751B5BD3D7008CD7AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -87,6 +130,7 @@
 			children = (
 				C7DC11A31B543526007F5ACD /* ObjectiveC */,
 				C7DC11C71B568414007F5ACD /* AOCreatureTests */,
+				C7E181791B5BD3D7008CD7AE /* CarWash */,
 				C7DC11A21B543526007F5ACD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -97,6 +141,7 @@
 				C7DC11A11B543526007F5ACD /* ObjectiveC */,
 				C7DC11BB1B568362007F5ACD /* AOCreatureTest */,
 				C7DC11C61B568414007F5ACD /* AOCreatureTests.xctest */,
+				C7E181781B5BD3D7008CD7AE /* CarWash */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -166,6 +211,47 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
+		C7E181701B5BCF49008CD7AE /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				C7E181851B5BDA1D008CD7AE /* AOBuilding.m */,
+				C7E181711B5BD048008CD7AE /* AOBuilding.h */,
+				C7E181821B5BD844008CD7AE /* AORoom.h */,
+				C7E181831B5BD844008CD7AE /* AORoom.m */,
+				C7E181871B5BDCF1008CD7AE /* AOAdminBuilding.h */,
+				C7E181881B5BDCF1008CD7AE /* AOAdminBuilding.m */,
+				C7E1818A1B5BDD1B008CD7AE /* AOCarWashBuilding.h */,
+				C7E1818B1B5BDD1B008CD7AE /* AOCarWashBuilding.m */,
+				C7E181901B5BE524008CD7AE /* AOStaff.h */,
+				C7E181911B5BE524008CD7AE /* AOStaff.m */,
+				C7E181931B5BE537008CD7AE /* AOCar.h */,
+				C7E181941B5BE537008CD7AE /* AOCar.m */,
+				C7E181961B5C3605008CD7AE /* AOWasher.h */,
+				C7E181971B5C3605008CD7AE /* AOWasher.m */,
+				C7E181991B5C3B96008CD7AE /* AOManager.h */,
+				C7E1819A1B5C3B96008CD7AE /* AOManager.m */,
+			);
+			name = Source;
+			path = ../ObjectiveC;
+			sourceTree = "<group>";
+		};
+		C7E181791B5BD3D7008CD7AE /* CarWash */ = {
+			isa = PBXGroup;
+			children = (
+				C7E1817F1B5BD4A8008CD7AE /* Tests */,
+				C7E181701B5BCF49008CD7AE /* Source */,
+				C7E1817A1B5BD3D7008CD7AE /* main.m */,
+			);
+			path = CarWash;
+			sourceTree = "<group>";
+		};
+		C7E1817F1B5BD4A8008CD7AE /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Tests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -220,6 +306,23 @@
 			productReference = C7DC11C61B568414007F5ACD /* AOCreatureTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		C7E181771B5BD3D7008CD7AE /* CarWash */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C7E1817C1B5BD3D7008CD7AE /* Build configuration list for PBXNativeTarget "CarWash" */;
+			buildPhases = (
+				C7E181741B5BD3D7008CD7AE /* Sources */,
+				C7E181751B5BD3D7008CD7AE /* Frameworks */,
+				C7E181761B5BD3D7008CD7AE /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CarWash;
+			productName = CarWash;
+			productReference = C7E181781B5BD3D7008CD7AE /* CarWash */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -236,6 +339,9 @@
 						CreatedOnToolsVersion = 6.4;
 					};
 					C7DC11C51B568414007F5ACD = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					C7E181771B5BD3D7008CD7AE = {
 						CreatedOnToolsVersion = 6.4;
 					};
 				};
@@ -255,6 +361,7 @@
 				C7DC11A01B543526007F5ACD /* ObjectiveC */,
 				C7DC11BA1B568362007F5ACD /* AOCreatureTest */,
 				C7DC11C51B568414007F5ACD /* AOCreatureTests */,
+				C7E181771B5BD3D7008CD7AE /* CarWash */,
 			);
 		};
 /* End PBXProject section */
@@ -298,6 +405,22 @@
 				C7E1816F1B5B08A0008CD7AE /* AOCreatureNSObjectCategory.m in Sources */,
 				C7DC11CF1B568C4A007F5ACD /* AOCreature.m in Sources */,
 				C7DC11CB1B568414007F5ACD /* AOCreatureTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C7E181741B5BD3D7008CD7AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7E181951B5BE537008CD7AE /* AOCar.m in Sources */,
+				C7E181861B5BDA1D008CD7AE /* AOBuilding.m in Sources */,
+				C7E1817B1B5BD3D7008CD7AE /* main.m in Sources */,
+				C7E181841B5BD844008CD7AE /* AORoom.m in Sources */,
+				C7E1818C1B5BDD1C008CD7AE /* AOCarWashBuilding.m in Sources */,
+				C7E181921B5BE524008CD7AE /* AOStaff.m in Sources */,
+				C7E181891B5BDCF1008CD7AE /* AOAdminBuilding.m in Sources */,
+				C7E181981B5C3605008CD7AE /* AOWasher.m in Sources */,
+				C7E1819B1B5C3B96008CD7AE /* AOManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,6 +574,24 @@
 			};
 			name = Release;
 		};
+		C7E1817D1B5BD3D7008CD7AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C7E1817E1B5BD3D7008CD7AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -489,6 +630,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		C7E1817C1B5BD3D7008CD7AE /* Build configuration list for PBXNativeTarget "CarWash" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C7E1817D1B5BD3D7008CD7AE /* Debug */,
+				C7E1817E1B5BD3D7008CD7AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

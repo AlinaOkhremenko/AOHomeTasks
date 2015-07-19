@@ -11,9 +11,23 @@
 
 @implementation AOWasher
 
+- (id)initWithName: (NSString*)name
+     andExperience: (NSString*)experience
+       andBuilding: (AOBuilding*)office {
+    self = [super initWithName:name andExperience:experience andBuilding:office];
+    if (AOBuildingCarWash != office.type) {
+        NSAssert(AOBuildingCarWash == office.type, @"initialize with CarWash type");
+    }
+    return self;
+    
+}
+
 - (BOOL)washVehicle:(AOCar*)vehicle {
-    if (0 != vehicle.money && AOCarIsDirty == vehicle.condition) {
+    float washingPrice =((AOCarWashBuilding*)self.office).price;
+    if (washingPrice <= vehicle.money && AOCarIsDirty == vehicle.condition) {
         vehicle.condition = AOCarIsClean;
+        vehicle.money -= washingPrice;
+        self.cash += washingPrice;
         
         return YES;
   
@@ -24,9 +38,5 @@
     }
 }
 
-- (void)getCashFromVeicle:(AOCar*)vehicle {
-    
-    
-}
 
 @end

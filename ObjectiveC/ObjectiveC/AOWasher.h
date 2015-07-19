@@ -9,11 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "AOStaff.h"
 #import "AOCar.h"
+#import "AOCarWashBuilding.h"
 
 @interface AOWasher : AOStaff
 
-- (void)initWithCarWashBuilding;
+- (id)initWithName: (NSString*)name
+     andExperience: (NSString*)experience
+       andBuilding: (AOBuilding*)office;
 - (BOOL)washVehicle:(AOCar*)vehicle;
-- (void)getCashFromVehicle:(AOCar*)vehicle;
 
 @end

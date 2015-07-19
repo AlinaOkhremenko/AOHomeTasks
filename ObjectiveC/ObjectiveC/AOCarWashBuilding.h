@@ -13,7 +13,7 @@
 
 @property(nonatomic, assign)    float   price;
 
-- (id)initWithRoom:(AORoom*)room;
+- (id)initWithRoom:(AORoom*)room andPrice:(float)price;
 - (AOBuildingType)type;
 
 @end
