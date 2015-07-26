@@ -8,12 +8,10 @@
 
 #import "AOCarWashBuilding.h"
 
-
-
 @implementation AOCarWashBuilding
 
-- (id)initWithRoom:(AORoom*)room
-          andPrice:(float)price
+- (id)initWithRoom: (AORoom *)room
+          andPrice: (float)price
 {
     self = [super initWithRooms:@[room]];
     if (self) {
@@ -24,6 +22,7 @@
 }
 
 - (AOBuildingType)type {
+    
     return AOBuildingCarWash;
 }
 

@@ -10,8 +10,8 @@
 
 @implementation AORoom
 
-- (id)initRoomWithMaxCountPeople:(uint)maxCountPeople
-              andAbilityHoldCars:(BOOL)abilityHoldCars
+- (id)initRoomWithMaxCountPeople: (uint)maxCountPeople
+              andAbilityHoldCars: (BOOL)abilityHoldCars
 {
     self = [super init];
     if (nil != self) {
@@ -20,6 +20,5 @@
     }
     return self;
 }
-
 
 @end

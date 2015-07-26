@@ -11,10 +11,9 @@
 @implementation AOAdminBuilding
 
 
-- (id)initWithRoom:(AORoom*)room {
+- (id)initWithRoom: (AORoom *)room {
     self = [super initWithRooms:@[room]];
     if (self) {
-        
     }
     
     return self;
@@ -23,6 +22,5 @@
 - (AOBuildingType)type {
     return AOBuildingAdministrative;
 }
-
 
 @end

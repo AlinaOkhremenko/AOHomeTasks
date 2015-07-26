@@ -10,12 +10,13 @@
 #import "AOStaff.h"
 #import "AOCar.h"
 #import "AOCarWashBuilding.h"
+#import "MoneyFlow.h"
 
 @interface AOWasher : AOStaff
 
 - (id)initWithName: (NSString*)name
      andExperience: (NSString*)experience
        andBuilding: (AOBuilding*)office;
-- (BOOL)washVehicle:(AOCar*)vehicle;
+- (BOOL)washVehicle: (AOCar*)vehicle;
 
 @end

@@ -1,5 +1,5 @@
 //
-//  AOAdminBuilding.h
+//  AOManager.h
 //  ObjectiveC
 //
 //  Created by Alina Okhremenko on 19.07.15.
@@ -7,11 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AOBuilding.h"
+#import "AOStaff.h"
+#import "MoneyFlow.h"
 
-@interface AOAdminBuilding : AOBuilding
-
-- (id)initWithRoom:(AORoom*)room;
-- (AOBuildingType)type;
+@interface AOManager : AOStaff 
 
 @end

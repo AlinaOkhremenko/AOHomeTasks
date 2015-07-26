@@ -18,12 +18,12 @@ typedef NS_ENUM(NSUInteger, AOBuildingType) {
 @interface AOBuilding : NSObject
 
 @property(nonatomic, assign)    AOBuildingType      type;
-@property(nonatomic, readonly)  NSArray*            rooms;
-@property(nonatomic, copy)      NSString*           adress;
+@property(nonatomic, readonly)  NSArray             *rooms;
+@property(nonatomic, copy)      NSString            *adress;
 
-- (id)initWithRooms: (NSArray*)rooms;
-- (void)addRoom:(AORoom*)room;
-- (void)removeRoom:(AORoom*)room;
+- (id)initWithRooms: (NSArray *)rooms;
+- (void)addRoom: (AORoom *)room;
+- (void)removeRoom: (AORoom *)room;
 - (AOBuildingType)type;
 
 @end

@@ -13,8 +13,7 @@
 @property(nonatomic, assign) uint maxCountPeople;
 @property(nonatomic, assign) BOOL abilityHoldCars;
 
-- (id)initRoomWithMaxCountPeople:(uint)maxCountPeople
-             andAbilityHoldCars:(BOOL)abilityHoldCars;
-
+- (id)initRoomWithMaxCountPeople: (uint)maxCountPeople
+              andAbilityHoldCars: (BOOL)abilityHoldCars;
 
 @end

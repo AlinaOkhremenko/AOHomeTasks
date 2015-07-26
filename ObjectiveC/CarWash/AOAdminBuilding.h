@@ -1,5 +1,5 @@
 //
-//  AOCarWashBuilding.h
+//  AOAdminBuilding.h
 //  ObjectiveC
 //
 //  Created by Alina Okhremenko on 19.07.15.
@@ -9,11 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "AOBuilding.h"
 
-@interface AOCarWashBuilding : AOBuilding
+@interface AOAdminBuilding : AOBuilding
 
-@property(nonatomic, assign)    float   price;
-
-- (id)initWithRoom:(AORoom*)room andPrice:(float)price;
+- (id)initWithRoom: (AORoom *)room;
 - (AOBuildingType)type;
 
 @end
