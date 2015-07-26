@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C7D3964A1B60409A00D35E2F /* AOAlphabet.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D396491B60409A00D35E2F /* AOAlphabet.m */; };
 		C7DC11A51B543526007F5ACD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DC11A41B543526007F5ACD /* main.m */; };
 		C7DC11B21B544E09007F5ACD /* AOCreature.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DC11B11B544E09007F5ACD /* AOCreature.m */; };
 		C7DC11CB1B568414007F5ACD /* AOCreatureTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DC11CA1B568414007F5ACD /* AOCreatureTests.m */; };
@@ -17,6 +18,8 @@
 		C7E1816D1B5B0688008CD7AE /* AOCreatureFemale.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E181641B5AE604008CD7AE /* AOCreatureFemale.m */; };
 		C7E1816E1B5B068D008CD7AE /* AOCreatureMale.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E181671B5AE618008CD7AE /* AOCreatureMale.m */; };
 		C7E1816F1B5B08A0008CD7AE /* AOCreatureNSObjectCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E1816B1B5AFA20008CD7AE /* AOCreatureNSObjectCategory.m */; };
+		C7E6531D1B603C8000FD9C79 /* NSString+RandomString.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E6531C1B603C8000FD9C79 /* NSString+RandomString.m */; };
+		C7EDE00D1B655BEB0036E63E /* AOSyllablesAlphabet.m in Sources */ = {isa = PBXBuildFile; fileRef = C7EDE00C1B655BEB0036E63E /* AOSyllablesAlphabet.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -41,6 +44,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C7D396481B60409A00D35E2F /* AOAlphabet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOAlphabet.h; sourceTree = "<group>"; };
+		C7D396491B60409A00D35E2F /* AOAlphabet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AOAlphabet.m; sourceTree = "<group>"; };
 		C7DC11A11B543526007F5ACD /* ObjectiveC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ObjectiveC; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7DC11A41B543526007F5ACD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C7DC11AE1B54389B007F5ACD /* AOCreature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOCreature.h; sourceTree = "<group>"; };
@@ -55,6 +60,10 @@
 		C7E181671B5AE618008CD7AE /* AOCreatureMale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AOCreatureMale.m; sourceTree = "<group>"; };
 		C7E1816A1B5AFA20008CD7AE /* AOCreatureNSObjectCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOCreatureNSObjectCategory.h; sourceTree = "<group>"; };
 		C7E1816B1B5AFA20008CD7AE /* AOCreatureNSObjectCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AOCreatureNSObjectCategory.m; sourceTree = "<group>"; };
+		C7E6531B1B603C8000FD9C79 /* NSString+RandomString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+RandomString.h"; sourceTree = "<group>"; };
+		C7E6531C1B603C8000FD9C79 /* NSString+RandomString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+RandomString.m"; sourceTree = "<group>"; };
+		C7EDE00B1B655BEB0036E63E /* AOSyllablesAlphabet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOSyllablesAlphabet.h; sourceTree = "<group>"; };
+		C7EDE00C1B655BEB0036E63E /* AOSyllablesAlphabet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AOSyllablesAlphabet.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +91,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C7D396471B60407A00D35E2F /* AOAlphabet */ = {
+			isa = PBXGroup;
+			children = (
+				C7D396481B60409A00D35E2F /* AOAlphabet.h */,
+				C7D396491B60409A00D35E2F /* AOAlphabet.m */,
+				C7EDE00B1B655BEB0036E63E /* AOSyllablesAlphabet.h */,
+				C7EDE00C1B655BEB0036E63E /* AOSyllablesAlphabet.m */,
+			);
+			name = AOAlphabet;
+			sourceTree = "<group>";
+		};
 		C7DC11981B543526007F5ACD = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +124,7 @@
 		C7DC11A31B543526007F5ACD /* ObjectiveC */ = {
 			isa = PBXGroup;
 			children = (
+				C7E653161B603BB800FD9C79 /* New Group */,
 				C7DC11AC1B5436DB007F5ACD /* Tests */,
 				C7DC11AB1B5436CC007F5ACD /* Source */,
 			);
@@ -113,6 +134,8 @@
 		C7DC11AB1B5436CC007F5ACD /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				C7D396471B60407A00D35E2F /* AOAlphabet */,
+				C7E653171B603BFA00FD9C79 /* RandomString */,
 				C7E181691B5AF9DB008CD7AE /* Categories */,
 				C7DC11AD1B5436E7007F5ACD /* AOCreature */,
 				C7DC11A41B543526007F5ACD /* main.m */,
@@ -164,6 +187,22 @@
 				C7E1816B1B5AFA20008CD7AE /* AOCreatureNSObjectCategory.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		C7E653161B603BB800FD9C79 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
+		C7E653171B603BFA00FD9C79 /* RandomString */ = {
+			isa = PBXGroup;
+			children = (
+				C7E6531B1B603C8000FD9C79 /* NSString+RandomString.h */,
+				C7E6531C1B603C8000FD9C79 /* NSString+RandomString.m */,
+			);
+			name = RandomString;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,9 +314,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7E181651B5AE604008CD7AE /* AOCreatureFemale.m in Sources */,
+				C7E6531D1B603C8000FD9C79 /* NSString+RandomString.m in Sources */,
 				C7E181681B5AE618008CD7AE /* AOCreatureMale.m in Sources */,
 				C7E1816C1B5AFA20008CD7AE /* AOCreatureNSObjectCategory.m in Sources */,
+				C7EDE00D1B655BEB0036E63E /* AOSyllablesAlphabet.m in Sources */,
 				C7DC11B21B544E09007F5ACD /* AOCreature.m in Sources */,
+				C7D3964A1B60409A00D35E2F /* AOAlphabet.m in Sources */,
 				C7DC11A51B543526007F5ACD /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
