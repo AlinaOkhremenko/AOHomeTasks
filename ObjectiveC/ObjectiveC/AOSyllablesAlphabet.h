@@ -11,10 +11,6 @@
 
 @interface AOSyllablesAlphabet : AOAlphabet
 
-+ (instancetype)syllablesAlphabetWithString: (NSString *)string;
-+ (instancetype)syllablesAlphabetWithSyllables: (NSArray *)syllables;
-
-- (id)initWithString: (NSString *)string;
-- (id)initWithSyllables: (NSArray *)syllables;
+- (id)initWithSyllables:(NSArray *)syllables;
 
 @end

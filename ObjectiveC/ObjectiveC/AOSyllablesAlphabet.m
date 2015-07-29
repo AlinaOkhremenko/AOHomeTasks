@@ -16,31 +16,18 @@
 
 @implementation AOSyllablesAlphabet
 
-+ (instancetype)syllablesAlphabetWithString: (NSString *)string {
-     return [[AOSyllablesAlphabet alloc]initWithString:string];
-}
 
-+ (instancetype)syllablesAlphabetWithSyllables: (NSArray *)syllables {
-    return [[AOSyllablesAlphabet alloc]initWithSyllables:syllables];
-}
-
-- (id)initWithString: (NSString *)string {
-    self = [super init];
-    if (nil != self) {
-        NSArray *arrayOfSyllables = [string componentsSeparatedByString:@" "];
-        self.syllables = arrayOfSyllables;
-    }
-    
-    return self;
-}
-
-- (id)initWithSyllables: (NSArray *)syllables {
+- (id)initWithSyllables:(NSArray *)syllables {
     self = [super init];
     if (nil != self) {
         self.syllables = syllables;
     }
     
     return self;
+}
+
+- (NSString*)getRandomLetter {
+    return nil;
 }
 
 @end

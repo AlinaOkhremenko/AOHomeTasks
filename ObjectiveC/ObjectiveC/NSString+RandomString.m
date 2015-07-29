@@ -10,8 +10,8 @@
 
 @implementation NSString (RandomString)
 
-- (NSString *)randomStringWith: (NSUInteger)length
-                   andAlphabet: (AOAlphabet *)alphabet
+- (NSString *)randomStringWith:(NSUInteger)length
+                   andAlphabet:(AOAlphabet *)alphabet
 {
     NSMutableString *string = [NSMutableString stringWithCapacity:length];
     

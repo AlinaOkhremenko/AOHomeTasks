@@ -7,6 +7,10 @@
 //
 
 #import "AOAlphabet.h"
+#import "AOAlphabetWithStrings.h"
+#import "AOSyllablesAlphabet.h"
+#import "AOAlphabetWithRange.h"
+#import "AOAlphabetWithAlphabets.h"
 
 @interface AOAlphabet ()
 
@@ -17,33 +21,31 @@
 @implementation AOAlphabet
 
 + (instancetype)alphabetWithString:(NSString*)string {
-    return [[AOAlphabet alloc]initWithString:string];
+    return [[AOAlphabetWithStrings alloc]initWithString:string];
+}
+
++ (instancetype)alphabetWithSyllables: (NSArray *)syllables {
+    return [[AOSyllablesAlphabet alloc]initWithSyllables:syllables];
+}
+
++ (instancetype)alphabetWithRange:(NSRange)range {
+    return [[AOAlphabetWithRange alloc]initWithRange:range];
+}
+
++ (instancetype)alphabetWithAlphabets:(NSArray *)alphabets {
+    return [[AOAlphabetWithAlphabets alloc]initWithAlphabets:alphabets];
 }
 
 + (instancetype)alphabetWithNumbers {
-    return [[AOAlphabet alloc]initWithString:@"0123456789"];
+    return [[AOAlphabetWithStrings alloc]initWithString:@"0123456789"];
 }
 
 + (instancetype)alphabetWithLowercaseLetters {
-    return [[AOAlphabet alloc]initWithString:@"abcdefghigklmnopqrstuvwxyz"];
+    return [[AOAlphabetWithStrings alloc]initWithString:@"abcdefghigklmnopqrstuvwxyz"];
 }
 
 + (instancetype)alphabetWithUppercaseLetters {
-    return [[AOAlphabet alloc]initWithString:@"ABCDEFGHIGKLMNOPQRSTUVWXYZ"];
-}
-
-- (id)initWithString:(NSString*)string {
-    if (self = [super init]) {
-        NSMutableArray *temporaryArray = [[NSMutableArray alloc] init];
-        for (int i=0; i<string.length; i++) {
-            NSRange range = NSMakeRange(i, 1);
-            NSString *letter = [string substringWithRange:range];
-            [temporaryArray addObject:letter];
-        }
-        self.letters = [temporaryArray copy];
-    }
-    
-    return self;
+    return [[AOAlphabetWithStrings alloc]initWithString:@"ABCDEFGHIGKLMNOPQRSTUVWXYZ"];
 }
 
 - (NSString*)getRandomLetter {

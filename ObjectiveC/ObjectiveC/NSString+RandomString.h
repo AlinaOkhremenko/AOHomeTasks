@@ -11,7 +11,7 @@
 
 @interface NSString (RandomString)
 
-- (NSString *)randomStringWith: (NSUInteger)length
-                   andAlphabet: (AOAlphabet *)alphabet;
+- (NSString *)randomStringWith:(NSUInteger)length
+                   andAlphabet:(AOAlphabet *)alphabet;
 
 @end
