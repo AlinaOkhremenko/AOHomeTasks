@@ -28,10 +28,10 @@
         NSMutableSet *set = [[NSMutableSet alloc]init];
         for (AOAlphabet *alphabet in alphabets) {
             NSArray *array = alphabet.letters;
-            [set addObject:array];
+            
+            [set addObjectsFromArray:array];
         }
-        NSArray *temporaryArray = [NSArray arrayWithArray:[set allObjects]];
-        self.letters = temporaryArray;
+        self.letters = [set allObjects];
     }
     
     return self;
