@@ -15,7 +15,7 @@
 
 @implementation AOBuilding
 
-- (id)initWithRooms: (NSArray *)rooms {
+- (id)initWithRooms:(NSArray *)rooms {
     self =  [super init];
     if (nil != self) {
         self.mutableRooms = [NSMutableArray new];
@@ -24,13 +24,13 @@
     return self;
 }
 
-- (void)addRoom: (AORoom *)room {
+- (void)addRoom:(AORoom *)room {
     if (nil == room) {
     [self.mutableRooms addObject:room];
     }
 }
 
-- (void)removeRoom: (AORoom *)room {
+- (void)removeRoom:(AORoom *)room {
     
     [self.mutableRooms removeObject:room];
 }

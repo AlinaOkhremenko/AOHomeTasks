@@ -11,7 +11,7 @@
 
 @interface AOAdminBuilding : AOBuilding
 
-- (id)initWithRoom: (AORoom *)room;
+- (id)initWithRoom:(AORoom *)room;
 - (AOBuildingType)type;
 
 @end

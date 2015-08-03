@@ -10,10 +10,11 @@
 
 @interface AORoom : NSObject
 
-@property(nonatomic, assign) uint maxCountPeople;
-@property(nonatomic, assign) BOOL abilityHoldCars;
+@property(nonatomic, assign)    uint    maxCountPeople;
+@property(nonatomic, assign)    uint    capacityCars;
 
-- (id)initRoomWithMaxCountPeople: (uint)maxCountPeople
-              andAbilityHoldCars: (BOOL)abilityHoldCars;
+
+- (id)initRoomWithMaxCountPeople:(uint)maxCountPeople
+                 andCapacityCars:(uint)capacityCars;
 
 @end

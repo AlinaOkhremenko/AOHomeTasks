@@ -7,20 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MoneyFlow.h"
-
-
+#import "AOSubject.h"
 
 typedef NS_ENUM(NSUInteger, AOCarCleaness){
     AOCarIsDirty,
     AOCarIsClean
 };
 
-@interface AOCar : NSObject <MoneyFlow>
+@interface AOCar : AOSubject
 
-@property(nonatomic, assign) NSNumber *money;
 @property(nonatomic, assign) AOCarCleaness condition;
 
-- (id)initWithMoney: (NSNumber *)money;
+- (id)initWithMoney:(float)money;
 
 @end

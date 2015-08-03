@@ -10,22 +10,12 @@
 
 @implementation AOCar
 
-- (id)initWithMoney: (NSNumber *)money {
+- (id)initWithMoney:(float)money {
     self = [super init];
     if (nil != self) {
-        self.money = money;
+        self.account = money;
     }
     return self;
-}
-
-- (void)creditMoneyByPrice : (NSNumber *)price {
-    if (AOCarIsClean == self.condition) {
-        NSNumber *price = @(price);
-        self.money = @(money);
-        
-        NSNumber *money = @([money floatValue] - [price floatValue]);
-        
-    }
 }
 
 @end
