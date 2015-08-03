@@ -8,17 +8,18 @@
 
 #import <Foundation/Foundation.h>
 #import "AOBuilding.h"
-#import "MoneyFlow.h"
+#import "AOSubject.h"
 
-@interface AOStaff : NSObject <MoneyFlow>
+@interface AOStaff : AOSubject
 @property(nonatomic, assign)    uint            salary;
 @property(nonatomic, copy)      NSString        *experience;
 @property(nonatomic, copy)      NSString        *name;
 @property(nonatomic, assign)    float           cash;
 @property(nonatomic, assign)    AOBuilding      *office;
 
-- (id)initWithName: (NSString *)name
-     andExperience: (NSString *)experience
-       andBuilding: (AOBuilding *)office;
+- (id)initWithName:(NSString *)name
+     andExperience:(NSString *)experience
+       andBuilding:(AOBuilding *)office;
+- (void)performSpecificJob;
 
 @end

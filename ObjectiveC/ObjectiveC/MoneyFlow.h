@@ -10,9 +10,13 @@
 
 @protocol MoneyFlow <NSObject>
 
-@optional
-- (void)creditMoneyByPrice: (NSNumber *)price;  //get (-)
-- (void)debitMoneyByPrice : (NSNumber *)price; //recieve (+)
-- (void)countMoney;
+@property (nonatomic, assign) float account;
+
+- (BOOL)getMoneyByPrice:(float)price fromObject:(id<MoneyFlow>)object;
+- (BOOL)giveMoneyByPrice:(float)price toObject:(id<MoneyFlow>)object;
+
+- (void)debitAmount:(float)amount;
+- (void)creditAmount:(float)amount;
+
 
 @end

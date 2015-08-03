@@ -10,9 +10,9 @@
 
 @implementation AOStaff
 
-- (id)initWithName: (NSString *)name
-     andExperience: (NSString *)experience
-       andBuilding: (AOBuilding *)office
+- (id)initWithName:(NSString *)name
+     andExperience:(NSString *)experience
+       andBuilding:(AOBuilding *)office
 {
     self = [super init];
     if (nil != self) {
@@ -22,6 +22,10 @@
         
     }
     return self;
+}
+
+- (void)performSpecificJob {
+    
 }
 
 @end

@@ -14,9 +14,12 @@
 
 @interface AOWasher : AOStaff
 
-- (id)initWithName: (NSString*)name
-     andExperience: (NSString*)experience
-       andBuilding: (AOBuilding*)office;
-- (BOOL)washVehicle: (AOCar*)vehicle;
+@property(nonatomic, readonly)  BOOL    busy;
+
+- (id)initWithName:(NSString*)name
+     andExperience:(NSString*)experience;
+
+
+- (void)performSpecificJob;
 
 @end

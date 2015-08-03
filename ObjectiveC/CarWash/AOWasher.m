@@ -11,17 +11,29 @@
 
 @implementation AOWasher
 
-- (id)initWithName: (NSString *)name
-     andExperience: (NSString *)experience
-       andBuilding: (AOBuilding *)office
+- (id)initWithName:(NSString *)name
+     andExperience:(NSString *)experience
+
 {
-    self = [super initWithName:name andExperience:experience andBuilding:office];
+    self = [super initWithName:name andExperience:experience];
     if (AOBuildingCarWash != office.type) {
         NSAssert(AOBuildingCarWash == office.type, @"initialize with CarWash type");
     }
     
     return self;
 }
+
+- (BOOL)getMoneyByPrice:(float)price fromObject:(AOCar *)car {
+    float newMoney = self.account + price;
+    self.account = newMoney;
+    
+}
+
+- (void)performSpecificJob {
+    
+}
+
+
 
 //- (BOOL)washVehicle: (AOCar *)vehicle {
 //    float washingPrice =((AOCarWashBuilding *)self.office).price;
