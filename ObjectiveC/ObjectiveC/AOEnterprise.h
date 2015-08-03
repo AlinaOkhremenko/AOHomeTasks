@@ -11,19 +11,17 @@
 #import "AOStaff.h"
 #import "AOManager.h"
 #import "AOAccountant.h"
+#import "AOCarBox.h"
+#import "AOCar.h"
 
 @interface AOEnterprise : NSObject
 
-@property(nonatomic, readonly)  AOWasher        *washer;
-@property(nonatomic, readonly)  AOAccountant    *accountant;
-@property(nonatomic, readonly)  AOManager       *manager;
+@property(nonatomic, assign)  AOWasher        *washer;
+@property(nonatomic, assign)  AOAccountant    *accountant;
+@property(nonatomic, assign)  AOManager       *manager;
 
-
-- (BOOL)washTheVehicle:(AOCar *)vehicle;
-- (AOAccountant *)accountant;
-- (AOManager *)manager;
-- (AOWasher *)washer;
-
+- (BOOL)addCar:(AOCar *)car toCarBox:(AOCarBox *)carBox;
+- (BOOL)washTheCar:(AOCar *)car;
 
 
 @end

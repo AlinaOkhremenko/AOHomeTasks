@@ -13,9 +13,9 @@
 
 - (id)initWithName:(NSString *)name
      andExperience:(NSString *)experience
-
+       andBuilding:(AOBuilding *)office
 {
-    self = [super initWithName:name andExperience:experience];
+    self = [super initWithName:name andExperience:experience andBuilding:office];
     if (AOBuildingCarWash != office.type) {
         NSAssert(AOBuildingCarWash == office.type, @"initialize with CarWash type");
     }
@@ -23,32 +23,8 @@
     return self;
 }
 
-- (BOOL)getMoneyByPrice:(float)price fromObject:(AOCar *)car {
-    float newMoney = self.account + price;
-    self.account = newMoney;
-    
-}
-
 - (void)performSpecificJob {
-    
+    self.currentCar.condition = AOCarIsClean;
 }
-
-
-
-//- (BOOL)washVehicle: (AOCar *)vehicle {
-//    float washingPrice =((AOCarWashBuilding *)self.office).price;
-//    if (washingPrice <= vehicle.money && AOCarIsDirty == vehicle.condition) {
-//        vehicle.condition = AOCarIsClean;
-//        vehicle.money -= washingPrice;
-//        self.cash += washingPrice;
-//        
-//        return YES;
-//  
-//    } else {
-//        
-//        return NO;
-//    }
-//}
-
 
 @end

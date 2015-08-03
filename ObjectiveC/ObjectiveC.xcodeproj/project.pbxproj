@@ -71,6 +71,7 @@
 		C708CF6E1B6FC4A8006B540B /* AOEnterprise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AOEnterprise.m; sourceTree = "<group>"; };
 		C708CF711B6FD12B006B540B /* AOSubject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOSubject.h; sourceTree = "<group>"; };
 		C708CF721B6FD12B006B540B /* AOSubject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AOSubject.m; sourceTree = "<group>"; };
+		C708CF741B70045D006B540B /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
 		C7DC11A11B543526007F5ACD /* ObjectiveC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ObjectiveC; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7DC11A41B543526007F5ACD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C7DC11AE1B54389B007F5ACD /* AOCreature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOCreature.h; sourceTree = "<group>"; };
@@ -252,6 +253,7 @@
 				C7EDE0101B6568A40036E63E /* AOStaff */,
 				C7EDE00F1B6568920036E63E /* AORoom */,
 				C7EDE00E1B65686C0036E63E /* AOBuilding */,
+				C708CF741B70045D006B540B /* Defines.h */,
 			);
 			name = Source;
 			path = ../ObjectiveC;

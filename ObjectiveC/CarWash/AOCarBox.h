@@ -12,11 +12,11 @@
 
 @interface AOCarBox : AORoom
 
-@property(nonatomic, assign)    NSArray    *cars;
-@property(nonatomic, readonly)    BOOL    isFull;
+@property(nonatomic, assign)    uint    capacityCars;
+@property(nonatomic, readonly)  BOOL    isFull;
+@property(nonatomic, assign)    AOCar   *currentCar;
 
-- (void)addCar:(AOCar *)car;
-- (void)removeCar:(AOCar *)car;
-- (NSArray *)cars;
+- (id)initCarBoxWithCapacity;
+
 
 @end

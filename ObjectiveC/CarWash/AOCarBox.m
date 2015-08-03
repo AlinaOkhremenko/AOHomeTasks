@@ -7,29 +7,19 @@
 //
 
 #import "AOCarBox.h"
-@interface AOCarBox()
 
-@property(nonatomic, retain)    NSMutableArray     *mutableCars;
-
-@end
 @implementation AOCarBox
 
-- (void)addCar:(AOCar *)car {
-    if (nil != car) {
-        [self.mutableCars addObject:car] ;
+- (id)initCarBoxWithCapacity {
+    self = [super init];
+    if (nil != self) {
+        self.capacityCars = 1;
     }
-}
-
-- (void)removeCar:(AOCar *)car {
-    [self.mutableCars removeObject:car];
-}
-
-- (NSArray *)cars {
-    return [[self.mutableCars copy] autorelease];
+    return self;
 }
 
 - (BOOL)isFull {
-    return (nil != self.cars);
+    return (nil != self.currentCar);
 }
 
 

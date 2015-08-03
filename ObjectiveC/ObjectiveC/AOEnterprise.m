@@ -7,25 +7,54 @@
 //
 
 #import "AOEnterprise.h"
+#import "Defines.h"
 
 @implementation AOEnterprise
 
-- (BOOL)washTheVehicle:(AOCar *)vehicle {
+- (void)dealloc {
+    self.manager = nil;
+    self.accountant = nil;
+    self.washer = nil;
+  
+    [super dealloc];
+}
+
+
+- (BOOL)addCar:(AOCar *)car
+      toCarBox:(AOCarBox *)carBox
+{
+    if (car.condition == AOCarIsDirty && carBox.isFull == NO) {
+        carBox.currentCar = car;
+        
+        return YES;
+    }
     
-    if (AOCarIsDirty == vehicle.condition && self.washer.busy == NO) {
-        vehicle.condition = AOCarIsClean;
+    return NO;
+}
+
+- (BOOL)washTheCar:(AOCar *)car {
+    
+    if (self.washer.isBusy == NO) {
+        self.washer.isBusy = YES;
+        
+        [self.washer performSpecificJob];
+        [self.washer getMoneyByPrice:kWashPrice fromObject:car];
+        [self.washer giveMoneyByPrice:kWashPrice toObject:self.accountant];
+        
+        self.washer.isBusy = NO;
         
             return YES;
         
         } else {
     
-            return NO;
-        }
+        return NO;
+    }
 }
 
-- (AOWasher *)washer {
-    return [[AOWasher alloc] initWithName:@"name" andExperience:@"experience" andBuilding:]
-}
+
+
+
+
 
 
 

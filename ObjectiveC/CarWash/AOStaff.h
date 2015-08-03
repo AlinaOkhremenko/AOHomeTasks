@@ -14,7 +14,6 @@
 @property(nonatomic, assign)    uint            salary;
 @property(nonatomic, copy)      NSString        *experience;
 @property(nonatomic, copy)      NSString        *name;
-@property(nonatomic, assign)    float           cash;
 @property(nonatomic, assign)    AOBuilding      *office;
 
 - (id)initWithName:(NSString *)name

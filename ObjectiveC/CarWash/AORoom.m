@@ -11,12 +11,11 @@
 @implementation AORoom
 
 - (id)initRoomWithMaxCountPeople:(uint)maxCountPeople
-                 andCapacityCars:(uint)capacityCars
+
 {
     self = [super init];
     if (nil != self) {
         self.maxCountPeople = maxCountPeople;
-        self.capacityCars = capacityCars;
     }
     return self;
 }
