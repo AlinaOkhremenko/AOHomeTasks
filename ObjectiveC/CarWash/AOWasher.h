@@ -14,7 +14,7 @@
 
 @interface AOWasher : AOStaff
 
-@property(nonatomic, assign)  BOOL    isBusy;
+@property(nonatomic, getter=isBusy)  BOOL    busy;
 @property(nonatomic, assign)  AOCar   *currentCar;
 
 - (id)initWithName:(NSString*)name

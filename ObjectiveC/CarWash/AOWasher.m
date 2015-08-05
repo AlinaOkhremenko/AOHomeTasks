@@ -9,6 +9,7 @@
 #import "AOWasher.h"
 
 
+
 @implementation AOWasher
 
 - (id)initWithName:(NSString *)name
@@ -24,7 +25,19 @@
 }
 
 - (void)performSpecificJob {
-    self.currentCar.condition = AOCarIsClean;
+    [self beginJob];
+    [self doJob];
+    [self finishJob];
+    
 }
+
+- (void)doJob {
+     self.currentCar.condition = AOCarIsClean;
+}
+
+- (void)finishJob {
+
+}
+
 
 @end

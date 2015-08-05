@@ -7,6 +7,10 @@
 //
 
 #import "AOStaff.h"
+@interface AOStaff ()
+
+@property(nonatomic, assign)    AOStaffState   currentState;
+@end
 
 @implementation AOStaff
 
@@ -25,7 +29,29 @@
 }
 
 - (void)performSpecificJob {
-    
+    if (self.currentState == AOStaffStateFree) {
+        self.currentState = AOStaffStateBusy;
+        [self beginJob];
+        [self doJob];
+        [self finishJob];
+        self.currentState = AOStaffStateFree;
+    }
+}
+
+- (void)beginJob {
+    self.state = AOStateBeginWork;
+}
+- (void)doJob {
+    self.state = AOStateMakeWork;
+}
+- (void)finishJob {
+    self.state = AOStateFinishWork;
+}
+
+- (void)mayBeFree {
+    if (self.currentState == AOStaffStateBusy) {
+        self.currentState = AOStateFree;
+    }
 }
 
 @end

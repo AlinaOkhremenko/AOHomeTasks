@@ -14,7 +14,7 @@
 #import "AOCarBox.h"
 #import "AOCar.h"
 
-@interface AOEnterprise : NSObject
+@interface AOEnterprise : NSObject <CarWashObserver>
 
 @property(nonatomic, assign)  AOWasher        *washer;
 @property(nonatomic, assign)  AOAccountant    *accountant;
@@ -22,6 +22,7 @@
 
 - (BOOL)addCar:(AOCar *)car toCarBox:(AOCarBox *)carBox;
 - (BOOL)washTheCar:(AOCar *)car;
-
+- (void)getMoneyFromAccountant: (AOAccountant *)accountant toManager: (AOManager *)manager;
+- (void)valueOfStateChanged:(AOObservable *)observableObject;
 
 @end

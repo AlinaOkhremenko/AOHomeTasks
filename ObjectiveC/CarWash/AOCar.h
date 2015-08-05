@@ -7,14 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AOSubject.h"
+#import "AOObservable.h"
 
 typedef NS_ENUM(NSUInteger, AOCarCleaness){
     AOCarIsDirty,
     AOCarIsClean
 };
 
-@interface AOCar : AOSubject
+@interface AOCar : AOObservable
 
 @property(nonatomic, assign) AOCarCleaness condition;
 

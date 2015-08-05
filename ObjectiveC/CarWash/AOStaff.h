@@ -8,9 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import "AOBuilding.h"
-#import "AOSubject.h"
+#import "AOObservable.h"
+#import "Defines.h"
 
-@interface AOStaff : AOSubject
+typedef NS_ENUM(NSUInteger, AOStaffState) {
+    AOStaffStateBusy,
+    AOStaffStateFree
+};
+
+@interface AOStaff : AOObservable
+@property(nonatomic, readonly)  AOStaffState    currentState;
 @property(nonatomic, assign)    uint            salary;
 @property(nonatomic, copy)      NSString        *experience;
 @property(nonatomic, copy)      NSString        *name;
@@ -20,5 +27,8 @@
      andExperience:(NSString *)experience
        andBuilding:(AOBuilding *)office;
 - (void)performSpecificJob;
-
+- (void)beginJob;
+- (void)doJob;
+- (void)finishJob;
+- (void)mayBeFree;
 @end

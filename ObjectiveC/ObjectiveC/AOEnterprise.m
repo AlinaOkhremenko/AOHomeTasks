@@ -32,16 +32,17 @@
     return NO;
 }
 
+
 - (BOOL)washTheCar:(AOCar *)car {
     
-    if (self.washer.isBusy == NO) {
-        self.washer.isBusy = YES;
+    if (self.washer.busy == NO) {
+        self.washer.busy = YES;
         
         [self.washer performSpecificJob];
         [self.washer getMoneyByPrice:kWashPrice fromObject:car];
         [self.washer giveMoneyByPrice:kWashPrice toObject:self.accountant];
         
-        self.washer.isBusy = NO;
+        self.washer.busy = NO;
         
             return YES;
         
@@ -51,12 +52,13 @@
     }
 }
 
+- (void)getMoneyFromAccountant: (AOAccountant *)accountant toManager: (AOManager *)manager {
+    [self.manager getMoneyByPrice:kWashPrice fromObject: self.accountant];
+}
 
-
-
-
-
-
+- (void)valueOfStateChanged:(AOObservable *)observableObject {
+    NSLog(@"Observable object %@ with state %lu",observableObject,observableObject.state);
+}
 
 
 @end

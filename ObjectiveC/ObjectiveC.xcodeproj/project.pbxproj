@@ -10,7 +10,8 @@
 		C708CF681B6FB324006B540B /* AOAccountant.m in Sources */ = {isa = PBXBuildFile; fileRef = C708CF671B6FB324006B540B /* AOAccountant.m */; };
 		C708CF6B1B6FB35D006B540B /* AOCarBox.m in Sources */ = {isa = PBXBuildFile; fileRef = C708CF6A1B6FB35D006B540B /* AOCarBox.m */; };
 		C708CF6F1B6FC4A8006B540B /* AOEnterprise.m in Sources */ = {isa = PBXBuildFile; fileRef = C708CF6E1B6FC4A8006B540B /* AOEnterprise.m */; };
-		C708CF731B6FD12B006B540B /* AOSubject.m in Sources */ = {isa = PBXBuildFile; fileRef = C708CF721B6FD12B006B540B /* AOSubject.m */; };
+		C708CF731B6FD12B006B540B /* AOObservable.m in Sources */ = {isa = PBXBuildFile; fileRef = C708CF721B6FD12B006B540B /* AOObservable.m */; };
+		C708CF771B728A75006B540B /* AOObservable.m in Sources */ = {isa = PBXBuildFile; fileRef = C708CF721B6FD12B006B540B /* AOObservable.m */; };
 		C7DC11A51B543526007F5ACD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DC11A41B543526007F5ACD /* main.m */; };
 		C7DC11B21B544E09007F5ACD /* AOCreature.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DC11B11B544E09007F5ACD /* AOCreature.m */; };
 		C7DC11CB1B568414007F5ACD /* AOCreatureTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DC11CA1B568414007F5ACD /* AOCreatureTests.m */; };
@@ -69,9 +70,10 @@
 		C708CF6A1B6FB35D006B540B /* AOCarBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AOCarBox.m; sourceTree = "<group>"; };
 		C708CF6D1B6FC4A8006B540B /* AOEnterprise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOEnterprise.h; sourceTree = "<group>"; };
 		C708CF6E1B6FC4A8006B540B /* AOEnterprise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AOEnterprise.m; sourceTree = "<group>"; };
-		C708CF711B6FD12B006B540B /* AOSubject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOSubject.h; sourceTree = "<group>"; };
-		C708CF721B6FD12B006B540B /* AOSubject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AOSubject.m; sourceTree = "<group>"; };
+		C708CF711B6FD12B006B540B /* AOObservable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOObservable.h; sourceTree = "<group>"; };
+		C708CF721B6FD12B006B540B /* AOObservable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AOObservable.m; sourceTree = "<group>"; };
 		C708CF741B70045D006B540B /* Defines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
+		C708CF761B72881A006B540B /* CarWashObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarWashObserver.h; sourceTree = "<group>"; };
 		C7DC11A11B543526007F5ACD /* ObjectiveC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ObjectiveC; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7DC11A41B543526007F5ACD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C7DC11AE1B54389B007F5ACD /* AOCreature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOCreature.h; sourceTree = "<group>"; };
@@ -148,13 +150,22 @@
 			name = AOEnterprise;
 			sourceTree = "<group>";
 		};
-		C708CF701B6FD0EF006B540B /* AOSubject */ = {
+		C708CF701B6FD0EF006B540B /* AOObservable */ = {
 			isa = PBXGroup;
 			children = (
-				C708CF711B6FD12B006B540B /* AOSubject.h */,
-				C708CF721B6FD12B006B540B /* AOSubject.m */,
+				C708CF751B7287E7006B540B /* AOCarWashObserverProtocol */,
+				C708CF711B6FD12B006B540B /* AOObservable.h */,
+				C708CF721B6FD12B006B540B /* AOObservable.m */,
 			);
-			name = AOSubject;
+			name = AOObservable;
+			sourceTree = "<group>";
+		};
+		C708CF751B7287E7006B540B /* AOCarWashObserverProtocol */ = {
+			isa = PBXGroup;
+			children = (
+				C708CF761B72881A006B540B /* CarWashObserver.h */,
+			);
+			name = AOCarWashObserverProtocol;
 			sourceTree = "<group>";
 		};
 		C7DC11981B543526007F5ACD = {
@@ -246,7 +257,7 @@
 		C7E181701B5BCF49008CD7AE /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				C708CF701B6FD0EF006B540B /* AOSubject */,
+				C708CF701B6FD0EF006B540B /* AOObservable */,
 				C708CF6C1B6FC483006B540B /* AOEnterprise */,
 				C7EDE0171B656CFE0036E63E /* AOMoneyFlowProtocol */,
 				C7EDE0111B6568CA0036E63E /* AOCar */,
@@ -469,6 +480,7 @@
 				C7E181681B5AE618008CD7AE /* AOCreatureMale.m in Sources */,
 				C7E1816C1B5AFA20008CD7AE /* AOCreatureNSObjectCategory.m in Sources */,
 				C7DC11B21B544E09007F5ACD /* AOCreature.m in Sources */,
+				C708CF771B728A75006B540B /* AOObservable.m in Sources */,
 				C7DC11A51B543526007F5ACD /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -505,7 +517,7 @@
 				C7E181841B5BD844008CD7AE /* AORoom.m in Sources */,
 				C7E1818C1B5BDD1C008CD7AE /* AOCarWashBuilding.m in Sources */,
 				C7E181921B5BE524008CD7AE /* AOStaff.m in Sources */,
-				C708CF731B6FD12B006B540B /* AOSubject.m in Sources */,
+				C708CF731B6FD12B006B540B /* AOObservable.m in Sources */,
 				C7E181891B5BDCF1008CD7AE /* AOAdminBuilding.m in Sources */,
 				C7E181981B5C3605008CD7AE /* AOWasher.m in Sources */,
 				C7E1819B1B5C3B96008CD7AE /* AOManager.m in Sources */,
