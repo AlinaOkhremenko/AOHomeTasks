@@ -9,6 +9,6 @@
 #ifndef ObjectiveC_Defines_h
 #define ObjectiveC_Defines_h
 
-#define kWashPrice 50
+#define kWashPrice 50 
 
 #endif

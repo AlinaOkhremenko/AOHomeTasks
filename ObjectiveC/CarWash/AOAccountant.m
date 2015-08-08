@@ -10,4 +10,14 @@
 
 @implementation AOAccountant
 
+- (void)doJob {
+    [super doJob];
+    
+}
+
+- (void)finishJob {
+    [super finishJob];
+    NSLog(@"Ready to give money to manager");
+}
+
 @end

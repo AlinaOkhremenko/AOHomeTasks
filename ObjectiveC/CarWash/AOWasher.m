@@ -8,11 +8,16 @@
 
 #import "AOWasher.h"
 
-
-
 @implementation AOWasher
 
-- (id)initWithName:(NSString *)name
+#pragma -
+#pragma mark Initializations
+
+- (instancetype)init {
+    return self = [super initWithName:nil andExperience:nil andBuilding:nil];
+}
+
+- (instancetype)initWithName:(NSString *)name
      andExperience:(NSString *)experience
        andBuilding:(AOBuilding *)office
 {
@@ -24,20 +29,17 @@
     return self;
 }
 
-- (void)performSpecificJob {
-    [self beginJob];
-    [self doJob];
-    [self finishJob];
-    
-}
+#pragma -
+#pragma Public
 
 - (void)doJob {
-     self.currentCar.condition = AOCarIsClean;
+    [super doJob];
+    self.currentCar.condition = AOCarIsClean;
+    
 }
-
 - (void)finishJob {
-
+    [super finishJob];
+    NSLog(@"I've washed the car");
 }
-
 
 @end

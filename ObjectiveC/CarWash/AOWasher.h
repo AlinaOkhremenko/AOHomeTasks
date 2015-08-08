@@ -14,13 +14,13 @@
 
 @interface AOWasher : AOStaff
 
-@property(nonatomic, getter=isBusy)  BOOL    busy;
-@property(nonatomic, assign)  AOCar   *currentCar;
+@property(nonatomic, readonly, getter=isBusy)  BOOL    busy;
+@property(nonatomic, assign)                   AOCar   *currentCar;
 
 - (id)initWithName:(NSString*)name
      andExperience:(NSString*)experience
        andBuilding:(AOBuilding *)office;
 
-- (void)performSpecificJob;
-
+- (void)doJob;
+- (void)finishJob;
 @end

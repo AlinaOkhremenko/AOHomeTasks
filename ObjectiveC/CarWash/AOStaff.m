@@ -14,6 +14,13 @@
 
 @implementation AOStaff
 
+- (void)dealloc {
+    self.name = nil;
+    self.experience = nil;
+    
+    [super dealloc];
+}
+
 - (id)initWithName:(NSString *)name
      andExperience:(NSString *)experience
        andBuilding:(AOBuilding *)office
@@ -29,28 +36,29 @@
 }
 
 - (void)performSpecificJob {
-    if (self.currentState == AOStaffStateFree) {
-        self.currentState = AOStaffStateBusy;
         [self beginJob];
         [self doJob];
         [self finishJob];
-        self.currentState = AOStaffStateFree;
-    }
+    
 }
 
 - (void)beginJob {
+    if(self.currentState == AOStaffStateFree) {
     self.state = AOStateBeginWork;
+    self.currentState = AOStaffStateBusy;
+    }
 }
 - (void)doJob {
     self.state = AOStateMakeWork;
 }
 - (void)finishJob {
     self.state = AOStateFinishWork;
+    self.currentState = AOStaffStateFree;
 }
 
 - (void)mayBeFree {
     if (self.currentState == AOStaffStateBusy) {
-        self.currentState = AOStateFree;
+        self.currentState = AOStaffStateFree;
     }
 }
 

@@ -153,6 +153,7 @@
 		C708CF701B6FD0EF006B540B /* AOObservable */ = {
 			isa = PBXGroup;
 			children = (
+				C7EDE0171B656CFE0036E63E /* AOMoneyFlowProtocol */,
 				C708CF751B7287E7006B540B /* AOCarWashObserverProtocol */,
 				C708CF711B6FD12B006B540B /* AOObservable.h */,
 				C708CF721B6FD12B006B540B /* AOObservable.m */,
@@ -259,7 +260,6 @@
 			children = (
 				C708CF701B6FD0EF006B540B /* AOObservable */,
 				C708CF6C1B6FC483006B540B /* AOEnterprise */,
-				C7EDE0171B656CFE0036E63E /* AOMoneyFlowProtocol */,
 				C7EDE0111B6568CA0036E63E /* AOCar */,
 				C7EDE0101B6568A40036E63E /* AOStaff */,
 				C7EDE00F1B6568920036E63E /* AORoom */,

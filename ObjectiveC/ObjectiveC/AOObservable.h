@@ -11,7 +11,6 @@
 #import "CarWashObserver.h"
 
 typedef NS_ENUM(NSUInteger, AOState){
-    AOStateFree,
     AOStateBeginWork,
     AOStateMakeWork,
     AOStateFinishWork,
@@ -19,10 +18,12 @@ typedef NS_ENUM(NSUInteger, AOState){
 
 @interface AOObservable : NSObject <MoneyFlow>
 
+@property(nonatomic, assign)    float       account;
+
 @property(nonatomic, readonly)  NSArray     *observers;
 @property(nonatomic, assign)    AOState     state;
 
-@property(nonatomic, assign)    float       account;
+
 
 -(void)addObserver:(id<CarWashObserver>)observer;
 -(void)removeObserver:(id<CarWashObserver>)observer;

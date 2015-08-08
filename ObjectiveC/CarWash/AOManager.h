@@ -12,4 +12,6 @@
 
 @interface AOManager : AOStaff 
 
+- (void)finishJob;
+
 @end

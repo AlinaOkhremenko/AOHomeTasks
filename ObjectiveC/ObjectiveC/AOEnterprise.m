@@ -9,56 +9,92 @@
 #import "AOEnterprise.h"
 #import "Defines.h"
 
+
+@interface AOEnterprise ()
+
+@property(nonatomic, retain)    NSMutableArray      *employees;
+
+- (void)hireEmployees:(AOStaff *)employee;
+
+@end
+
+
 @implementation AOEnterprise
 
+#pragma -
+#pragma mark Deallocations and Initializations
+
 - (void)dealloc {
-    self.manager = nil;
-    self.accountant = nil;
-    self.washer = nil;
+    self.employees = nil;
   
     [super dealloc];
 }
 
+- (instancetype)init {
+    self = [super init];
+    if (nil != self) {
+        self.employees = [[[NSMutableArray alloc] init] autorelease];
+    }
+    return self;
+}
 
-- (BOOL)addCar:(AOCar *)car
-      toCarBox:(AOCarBox *)carBox
-{
-    if (car.condition == AOCarIsDirty && carBox.isFull == NO) {
-        carBox.currentCar = car;
+#pragma -
+#pragma mark Public
+
+- (BOOL)washTheCar:(AOCar *)car {
+    if (car.condition == AOCarIsDirty){
+        AOStaff *washer = [self getFreeEmployeeOfType:[AOWasher class]];
+        if (nil != washer) {
+        [washer performSpecificJob];
         
         return YES;
     }
-    
+    }
     return NO;
 }
 
-
-- (BOOL)washTheCar:(AOCar *)car {
-    
-    if (self.washer.busy == NO) {
-        self.washer.busy = YES;
-        
-        [self.washer performSpecificJob];
-        [self.washer getMoneyByPrice:kWashPrice fromObject:car];
-        [self.washer giveMoneyByPrice:kWashPrice toObject:self.accountant];
-        
-        self.washer.busy = NO;
-        
-            return YES;
-        
-        } else {
-    
-        return NO;
+- (AOStaff *)getFreeEmployeeOfType:(Class)employeeOfType {
+    for(AOStaff *employee in self.employees) {
+        if ([employee isKindOfClass:employeeOfType] && (employee.state == AOStaffStateFree)){
+                return employee;
+        }
     }
+    
+    return nil;
 }
 
-- (void)getMoneyFromAccountant: (AOAccountant *)accountant toManager: (AOManager *)manager {
-    [self.manager getMoneyByPrice:kWashPrice fromObject: self.accountant];
-}
+
+#pragma -
+#pragma mark Protocol CarWashObserver
 
 - (void)valueOfStateChanged:(AOObservable *)observableObject {
-    NSLog(@"Observable object %@ with state %lu",observableObject,observableObject.state);
+    
+    if ([observableObject isKindOfClass:[AOWasher class]]) {
+        if (observableObject.state == AOStateFinishWork) {
+            AOWasher *washer = (AOWasher *)observableObject;
+            [washer getMoneyByPrice:kWashPrice fromObject:washer.currentCar];
+            [washer giveMoneyByPrice:kWashPrice toObject:[self getFreeEmployeeOfType:[AOAccountant class]]];
+        }
+    }
+    else if ([observableObject isKindOfClass:[AOAccountant class]]) {
+        if (observableObject.state == AOStateFinishWork) {
+            AOAccountant *accountant = (AOAccountant*)observableObject;
+            [accountant giveMoneyByPrice:kWashPrice toObject:[self getFreeEmployeeOfType:[AOManager class]]];
+        }
+    }
+    else if ([observableObject isKindOfClass:[AOManager class]]) {
+        if (observableObject.state == AOStateFinishWork) {
+            
+        }
+    }
+    
 }
 
+#pragma -
+#pragma mark Private
+
+- (void)hireEmployees:(AOStaff *)employee {
+    [self.employees addObject:employee];
+}
 
 @end

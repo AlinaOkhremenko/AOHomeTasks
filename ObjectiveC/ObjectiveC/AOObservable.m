@@ -9,11 +9,14 @@
 #import "AOObservable.h"
 @interface AOObservable ()
 
-@property(nonatomic, retain)    NSMutableArray      *mutableObservers;
+@property(nonatomic, retain)    NSHashTable      *mutableObservers;
 
 @end
 
 @implementation AOObservable
+
+#pragma -
+#pragma mark Deallocations and Initializations
 
 - (void)dealloc {
     self.mutableObservers = nil;
@@ -24,13 +27,13 @@
 - (instancetype)init {
     self = [super init];
     if(nil != self) {
-        self.mutableObservers = [[[NSMutableArray alloc] init] autorelease];
+        self.mutableObservers = [NSHashTable weakObjectsHashTable];
     }
     return self;
 }
 
-- (NSArray*)observers {
-    return [[[self.mutableObservers copy] allObjects] autorelease];
+- (NSArray *)observers {
+    return [self.mutableObservers allObjects];
 }
 
 - (void)setState:(AOState)state {
@@ -42,16 +45,20 @@
     }
 }
 
+#pragma -
+#pragma mark Public 
+
 - (void)addObserver:(id<CarWashObserver>)observer {
-    if (![self.mutableObservers containsObject:observer]) {
     [self.mutableObservers addObject:observer];
-    }
+    
 }
 
 - (void)removeObserver:(id<CarWashObserver>)observer {
     [self.mutableObservers removeObject:observer];
 }
 
+#pragma -
+#pragma mark Protocol MoneyFlow 
 
 - (BOOL)getMoneyByPrice:(float)price
              fromObject:(id<MoneyFlow>)object
@@ -75,7 +82,7 @@
         
         return YES;
     }
-        return NO;
+    return NO;
 }
 
 - (void)debitAmount:(float)amount {

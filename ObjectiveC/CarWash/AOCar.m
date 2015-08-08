@@ -10,6 +10,9 @@
 
 @implementation AOCar
 
+#pragma -
+#pragma mark Initializations
+
 - (id)initWithMoney:(float)money {
     self = [super init];
     if (nil != self) {

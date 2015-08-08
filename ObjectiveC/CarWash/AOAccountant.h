@@ -11,4 +11,6 @@
 
 @interface AOAccountant : AOStaff
 
+- (void)finishJob;
+
 @end

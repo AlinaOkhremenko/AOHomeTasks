@@ -10,4 +10,9 @@
 
 @implementation AOManager
 
+- (void)finishJob {
+    [super finishJob];
+    NSLog(@"Finally this working day is over");
+}
+
 @end

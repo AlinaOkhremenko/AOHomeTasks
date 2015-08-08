@@ -12,9 +12,9 @@
 
 @interface AOCarBox : AORoom
 
-@property(nonatomic, assign)    uint    capacityCars;
+@property(nonatomic, assign)                   uint    capacityCars;
 @property(nonatomic, readonly, getter=isFull)  BOOL    full;
-@property(nonatomic, assign)    AOCar   *currentCar;
+@property(nonatomic, assign)                   AOCar   *currentCar;
 
 - (id)initCarBoxWithCapacity;
 

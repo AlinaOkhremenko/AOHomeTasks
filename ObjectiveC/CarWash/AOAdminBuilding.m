@@ -13,7 +13,7 @@
 
 - (id)initWithRoom:(AORoom *)room {
     self = [super initWithRooms:@[room]];
-    if (self) {
+    if (nil != self) {
     }
     
     return self;
