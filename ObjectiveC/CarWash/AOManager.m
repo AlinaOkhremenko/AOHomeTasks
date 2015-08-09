@@ -10,6 +10,8 @@
 
 @implementation AOManager
 
+#pragma mark - Public Methods
+
 - (void)finishJob {
     [super finishJob];
     NSLog(@"Finally this working day is over");

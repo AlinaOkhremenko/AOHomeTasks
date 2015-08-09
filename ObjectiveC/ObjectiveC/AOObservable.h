@@ -17,16 +17,12 @@ typedef NS_ENUM(NSUInteger, AOState){
 };
 
 @interface AOObservable : NSObject <MoneyFlow>
-
 @property(nonatomic, assign)    float       account;
 
 @property(nonatomic, readonly)  NSArray     *observers;
 @property(nonatomic, assign)    AOState     state;
 
-
-
 -(void)addObserver:(id<CarWashObserver>)observer;
 -(void)removeObserver:(id<CarWashObserver>)observer;
-
 
 @end

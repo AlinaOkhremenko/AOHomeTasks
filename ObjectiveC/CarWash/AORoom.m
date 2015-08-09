@@ -10,15 +10,14 @@
 
 @implementation AORoom
 
-- (id)initRoomWithMaxCountPeople:(uint)maxCountPeople
+#pragma mark - Initialization Methods
 
-{
+- (id)initRoomWithMaxCountPeople:(uint)maxCountPeople {
     self = [super init];
     if (nil != self) {
         self.maxCountPeople = maxCountPeople;
     }
     return self;
 }
-
 
 @end

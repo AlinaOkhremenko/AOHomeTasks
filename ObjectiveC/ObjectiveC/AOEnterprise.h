@@ -17,5 +17,7 @@
 @interface AOEnterprise : NSObject <CarWashObserver>
 
 - (BOOL)washTheCar:(AOCar *)car;
+- (AOStaff *)getFreeEmployeeOfType:(Class)employeeOfType;
+- (void)hireEmployees:(AOStaff *)employee;
 
 @end

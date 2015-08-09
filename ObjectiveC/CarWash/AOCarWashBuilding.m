@@ -10,16 +10,20 @@
 
 @implementation AOCarWashBuilding
 
+#pragma mark - Initialization Methods
+
 - (id)initWithRoom:(AORoom *)room
           andPrice:(float)price
 {
     self = [super initWithRooms:@[room]];
-    if (self) {
+    if (nil != self) {
         self.price = price;
     }
     
     return self;
 }
+
+#pragma mark - Accessors
 
 - (AOBuildingType)type {
     

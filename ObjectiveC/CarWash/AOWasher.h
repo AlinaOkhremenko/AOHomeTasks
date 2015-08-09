@@ -18,9 +18,9 @@
 @property(nonatomic, assign)                   AOCar   *currentCar;
 
 - (id)initWithName:(NSString*)name
-     andExperience:(NSString*)experience
-       andBuilding:(AOBuilding *)office;
+     andExperience:(NSString*)experience;
 
 - (void)doJob;
 - (void)finishJob;
+
 @end

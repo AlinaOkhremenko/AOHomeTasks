@@ -10,8 +10,7 @@
 
 @implementation AOCar
 
-#pragma -
-#pragma mark Initializations
+#pragma mark - Initialization Methods
 
 - (id)initWithMoney:(float)money {
     self = [super init];

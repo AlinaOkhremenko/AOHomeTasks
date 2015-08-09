@@ -8,17 +8,24 @@
 
 #import "AOBuilding.h"
 @interface AOBuilding()
-
-@property(nonatomic, strong) NSMutableArray *mutableRooms;
+@property(nonatomic, retain)    NSMutableArray      *mutableRooms;
 
 @end
 
 @implementation AOBuilding
 
+- (void)dealloc {
+    self.mutableRooms = nil;
+    self.adress = nil;
+    
+    [super dealloc];
+}
+
+
 - (id)initWithRooms:(NSArray *)rooms {
     self =  [super init];
     if (nil != self) {
-        self.mutableRooms = [NSMutableArray new];
+        self.mutableRooms = [[[NSMutableArray alloc] init] autorelease];
     }
     
     return self;
@@ -26,12 +33,11 @@
 
 - (void)addRoom:(AORoom *)room {
     if (nil == room) {
-    [self.mutableRooms addObject:room];
+        [self.mutableRooms addObject:room];
     }
 }
 
 - (void)removeRoom:(AORoom *)room {
-    
     [self.mutableRooms removeObject:room];
 }
 

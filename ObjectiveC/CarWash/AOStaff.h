@@ -12,8 +12,9 @@
 #import "Defines.h"
 
 typedef NS_ENUM(NSUInteger, AOStaffState) {
-    AOStaffStateBusy,
-    AOStaffStateFree
+    AOStaffStateFree,
+    AOStaffStateBusy
+    
 };
 
 @interface AOStaff : AOObservable
@@ -21,14 +22,14 @@ typedef NS_ENUM(NSUInteger, AOStaffState) {
 @property(nonatomic, assign)    uint            salary;
 @property(nonatomic, copy)      NSString        *experience;
 @property(nonatomic, copy)      NSString        *name;
-@property(nonatomic, assign)    AOBuilding      *office;
 
 - (id)initWithName:(NSString *)name
-     andExperience:(NSString *)experience
-       andBuilding:(AOBuilding *)office;
+     andExperience:(NSString *)experience;
+
 - (void)performSpecificJob;
 - (void)beginJob;
 - (void)doJob;
 - (void)finishJob;
 - (void)mayBeFree;
+
 @end

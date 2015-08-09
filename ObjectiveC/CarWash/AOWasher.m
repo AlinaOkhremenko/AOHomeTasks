@@ -10,27 +10,16 @@
 
 @implementation AOWasher
 
-#pragma -
-#pragma mark Initializations
-
-- (instancetype)init {
-    return self = [super initWithName:nil andExperience:nil andBuilding:nil];
-}
+#pragma mark - Initialization Methods
 
 - (instancetype)initWithName:(NSString *)name
-     andExperience:(NSString *)experience
-       andBuilding:(AOBuilding *)office
+               andExperience:(NSString *)experience
 {
-    self = [super initWithName:name andExperience:experience andBuilding:office];
-    if (AOBuildingCarWash != office.type) {
-        NSAssert(AOBuildingCarWash == office.type, @"initialize with CarWash type");
-    }
+    return self = [super initWithName:name andExperience:experience];
     
-    return self;
 }
 
-#pragma -
-#pragma Public
+#pragma mark - Public Methods
 
 - (void)doJob {
     [super doJob];

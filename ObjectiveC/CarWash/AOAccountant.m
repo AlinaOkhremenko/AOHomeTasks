@@ -10,10 +10,7 @@
 
 @implementation AOAccountant
 
-- (void)doJob {
-    [super doJob];
-    
-}
+#pragma mark - Public Methods
 
 - (void)finishJob {
     [super finishJob];

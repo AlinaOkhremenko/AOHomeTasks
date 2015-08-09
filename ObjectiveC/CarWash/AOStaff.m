@@ -8,11 +8,13 @@
 
 #import "AOStaff.h"
 @interface AOStaff ()
-
 @property(nonatomic, assign)    AOStaffState   currentState;
+
 @end
 
 @implementation AOStaff
+
+#pragma mark -  Deallocation and Initialization Methods
 
 - (void)dealloc {
     self.name = nil;
@@ -23,34 +25,35 @@
 
 - (id)initWithName:(NSString *)name
      andExperience:(NSString *)experience
-       andBuilding:(AOBuilding *)office
 {
     self = [super init];
     if (nil != self) {
         self.name = name;
         self.experience = experience;
-        self.office = office;
-        
     }
     return self;
 }
 
+#pragma mark - Public Methods
+
 - (void)performSpecificJob {
-        [self beginJob];
-        [self doJob];
-        [self finishJob];
+    [self beginJob];
+    [self doJob];
+    [self finishJob];
     
 }
 
 - (void)beginJob {
     if(self.currentState == AOStaffStateFree) {
-    self.state = AOStateBeginWork;
-    self.currentState = AOStaffStateBusy;
+        self.state = AOStateBeginWork;
+        self.currentState = AOStaffStateBusy;
     }
 }
+
 - (void)doJob {
     self.state = AOStateMakeWork;
 }
+
 - (void)finishJob {
     self.state = AOStateFinishWork;
     self.currentState = AOStaffStateFree;

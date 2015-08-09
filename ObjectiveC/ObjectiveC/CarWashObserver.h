@@ -14,5 +14,4 @@
 
 - (void)valueOfStateChanged:(AOObservable *)observableObject;
 
-
 @end
