@@ -10,7 +10,8 @@
 
 @implementation AOAccountant
 
-#pragma mark - Public Methods
+#pragma mark -
+#pragma mark Public Methods
 
 - (void)finishJob {
     [super finishJob];

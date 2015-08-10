@@ -10,6 +10,7 @@
 
 @implementation AOAdminBuilding
 
+#pragma mark -
 #pragma mark Initialization Methods
 
 - (id)initWithRoom:(AORoom *)room {
@@ -20,7 +21,8 @@
     return self;
 }
 
-#pragma mark - Accessors
+#pragma mark -
+#pragma mark Accessors
 
 - (AOBuildingType)type {
     return AOBuildingAdministrative;

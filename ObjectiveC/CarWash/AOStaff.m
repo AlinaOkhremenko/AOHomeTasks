@@ -14,7 +14,8 @@
 
 @implementation AOStaff
 
-#pragma mark -  Deallocation and Initialization Methods
+#pragma mark -
+#pragma mark Deallocation and Initialization Methods
 
 - (void)dealloc {
     self.name = nil;
@@ -37,10 +38,11 @@
 #pragma mark - Public Methods
 
 - (void)performSpecificJob {
+    if(self.currentState == AOStaffStateFree) {
     [self beginJob];
     [self doJob];
     [self finishJob];
-    
+    }
 }
 
 - (void)beginJob {

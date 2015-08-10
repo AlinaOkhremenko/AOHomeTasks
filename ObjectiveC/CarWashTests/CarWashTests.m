@@ -21,6 +21,8 @@
 @implementation CarWashTests
 
 - (void)setUp {
+    
+    
     [super setUp];
     
 }
@@ -44,13 +46,13 @@
     AOEnterprise *enterprise = [[AOEnterprise alloc] init];
     
     //hire washer
-    [enterprise hireEmployees:washer];
+    [enterprise hireEmployee:washer];
     
     //hire accountant
-    [enterprise hireEmployees:accountant];
+    [enterprise hireEmployee:accountant];
     
     //hire manager
-    [enterprise hireEmployees:manager];
+    [enterprise hireEmployee:manager];
     
     //add enterprise to observers of employees
     [washer addObserver:enterprise];

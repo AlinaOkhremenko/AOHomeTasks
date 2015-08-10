@@ -12,6 +12,6 @@
 
 @protocol CarWashObserver <NSObject>
 
-- (void)valueOfStateChanged:(AOObservable *)observableObject;
+- (void)objectDidChangeState:(AOObservable *)observableObject;
 
 @end

@@ -14,13 +14,14 @@
 
 @property(nonatomic, retain)    NSMutableArray      *employees;
 
-- (void)hireEmployees:(AOStaff *)employee;
+- (void)hireEmployee:(AOStaff *)employee;
 
 @end
 
 @implementation AOEnterprise
 
-#pragma mark - Deallocation and Initialization Methods
+#pragma mark -
+#pragma mark Deallocation and Initialization Methods
 
 - (void)dealloc {
     self.employees = nil;
@@ -36,11 +37,12 @@
     return self;
 }
 
-#pragma mark -  Public Methods
+#pragma mark -
+#pragma mark Public Methods
 
 - (BOOL)washTheCar:(AOCar *)car {
     if (car.condition == AOCarIsDirty){
-        AOWasher *washer = (AOWasher *)[self getFreeEmployeeOfType:[AOWasher class]];
+        AOWasher *washer = (AOWasher *)[self freeEmployeeOfClass:[AOWasher class]];
         if (nil != washer) {
             washer.currentCar = car;
             [washer performSpecificJob];
@@ -51,8 +53,8 @@
     return NO;
 }
 
-- (AOStaff *)getFreeEmployeeOfType:(Class)employeeOfType {
-    for(AOStaff *employee in self.employees) {
+- (AOStaff *)freeEmployeeOfClass:(Class)employeeOfType {
+    for (AOStaff *employee in self.employees) {
         if ([employee isKindOfClass:employeeOfType] &&
             (employee.currentState == AOStaffStateFree))
         {
@@ -63,28 +65,51 @@
     return nil;
 }
 
-- (void)hireEmployees:(AOStaff *)employee {
+- (void)hireEmployee:(AOStaff *)employee {
     [self.employees addObject:employee];
 }
 
-#pragma mark - Protocol CarWashObserver Methods
 
-- (void)valueOfStateChanged:(AOObservable *)observableObject {
-    
+#pragma mark -
+#pragma mark Protocol CarWashObserver Methods
+
+- (void)objectDidChangeState:(AOObservable *)observableObject {
     if ([observableObject isKindOfClass:[AOWasher class]]) {
-        if (observableObject.state == AOStateFinishWork) {
-            AOWasher *washer = (AOWasher *)observableObject;
-            [washer getMoneyByPrice:kWashPrice fromObject:washer.currentCar];
-            [washer giveMoneyByPrice:kWashPrice toObject:[self getFreeEmployeeOfType:[AOAccountant class]]];
-        }
+        AOWasher *washer = (AOWasher*)observableObject;
+        [self handleWasherChangedValue:washer];
     }
     else if ([observableObject isKindOfClass:[AOAccountant class]]) {
-        if (observableObject.state == AOStateFinishWork) {
-            AOAccountant *accountant = (AOAccountant*)observableObject;
-            [accountant giveMoneyByPrice:kWashPrice toObject:[self getFreeEmployeeOfType:[AOManager class]]];
+        AOAccountant *accountant = (AOAccountant*)observableObject;
+        [self handleAccountantChangedValue:accountant];
+    }
+    else if ([observableObject isKindOfClass:[AOManager class]]) {
+        AOManager *manager = (AOManager *)observableObject;
+        [self handleManagerChangedValue:manager];
+    }
+}
+
+#pragma mark -
+#pragma mark Private Methods
+
+- (void)handleWasherChangedValue:(AOWasher*)washer {
+    if (washer.state == AOStateFinishWork) {
+        [washer getMoneyByPrice:kWashPrice fromObject:washer.currentCar];
+        AOAccountant *freeAccountant = (AOAccountant*)[self freeEmployeeOfClass:[AOAccountant class]];
+        if (nil != freeAccountant) {
+            [washer giveMoneyByPrice:kWashPrice toObject:freeAccountant];
         }
     }
+}
+
+- (void)handleAccountantChangedValue:(AOAccountant*)accountant {
+    if (accountant.state == AOStateFinishWork) {
+        AOManager *freeManager = (AOManager *)[self freeEmployeeOfClass:[AOManager class]];
+        [accountant giveMoneyByPrice:kWashPrice toObject:freeManager];
+    }
     
+}
+
+- (void)handleManagerChangedValue:(AOManager*)manager {
 }
 
 @end

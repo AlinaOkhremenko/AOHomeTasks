@@ -9,8 +9,8 @@
 #import "AOCar.h"
 
 @implementation AOCar
-
-#pragma mark - Initialization Methods
+#pragma mark -
+#pragma mark Initialization Methods
 
 - (id)initWithMoney:(float)money {
     self = [super init];

@@ -10,7 +10,8 @@
 
 @implementation AOCarBox
 
-#pragma mark - Initialization Methods
+#pragma mark -
+#pragma mark Initialization Methods
 
 - (id)initCarBoxWithCapacity {
     self = [super init];
@@ -20,7 +21,8 @@
     return self;
 }
 
-#pragma mark - Accessors
+#pragma mark -
+#pragma mark Accessors
 
 - (BOOL)isFull {
     return (nil != self.currentCar);

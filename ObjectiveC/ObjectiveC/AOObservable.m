@@ -15,7 +15,8 @@
 
 @implementation AOObservable
 
-#pragma mark - Deallocations and Initializations Methods
+#pragma mark -
+#pragma mark Deallocation and Initialization Methods
 
 - (void)dealloc {
     self.mutableObservers = nil;
@@ -39,13 +40,13 @@
     if (_state != state) {
         _state = state;
         for (id<CarWashObserver> observerObject in self.observers) {
-            [observerObject valueOfStateChanged:self];
+            [observerObject objectDidChangeState:self];
         }
     }
 }
 
-
-#pragma mark - Public Methods
+#pragma mark -
+#pragma mark  Public Methods
 
 - (void)addObserver:(id<CarWashObserver>)observer {
     [self.mutableObservers addObject:observer];
@@ -56,7 +57,8 @@
     [self.mutableObservers removeObject:observer];
 }
 
-#pragma mark - Protocol MoneyFlow Methods
+#pragma mark -
+#pragma mark Protocol MoneyFlow Methods
 
 - (BOOL)getMoneyByPrice:(float)price
              fromObject:(id<MoneyFlow>)object

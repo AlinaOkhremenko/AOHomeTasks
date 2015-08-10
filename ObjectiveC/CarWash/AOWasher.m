@@ -10,7 +10,8 @@
 
 @implementation AOWasher
 
-#pragma mark - Initialization Methods
+#pragma mark -
+#pragma mark Initialization Methods
 
 - (instancetype)initWithName:(NSString *)name
                andExperience:(NSString *)experience
@@ -19,7 +20,8 @@
     
 }
 
-#pragma mark - Public Methods
+#pragma mark -
+#pragma mark Public Methods
 
 - (void)doJob {
     [super doJob];
