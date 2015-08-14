@@ -20,6 +20,7 @@
 - (id)initWithName:(NSString*)name
      andExperience:(NSString*)experience;
 
+- (void)performSpecificJobWithCar:(AOCar*)car;
 - (void)doJob;
 - (void)finishJob;
 

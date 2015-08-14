@@ -23,6 +23,11 @@
 #pragma mark -
 #pragma mark Public Methods
 
+- (void)performSpecificJobWithCar:(AOCar*)car {
+    self.currentCar = car;
+    [super performSpecificJob];
+}
+
 - (void)doJob {
     [super doJob];
     self.currentCar.condition = AOCarIsClean;

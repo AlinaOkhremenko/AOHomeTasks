@@ -35,21 +35,24 @@
     return self;
 }
 
+#pragma mark -
 #pragma mark - Public Methods
 
 - (void)performSpecificJob {
-    if(self.currentState == AOStaffStateFree) {
+    if (self.currentState == AOStaffStateFree) {
     [self beginJob];
     [self doJob];
     [self finishJob];
     }
 }
 
-- (void)beginJob {
-    if(self.currentState == AOStaffStateFree) {
+- (BOOL)beginJob {
+    if (self.currentState == AOStaffStateFree) {
         self.state = AOStateBeginWork;
         self.currentState = AOStaffStateBusy;
+        return YES;
     }
+    return NO;
 }
 
 - (void)doJob {
@@ -57,7 +60,9 @@
 }
 
 - (void)finishJob {
-    self.state = AOStateFinishWork;
+    [self performSelectorOnMainThread:@selector(setState:)
+                           withObject:@(AOStateFinishWork)
+                        waitUntilDone:NO];
     self.currentState = AOStaffStateFree;
 }
 

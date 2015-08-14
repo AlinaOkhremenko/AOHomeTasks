@@ -7,12 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AOWasher.h"
 #import "AOStaff.h"
-#import "AOManager.h"
-#import "AOAccountant.h"
-#import "AOCarBox.h"
 #import "AOCar.h"
+#import "AOWasher.h"
+#import "AOQueue.h"
+#import "AOAccountant.h"
+#import "AOManager.h"
 
 @interface AOEnterprise : NSObject <CarWashObserver>
 

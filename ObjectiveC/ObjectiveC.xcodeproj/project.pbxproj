@@ -25,6 +25,7 @@
 		C708CF9E1B779AF2006B540B /* AOAdminBuilding.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E181881B5BDCF1008CD7AE /* AOAdminBuilding.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C708CF9F1B779AF2006B540B /* AOCarWashBuilding.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E1818B1B5BDD1B008CD7AE /* AOCarWashBuilding.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C708CFA01B779AF2006B540B /* AOBuilding.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E181851B5BDA1D008CD7AE /* AOBuilding.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C7552C561B7DD5F5005B1D21 /* AOQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = C7552C551B7DD5F5005B1D21 /* AOQueue.m */; };
 		C7DC11A51B543526007F5ACD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DC11A41B543526007F5ACD /* main.m */; };
 		C7DC11B21B544E09007F5ACD /* AOCreature.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DC11B11B544E09007F5ACD /* AOCreature.m */; };
 		C7DC11CB1B568414007F5ACD /* AOCreatureTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DC11CA1B568414007F5ACD /* AOCreatureTests.m */; };
@@ -91,6 +92,8 @@
 		C708CF8C1B77995D006B540B /* CarWashTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CarWashTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C708CF8F1B77995D006B540B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C708CF901B77995D006B540B /* CarWashTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarWashTests.m; sourceTree = "<group>"; };
+		C7552C541B7DD5F5005B1D21 /* AOQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOQueue.h; sourceTree = "<group>"; };
+		C7552C551B7DD5F5005B1D21 /* AOQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AOQueue.m; sourceTree = "<group>"; };
 		C7DC11A11B543526007F5ACD /* ObjectiveC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ObjectiveC; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7DC11A41B543526007F5ACD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C7DC11AE1B54389B007F5ACD /* AOCreature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOCreature.h; sourceTree = "<group>"; };
@@ -210,6 +213,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		C7552C531B7BD670005B1D21 /* AOQueue */ = {
+			isa = PBXGroup;
+			children = (
+				C7552C541B7DD5F5005B1D21 /* AOQueue.h */,
+				C7552C551B7DD5F5005B1D21 /* AOQueue.m */,
+			);
+			name = AOQueue;
+			sourceTree = "<group>";
+		};
 		C7DC11981B543526007F5ACD = {
 			isa = PBXGroup;
 			children = (
@@ -302,6 +314,7 @@
 		C7E181701B5BCF49008CD7AE /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				C7552C531B7BD670005B1D21 /* AOQueue */,
 				C708CF701B6FD0EF006B540B /* AOObservable */,
 				C708CF6C1B6FC483006B540B /* AOEnterprise */,
 				C7EDE0111B6568CA0036E63E /* AOCar */,
@@ -601,6 +614,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7EDE0161B656A460036E63E /* main.m in Sources */,
+				C7552C561B7DD5F5005B1D21 /* AOQueue.m in Sources */,
 				C708CF6B1B6FB35D006B540B /* AOCarBox.m in Sources */,
 				C708CF6F1B6FC4A8006B540B /* AOEnterprise.m in Sources */,
 				C7E181861B5BDA1D008CD7AE /* AOBuilding.m in Sources */,
@@ -828,6 +842,7 @@
 				C708CF941B77995D006B540B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C7DC119C1B543526007F5ACD /* Build configuration list for PBXProject "ObjectiveC" */ = {
 			isa = XCConfigurationList;

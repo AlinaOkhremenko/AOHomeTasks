@@ -13,6 +13,7 @@
 @interface AOEnterprise ()
 
 @property(nonatomic, retain)    NSMutableArray      *employees;
+@property(nonatomic, retain)    AOQueue             *carsQueue;
 
 - (void)hireEmployee:(AOStaff *)employee;
 
@@ -25,6 +26,7 @@
 
 - (void)dealloc {
     self.employees = nil;
+    self.carsQueue = nil;
   
     [super dealloc];
 }
@@ -33,6 +35,7 @@
     self = [super init];
     if (nil != self) {
         self.employees = [[[NSMutableArray alloc] init] autorelease];
+        self.carsQueue = [[[AOQueue alloc] init] autorelease];
     }
     return self;
 }
@@ -45,9 +48,11 @@
         AOWasher *washer = (AOWasher *)[self freeEmployeeOfClass:[AOWasher class]];
         if (nil != washer) {
             washer.currentCar = car;
-            [washer performSpecificJob];
+            [washer performSpecificJobWithCar:car];
             
             return YES;
+        } else {
+            [(id)car enqueue:self.carsQueue];
         }
     }
     return NO;
@@ -98,8 +103,13 @@
         if (nil != freeAccountant) {
             [washer giveMoneyByPrice:kWashPrice toObject:freeAccountant];
         }
+        if ([self.carsQueue length] != 0) {
+            [washer performSpecificJobWithCar:(AOCar *)[self.carsQueue dequeue]];
+        }
+        
     }
 }
+
 
 - (void)handleAccountantChangedValue:(AOAccountant*)accountant {
     if (accountant.state == AOStateFinishWork) {
@@ -110,6 +120,8 @@
 }
 
 - (void)handleManagerChangedValue:(AOManager*)manager {
+    if (manager.state == AOStateFinishWork) {
+    }
 }
 
 @end

@@ -27,7 +27,7 @@ typedef NS_ENUM(NSUInteger, AOStaffState) {
      andExperience:(NSString *)experience;
 
 - (void)performSpecificJob;
-- (void)beginJob;
+- (BOOL)beginJob;
 - (void)doJob;
 - (void)finishJob;
 - (void)mayBeFree;
