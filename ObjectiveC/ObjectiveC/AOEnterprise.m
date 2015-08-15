@@ -43,16 +43,18 @@
 #pragma mark -
 #pragma mark Public Methods
 
+
 - (BOOL)washTheCar:(AOCar *)car {
     if (car.condition == AOCarIsDirty){
         AOWasher *washer = (AOWasher *)[self freeEmployeeOfClass:[AOWasher class]];
         if (nil != washer) {
-            washer.currentCar = car;
-            [washer performSpecificJobWithCar:car];
+            [washer performSelectorInBackground:@selector(performSpecificJobWithCar:)
+                                     withObject:car];
+            //[washer performSpecificJobWithCar:car];
             
             return YES;
         } else {
-            [(id)car enqueue:self.carsQueue];
+            [self.carsQueue enqueue:car];
         }
     }
     return NO;
@@ -74,6 +76,18 @@
     [self.employees addObject:employee];
 }
 
+- (BOOL)workDone {
+    BOOL foundBusyStaff = NO;
+    for (AOStaff *employee in self.employees) {
+        if ((employee.currentState == AOStaffStateBusy))
+        {
+            foundBusyStaff = YES;
+            break;
+        }
+    }
+    
+    return self.carsQueue.length == 0 && !foundBusyStaff;
+}
 
 #pragma mark -
 #pragma mark Protocol CarWashObserver Methods
@@ -109,7 +123,6 @@
         
     }
 }
-
 
 - (void)handleAccountantChangedValue:(AOAccountant*)accountant {
     if (accountant.state == AOStateFinishWork) {

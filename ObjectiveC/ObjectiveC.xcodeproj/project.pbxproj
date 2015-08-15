@@ -26,6 +26,7 @@
 		C708CF9F1B779AF2006B540B /* AOCarWashBuilding.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E1818B1B5BDD1B008CD7AE /* AOCarWashBuilding.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C708CFA01B779AF2006B540B /* AOBuilding.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E181851B5BDA1D008CD7AE /* AOBuilding.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C7552C561B7DD5F5005B1D21 /* AOQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = C7552C551B7DD5F5005B1D21 /* AOQueue.m */; };
+		C7552C571B7DE3CA005B1D21 /* AOQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = C7552C551B7DD5F5005B1D21 /* AOQueue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C7DC11A51B543526007F5ACD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DC11A41B543526007F5ACD /* main.m */; };
 		C7DC11B21B544E09007F5ACD /* AOCreature.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DC11B11B544E09007F5ACD /* AOCreature.m */; };
 		C7DC11CB1B568414007F5ACD /* AOCreatureTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C7DC11CA1B568414007F5ACD /* AOCreatureTests.m */; };
@@ -561,6 +562,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7552C571B7DE3CA005B1D21 /* AOQueue.m in Sources */,
 				C708CF961B779AF2006B540B /* AOEnterprise.m in Sources */,
 				C708CF971B779AF2006B540B /* AOCar.m in Sources */,
 				C708CF981B779AF2006B540B /* AOWasher.m in Sources */,

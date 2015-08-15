@@ -13,6 +13,12 @@
 #pragma mark -
 #pragma mark Initialization Methods
 
+- (void)dealloc {
+    self.currentCar = nil;
+    
+    [super dealloc];
+}
+
 - (instancetype)initWithName:(NSString *)name
                andExperience:(NSString *)experience
 {
@@ -30,12 +36,18 @@
 
 - (void)doJob {
     [super doJob];
-    self.currentCar.condition = AOCarIsClean;
+
+    float z = ((float)rand() / RAND_MAX);
+    float randomNumber = 2.f + z * 3.f;
+    [NSThread sleepForTimeInterval:randomNumber];
     
+    self.currentCar.condition = AOCarIsClean;
 }
 - (void)finishJob {
     [super finishJob];
     NSLog(@"I've washed the car");
+    
+    self.currentCar = nil;
 }
 
 @end

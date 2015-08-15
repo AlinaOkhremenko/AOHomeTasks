@@ -14,8 +14,10 @@
 #pragma mark Public Methods
 
 - (void)finishJob {
+    @synchronized(self) {
     [super finishJob];
     NSLog(@"Ready to give money to manager");
+    }
 }
 
 @end

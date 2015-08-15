@@ -29,6 +29,8 @@
 
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    
     [super tearDown];
 }
 
@@ -70,6 +72,11 @@
     
     //add car to enterprise
     [enterprise washTheCar:car1];
+    
+    do {
+        [[NSRunLoop mainRunLoop] runUntilDate:[[NSDate date] dateByAddingTimeInterval:1.0]];
+    } while (!enterprise.workDone);
+    
     
     //after car was washed car's account should be empty  washer's account should be debited with price
     XCTAssert(car1.account == 0);

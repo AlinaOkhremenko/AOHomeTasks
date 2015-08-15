@@ -40,9 +40,9 @@
 
 - (void)performSpecificJob {
     if (self.currentState == AOStaffStateFree) {
-    [self beginJob];
-    [self doJob];
-    [self finishJob];
+        [self beginJob];
+        [self doJob];
+        [self finishJob];
     }
 }
 
@@ -60,10 +60,15 @@
 }
 
 - (void)finishJob {
-    [self performSelectorOnMainThread:@selector(setState:)
-                           withObject:@(AOStateFinishWork)
-                        waitUntilDone:NO];
+    //  self.state = AOStateFinishWork;
+    [self performSelectorOnMainThread:@selector(setStateToFinishWork)
+                           withObject:nil
+                        waitUntilDone:YES];
     self.currentState = AOStaffStateFree;
+}
+
+- (void)setStateToFinishWork {
+    self.state = AOStateFinishWork;
 }
 
 - (void)mayBeFree {

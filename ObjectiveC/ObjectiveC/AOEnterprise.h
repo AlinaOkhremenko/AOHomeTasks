@@ -16,8 +16,12 @@
 
 @interface AOEnterprise : NSObject <CarWashObserver>
 
+@property (nonatomic, readonly) BOOL workDone;
+
 - (BOOL)washTheCar:(AOCar *)car;
 - (AOStaff *)freeEmployeeOfClass:(Class)employeeOfType;
 - (void)hireEmployee:(AOStaff *)employee;
+
+
 
 @end

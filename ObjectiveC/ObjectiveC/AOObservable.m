@@ -49,12 +49,15 @@
 #pragma mark  Public Methods
 
 - (void)addObserver:(id<CarWashObserver>)observer {
+    @synchronized(_mutableObservers) {
     [self.mutableObservers addObject:observer];
-    
+    }
 }
 
 - (void)removeObserver:(id<CarWashObserver>)observer {
+    @synchronized(_mutableObservers) {
     [self.mutableObservers removeObject:observer];
+    }
 }
 
 #pragma mark -

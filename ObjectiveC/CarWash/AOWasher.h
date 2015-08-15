@@ -15,7 +15,7 @@
 @interface AOWasher : AOStaff
 
 @property(nonatomic, readonly, getter=isBusy)  BOOL    busy;
-@property(nonatomic, assign)                   AOCar   *currentCar;
+@property(nonatomic, retain)                   AOCar   *currentCar;
 
 - (id)initWithName:(NSString*)name
      andExperience:(NSString*)experience;
