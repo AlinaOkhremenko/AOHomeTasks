@@ -35,11 +35,11 @@
 #pragma mark Public Methods
 
 - (id)dequeue {
-    id headObject = [self.array objectAtIndex:0];
+    id headObject = [[self.array objectAtIndex:0] retain];
     if (nil != headObject) {
         [self.array removeObjectAtIndex:0];
     }
-    return headObject;
+    return [headObject autorelease];
 }
 
 - (void)enqueue:(id)object {
