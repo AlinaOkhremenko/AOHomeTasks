@@ -48,15 +48,14 @@
     if (car.condition == AOCarIsDirty){
         AOWasher *washer = (AOWasher *)[self freeEmployeeOfClass:[AOWasher class]];
         if (nil != washer) {
-            [washer performSelectorInBackground:@selector(performSpecificJobWithCar:)
-                                     withObject:car];
-            //[washer performSpecificJobWithCar:car];
+            [washer performSpecificJobWithCar:car];
             
             return YES;
         } else {
             [self.carsQueue enqueue:car];
         }
     }
+    
     return NO;
 }
 
@@ -112,22 +111,38 @@
 
 - (void)handleWasherChangedValue:(AOWasher*)washer {
     if (washer.state == AOStateFinishWork) {
-        [washer getMoneyByPrice:kWashPrice fromObject:washer.currentCar];
-        AOAccountant *freeAccountant = (AOAccountant*)[self freeEmployeeOfClass:[AOAccountant class]];
-        if (nil != freeAccountant) {
-            [washer giveMoneyByPrice:kWashPrice toObject:freeAccountant];
-        }
-        if ([self.carsQueue length] != 0) {
-            [washer performSpecificJobWithCar:(AOCar *)[self.carsQueue dequeue]];
+        
+        if (washer.currentCar == nil) {
+            NSLog(@"Error");
         }
         
+        [washer getMoneyByPrice:kWashPrice fromObject:washer.currentCar];
+        NSLog(@"Washer %@ takes money %d from Car %@",washer.name, kWashPrice,washer.currentCar.name);
+        NSLog(@"Washer's account = %f", washer.account);
+        AOAccountant *freeAccountant = (AOAccountant*)[self freeEmployeeOfClass:[AOAccountant class]];
+        if (nil != freeAccountant) {
+            NSLog(@"Washer %@ gives money %d to Accountant %@",washer.name,kWashPrice,freeAccountant.name);
+            [washer giveMoneyByPrice:kWashPrice toObject:freeAccountant];
+            NSLog(@"Accountants account = %f", freeAccountant.account);
+        }
+        
+        [self performSelector:@selector(checkCarsQueueWithWasher:) withObject:washer afterDelay:0.01];
+    }
+}
+
+- (void)checkCarsQueueWithWasher:(AOWasher*)washer {
+    if (self.carsQueue.length > 0) {
+        AOCar *nextCar = [self.carsQueue dequeue];
+        [washer  performSpecificJobWithCar:nextCar];
     }
 }
 
 - (void)handleAccountantChangedValue:(AOAccountant*)accountant {
     if (accountant.state == AOStateFinishWork) {
         AOManager *freeManager = (AOManager *)[self freeEmployeeOfClass:[AOManager class]];
-        [accountant giveMoneyByPrice:kWashPrice toObject:freeManager];
+        [accountant giveMoneyByPrice:accountant.account toObject:freeManager];
+        NSLog(@"Accountant %@ gives money %f to manager %@", accountant.name, accountant.account, freeManager.name);
+        NSLog(@"Manager's account = %f", freeManager.account);
     }
     
 }
