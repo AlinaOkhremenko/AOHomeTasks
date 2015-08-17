@@ -16,7 +16,7 @@
 - (void)finishJob {
     @synchronized(self) {
     [super finishJob];
-    NSLog(@"Ready to give money to manager");
+    NSLog(@"%f", self.account);
     }
 }
 

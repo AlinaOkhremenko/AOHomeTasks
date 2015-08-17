@@ -46,13 +46,9 @@
     }
 }
 
-- (BOOL)beginJob {
-    if (self.currentState == AOStaffStateFree) {
-        self.state = AOStateBeginWork;
-        self.currentState = AOStaffStateBusy;
-        return YES;
-    }
-    return NO;
+- (void)beginJob {
+    self.state = AOStateBeginWork;
+    self.currentState = AOStaffStateBusy;
 }
 
 - (void)doJob {

@@ -8,6 +8,12 @@
 
 #import "AOWasher.h"
 
+@interface AOWasher()
+
+@property(nonatomic, readwrite)  AOStaffState    currentState;
+    
+@end
+
 @implementation AOWasher
 
 #pragma mark -
@@ -31,7 +37,14 @@
 
 - (void)performSpecificJobWithCar:(AOCar*)car {
     self.currentCar = car;
-    [super performSpecificJob];
+    self.currentState = AOStaffStateBusy;
+    [self performSelectorInBackground:@selector(performSpecificJob) withObject:nil];
+}
+
+- (void)performSpecificJob {
+    [self beginJob];
+    [self doJob];
+    [self finishJob];
 }
 
 - (void)doJob {
@@ -45,9 +58,11 @@
 }
 - (void)finishJob {
     [super finishJob];
-    NSLog(@"I've washed the car");
+    NSLog(@"%@ washed the car", self.name);
     
-    self.currentCar = nil;
+    if (self.currentState == AOStaffStateFree) {
+        self.currentCar = nil;
+    }
 }
 
 @end
