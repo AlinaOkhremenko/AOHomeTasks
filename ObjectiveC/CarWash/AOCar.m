@@ -10,7 +10,13 @@
 
 @implementation AOCar
 #pragma mark -
-#pragma mark Initialization Methods
+#pragma mark DEallocation and Initialization Methods
+
+- (void)dealloc {
+    self.name = nil;
+    
+    [super dealloc];
+}
 
 - (id)initWithMoney:(float)money {
     self = [super init];

@@ -17,6 +17,7 @@ typedef NS_ENUM(NSUInteger, AOCarCleaness){
 @interface AOCar : AOObservable
 
 @property(nonatomic, assign)    AOCarCleaness condition;
+@property(nonatomic, copy)      NSString      *name;
 
 - (id)initWithMoney:(float)money;
 
