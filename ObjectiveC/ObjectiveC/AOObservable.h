@@ -22,10 +22,10 @@ typedef NS_ENUM(NSUInteger, AOState){
 @property (nonatomic, readonly)  NSArray     *observers;
 @property (nonatomic, assign)    AOState     state;
 
-@property (nonatomic, assign)    id             objectToProcess;
+@property (nonatomic, assign)    id          objectToProcess;
 
--(void)addObserver:(id<AOCarWashObserver>)observer;
--(void)removeObserver:(id<AOCarWashObserver>)observer;
+- (void)addObserver:(id<AOCarWashObserver>)observer;
+- (void)removeObserver:(id<AOCarWashObserver>)observer;
 
 - (void)performSpecificJob;
 - (void)doJob;

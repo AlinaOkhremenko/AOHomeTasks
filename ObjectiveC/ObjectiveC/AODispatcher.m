@@ -99,6 +99,8 @@
     }
 }
 
+#pragma mark -
+#pragma mark Accessor methods
 
 - (BOOL)workDone {
     for (AOStaff *handler in self.mutableHandlers) {
@@ -110,11 +112,11 @@
     return YES;
 }
 
-
 #pragma mark -
 #pragma mark - AOCarWashObserverProtocol methods implementation
 
 - (void)objectDidChangeState:(AOStaff *)freeHandler {
+    
     if (freeHandler.state == AOStateFinishedJob) {
         [self.delegate object:freeHandler.objectToProcess wasHandledByHandler:freeHandler];
     }
@@ -126,6 +128,5 @@
         }
     }
 }
-
 
 @end

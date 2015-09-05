@@ -15,16 +15,13 @@
 @class AOAccountant;
 @class AOManager;
 
-
-
 @interface AOEnterprise : NSObject <AOEmployeeStateDelegateProtocol>
 
-@property (nonatomic, readonly) BOOL workDone;
+@property (nonatomic, readonly)     BOOL    workDone;
 
 - (void)washCar:(AOCar *)car;
 - (void)hireAccountant:(AOAccountant*)accountant;
 - (void)hireWasher:(AOWasher *)washer;
 - (void)hireManager:(AOManager *)manager;
-
 
 @end

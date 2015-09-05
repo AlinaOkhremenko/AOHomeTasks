@@ -41,6 +41,9 @@
     return self;
 }
 
+#pragma mark -
+#pragma mark - Accessors
+
 - (NSArray *)observers {
     return [self.mutableObservers allObjects];
 }
@@ -60,23 +63,26 @@
 - (AOState)state {
     AOState currentState;
     [self.stateLock lock];
+    
     currentState = _state;
+    
     [self.stateLock unlock];
     
     return currentState;
 }
+
 #pragma mark -
 #pragma mark  Public Methods
 
 - (void)addObserver:(id<AOCarWashObserver>)observer {
     @synchronized(self.mutableObservers) {
-    [self.mutableObservers addObject:observer];
+        [self.mutableObservers addObject:observer];
     }
 }
 
 - (void)removeObserver:(id<AOCarWashObserver>)observer {
     @synchronized(self.mutableObservers) {
-    [self.mutableObservers removeObject:observer];
+        [self.mutableObservers removeObject:observer];
     }
 }
 
@@ -108,6 +114,7 @@
             [object creditAmount:price];
         return YES;
     }
+    
     return NO;
 }
 
@@ -119,6 +126,7 @@
             [object debitAmount:price];
         return YES;
     }
+    
     return NO;
 }
 

@@ -10,7 +10,7 @@
 
 @implementation AOCar
 #pragma mark -
-#pragma mark DEallocation and Initialization Methods
+#pragma mark Deallocation and Initialization Methods
 
 - (void)dealloc {
     self.name = nil;
