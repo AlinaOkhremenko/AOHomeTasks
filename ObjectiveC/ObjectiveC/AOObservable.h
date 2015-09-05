@@ -7,22 +7,27 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MoneyFlow.h"
-#import "CarWashObserver.h"
+#import "AOMoneyFlowProtocol.h"
+#import "AOCarWashObserver.h"
 
 typedef NS_ENUM(NSUInteger, AOState){
-    AOStateBeginWork,
-    AOStateMakeWork,
-    AOStateFinishWork,
+    AOStateFree = 0,
+    AOStateBusy,
+    AOStateFinishedJob,
 };
 
-@interface AOObservable : NSObject <MoneyFlow>
-@property(nonatomic, assign)    float       account;
+@interface AOObservable : NSObject <AOMoneyFlowProtocol>
+@property (nonatomic, assign)    float       account;
 
-@property(nonatomic, readonly)  NSArray     *observers;
-@property(nonatomic, assign)    AOState     state;
+@property (nonatomic, readonly)  NSArray     *observers;
+@property (nonatomic, assign)    AOState     state;
 
--(void)addObserver:(id<CarWashObserver>)observer;
--(void)removeObserver:(id<CarWashObserver>)observer;
+@property (nonatomic, assign)    id             objectToProcess;
+
+-(void)addObserver:(id<AOCarWashObserver>)observer;
+-(void)removeObserver:(id<AOCarWashObserver>)observer;
+
+- (void)performSpecificJob;
+- (void)doJob;
 
 @end

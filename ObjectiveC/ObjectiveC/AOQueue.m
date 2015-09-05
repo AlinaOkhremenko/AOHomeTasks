@@ -9,7 +9,7 @@
 #import "AOQueue.h"
 @interface AOQueue ()
 
-@property(nonatomic, retain)    NSMutableArray  *array;
+@property (nonatomic, retain)    NSMutableArray  *array;
 
 @end
 
@@ -26,7 +26,7 @@
 - (instancetype)init {
     self = [super init];
     if (nil != self) {
-        self.array = [[[NSMutableArray alloc] init] autorelease];
+        self.array = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -35,18 +35,26 @@
 #pragma mark Public Methods
 
 - (id)dequeue {
-    id headObject = [[self.array objectAtIndex:0] retain];
-    if (nil != headObject) {
-        [self.array removeObjectAtIndex:0];
+    @synchronized(self.array) {
+        id headObject = [[self.array firstObject] retain];
+        if (nil != headObject) {
+            [self.array removeObject:headObject];
+        }
+        
+        return [headObject autorelease];
     }
-    return [headObject autorelease];
 }
 
 - (void)enqueue:(id)object {
-    [self.array addObject:object];
+    @synchronized(self.array){
+        [self.array addObject:object];
+    }
 }
 
 - (NSUInteger)length {
-    return self.array.count;
+    @synchronized(self.array){
+        return self.array.count;
+    }
 }
+
 @end

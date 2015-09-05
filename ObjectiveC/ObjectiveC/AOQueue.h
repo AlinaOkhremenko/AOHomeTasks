@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface AOQueue : NSObject
+
 - (id)dequeue;
 - (void)enqueue:(id)object;
 - (NSUInteger)length;

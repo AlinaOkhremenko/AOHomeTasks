@@ -8,9 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "AOStaff.h"
+@class AOEnterprise;
 
 @interface AOAccountant : AOStaff
-
-- (void)finishJob;
 
 @end

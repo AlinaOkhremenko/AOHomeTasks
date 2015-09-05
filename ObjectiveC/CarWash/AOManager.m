@@ -13,11 +13,9 @@
 #pragma mark -
 #pragma mark Public Methods
 
-- (void)finishJob {
-    @synchronized(self) {
-    [super finishJob];
-    NSLog(@"Finally this working day is over");
-    }
+- (void)doJob {
+    [self getMoneyByPrice:kWashPrice fromObject:self.objectToProcess];
+    self.state = AOStateFinishedJob;
 }
 
 @end

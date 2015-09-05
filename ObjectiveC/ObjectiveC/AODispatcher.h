@@ -7,7 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AOCarWashObserver.h"
+#import "AOEmployeeStateDelegateProtocol.h"
 
-@interface AODispatcher : NSObject
+
+
+@interface AODispatcher : NSObject <AOCarWashObserver>
+@property (nonatomic, assign)       id<AOEmployeeStateDelegateProtocol>     delegate;
+@property (nonatomic, readonly) BOOL workDone;
+
+- (void)addHandler:(id)object;
+- (void)removeHandler:(id)object;
+
+- (void)processWithObject:(id)object;
 
 @end

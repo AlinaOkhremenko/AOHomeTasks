@@ -8,10 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "AOStaff.h"
-#import "MoneyFlow.h"
+#import "AOMoneyFlowProtocol.h"
 
 @interface AOManager : AOStaff 
-
-- (void)finishJob;
 
 @end

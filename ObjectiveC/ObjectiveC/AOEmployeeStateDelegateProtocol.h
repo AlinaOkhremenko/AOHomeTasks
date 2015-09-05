@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AOStaff.h"
 
 @protocol AOEmployeeStateDelegateProtocol <NSObject>
+
+- (void)object:(id)object wasHandledByHandler:(AOStaff *)handler;
 
 @end

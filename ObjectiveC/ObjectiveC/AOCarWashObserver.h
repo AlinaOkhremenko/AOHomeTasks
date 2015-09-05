@@ -10,7 +10,7 @@
 
 @class AOObservable;
 
-@protocol CarWashObserver <NSObject>
+@protocol AOCarWashObserver <NSObject>
 
 - (void)objectDidChangeState:(AOObservable *)observableObject;
 

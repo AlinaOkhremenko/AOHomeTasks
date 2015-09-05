@@ -8,14 +8,17 @@
 
 #import "AOEnterprise.h"
 #import "Defines.h"
-
-
+#import "AOQueue.h"
+#import "AOWasher.h"
+#import "AODispatcher.h"
+#import "AOAccountant.h"
+#import "AOManager.h"
 @interface AOEnterprise ()
 
-@property(nonatomic, retain)    NSMutableArray      *employees;
-@property(nonatomic, retain)    AOQueue             *carsQueue;
-
-- (void)hireEmployee:(AOStaff *)employee;
+@property (nonatomic, retain)    NSMutableArray      *employees;
+@property (nonatomic, assign)    AODispatcher        *washersDispatcher;
+@property (nonatomic, assign)    AODispatcher        *accountantsDispatcher;
+@property (nonatomic, assign)    AODispatcher        *managersDispatcher;
 
 @end
 
@@ -26,129 +29,84 @@
 
 - (void)dealloc {
     self.employees = nil;
-    self.carsQueue = nil;
-  
+    self.washersDispatcher = nil;
+    self.accountantsDispatcher = nil;
+    self.managersDispatcher = nil;
     [super dealloc];
 }
 
 - (instancetype)init {
     self = [super init];
     if (nil != self) {
-        self.employees = [[[NSMutableArray alloc] init] autorelease];
-        self.carsQueue = [[[AOQueue alloc] init] autorelease];
+        self.employees = [[NSMutableArray alloc] init];
+        self.accountantsDispatcher = [[AODispatcher alloc] init];
+        self.washersDispatcher = [[AODispatcher alloc] init];
+        self.managersDispatcher = [[AODispatcher alloc] init];
+        self.washersDispatcher.delegate = self;
+        self.accountantsDispatcher.delegate = self;
+        self.managersDispatcher.delegate = self;
     }
+    
     return self;
 }
+
 
 #pragma mark -
 #pragma mark Public Methods
 
-
-- (BOOL)washTheCar:(AOCar *)car {
-    if (car.condition == AOCarIsDirty){
-        AOWasher *washer = (AOWasher *)[self freeEmployeeOfClass:[AOWasher class]];
-        if (nil != washer) {
-            [washer performSpecificJobWithCar:car];
-            
-            return YES;
-        } else {
-            [self.carsQueue enqueue:car];
-        }
+- (void)washCar:(AOCar *)car {
+    if (car.condition == AOCarIsDirty) {
+        [self.washersDispatcher processWithObject:car];
     }
-    
-    return NO;
 }
 
-- (AOStaff *)freeEmployeeOfClass:(Class)employeeOfType {
-    for (AOStaff *employee in self.employees) {
-        if ([employee isKindOfClass:employeeOfType] &&
-            (employee.currentState == AOStaffStateFree))
-        {
-            return employee;
-        }
-    }
-    
-    return nil;
+- (void)hireAccountant:(AOAccountant*)accountant {
+    [self.accountantsDispatcher addHandler:accountant];
 }
 
-- (void)hireEmployee:(AOStaff *)employee {
-    [self.employees addObject:employee];
+- (void)hireWasher: (AOWasher *)washer {
+    [self.washersDispatcher addHandler:washer];
 }
+
+- (void)hireManager: (AOManager *)manager {
+    [self.managersDispatcher addHandler:manager];
+}
+
+#pragma mark -
+#pragma mark Accessors Methods
 
 - (BOOL)workDone {
-    BOOL foundBusyStaff = NO;
-    for (AOStaff *employee in self.employees) {
-        if ((employee.currentState == AOStaffStateBusy))
-        {
-            foundBusyStaff = YES;
-            break;
-        }
-    }
+    return (self.washersDispatcher.workDone) && (self.accountantsDispatcher.workDone) && (self.managersDispatcher.workDone);
+}
+
+#pragma mark -
+#pragma mark Protocol AOEmployeeDelegate Methods
+
+- (void)object:(id)object wasHandledByHandler:(AOStaff *)handler {
     
-    return self.carsQueue.length == 0 && !foundBusyStaff;
-}
-
-#pragma mark -
-#pragma mark Protocol CarWashObserver Methods
-
-- (void)objectDidChangeState:(AOObservable *)observableObject {
-    if ([observableObject isKindOfClass:[AOWasher class]]) {
-        AOWasher *washer = (AOWasher*)observableObject;
-        [self handleWasherChangedValue:washer];
-    }
-    else if ([observableObject isKindOfClass:[AOAccountant class]]) {
-        AOAccountant *accountant = (AOAccountant*)observableObject;
-        [self handleAccountantChangedValue:accountant];
-    }
-    else if ([observableObject isKindOfClass:[AOManager class]]) {
-        AOManager *manager = (AOManager *)observableObject;
-        [self handleManagerChangedValue:manager];
-    }
-}
-
-#pragma mark -
-#pragma mark Private Methods
-
-- (void)handleWasherChangedValue:(AOWasher*)washer {
-    if (washer.state == AOStateFinishWork) {
+    if ([object isKindOfClass:[AOCar class]] && [handler isKindOfClass:[AOWasher class]]) {
         
-        if (washer.currentCar == nil) {
-            NSLog(@"Error");
-        }
-        
-        [washer getMoneyByPrice:kWashPrice fromObject:washer.currentCar];
-        NSLog(@"Washer %@ takes money %d from Car %@",washer.name, kWashPrice,washer.currentCar.name);
+        AOWasher *washer = (AOWasher*)handler;
+        AOCar *car = (AOCar*)object;
+        NSLog(@"Washer %@ has taken money %d from Car %@",handler.name, kWashPrice,car.name);
         NSLog(@"Washer's account = %f", washer.account);
-        AOAccountant *freeAccountant = (AOAccountant*)[self freeEmployeeOfClass:[AOAccountant class]];
-        if (nil != freeAccountant) {
-            NSLog(@"Washer %@ gives money %d to Accountant %@",washer.name,kWashPrice,freeAccountant.name);
-            [washer giveMoneyByPrice:kWashPrice toObject:freeAccountant];
-            NSLog(@"Accountants account = %f", freeAccountant.account);
-        }
         
-        [self performSelector:@selector(checkCarsQueueWithWasher:) withObject:washer afterDelay:0.01];
-    }
-}
-
-- (void)checkCarsQueueWithWasher:(AOWasher*)washer {
-    if (self.carsQueue.length > 0) {
-        AOCar *nextCar = [self.carsQueue dequeue];
-        [washer  performSpecificJobWithCar:nextCar];
-    }
-}
-
-- (void)handleAccountantChangedValue:(AOAccountant*)accountant {
-    if (accountant.state == AOStateFinishWork) {
-        AOManager *freeManager = (AOManager *)[self freeEmployeeOfClass:[AOManager class]];
-        [accountant giveMoneyByPrice:accountant.account toObject:freeManager];
-        NSLog(@"Accountant %@ gives money %f to manager %@", accountant.name, accountant.account, freeManager.name);
-        NSLog(@"Manager's account = %f", freeManager.account);
+        [self.accountantsDispatcher processWithObject:handler];
     }
     
-}
-
-- (void)handleManagerChangedValue:(AOManager*)manager {
-    if (manager.state == AOStateFinishWork) {
+    else if ([object isKindOfClass:[AOWasher class]] && [handler isKindOfClass:[AOAccountant class]]) {
+        
+        AOAccountant *accountant =(AOAccountant*)handler;
+        NSLog(@"Accountant %@ has taken money %d from Washer",accountant.name, kWashPrice);
+        
+        [self.managersDispatcher processWithObject:handler];
+    }
+    
+    else if ([object isKindOfClass:[AOAccountant class]] && [handler isKindOfClass:[AOManager class]]) {
+        
+        AOAccountant *accountant = (AOAccountant*)object;
+        AOManager *manager = (AOManager*)handler;
+        NSLog(@"Manager has taken money from %@ account = %f",accountant.name, manager.account);
     }
 }
 

@@ -7,21 +7,24 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AOStaff.h"
-#import "AOCar.h"
-#import "AOWasher.h"
-#import "AOQueue.h"
-#import "AOAccountant.h"
-#import "AOManager.h"
+#import "AOEmployeeStateDelegateProtocol.h"
+@class AOStaff;
+@class AOCar;
+@class AOWasher;
+@class AOQueue;
+@class AOAccountant;
+@class AOManager;
 
-@interface AOEnterprise : NSObject <CarWashObserver>
+
+
+@interface AOEnterprise : NSObject <AOEmployeeStateDelegateProtocol>
 
 @property (nonatomic, readonly) BOOL workDone;
 
-- (BOOL)washTheCar:(AOCar *)car;
-- (AOStaff *)freeEmployeeOfClass:(Class)employeeOfType;
-- (void)hireEmployee:(AOStaff *)employee;
-
+- (void)washCar:(AOCar *)car;
+- (void)hireAccountant:(AOAccountant*)accountant;
+- (void)hireWasher:(AOWasher *)washer;
+- (void)hireManager:(AOManager *)manager;
 
 
 @end

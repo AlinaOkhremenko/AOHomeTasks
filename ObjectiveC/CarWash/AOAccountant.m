@@ -7,17 +7,22 @@
 //
 
 #import "AOAccountant.h"
+#import "AOEnterprise.h"
 
 @implementation AOAccountant
 
 #pragma mark -
 #pragma mark Public Methods
 
-- (void)finishJob {
-    @synchronized(self) {
-    [super finishJob];
-    NSLog(@"%f", self.account);
-    }
+- (void)doJob {
+    
+    float randomNumber = ((float)rand() / RAND_MAX);
+    float delay = 1.0 + randomNumber;
+    [NSThread sleepForTimeInterval:delay];
+
+    [self getMoneyByPrice:kWashPrice fromObject:self.objectToProcess];
+    
+    self.state = AOStateFinishedJob;
 }
 
 @end

@@ -8,12 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol MoneyFlow <NSObject>
+@protocol AOMoneyFlowProtocol <NSObject>
 
 @property (nonatomic, assign) float account;
 
-- (BOOL)getMoneyByPrice:(float)price fromObject:(id<MoneyFlow>)object;
-- (BOOL)giveMoneyByPrice:(float)price toObject:(id<MoneyFlow>)object;
+- (BOOL)getMoneyByPrice:(float)price fromObject:(id<AOMoneyFlowProtocol>)object;
+- (BOOL)giveMoneyByPrice:(float)price toObject:(id<AOMoneyFlowProtocol>)object;
 
 - (void)debitAmount:(float)amount;
 - (void)creditAmount:(float)amount;

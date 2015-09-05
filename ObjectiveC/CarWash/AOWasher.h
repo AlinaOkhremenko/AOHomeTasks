@@ -9,19 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "AOStaff.h"
 #import "AOCar.h"
-#import "AOCarWashBuilding.h"
-#import "MoneyFlow.h"
+#import "AOMoneyFlowProtocol.h"
 
 @interface AOWasher : AOStaff
 
-@property(nonatomic, readonly, getter=isBusy)  BOOL    busy;
-@property(nonatomic, retain)                   AOCar   *currentCar;
+@property (nonatomic, readonly, getter=isBusy)  BOOL    busy;
 
-- (id)initWithName:(NSString*)name
-     andExperience:(NSString*)experience;
-
-- (void)performSpecificJobWithCar:(AOCar*)car;
-- (void)doJob;
-- (void)finishJob;
 
 @end

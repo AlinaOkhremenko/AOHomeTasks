@@ -7,10 +7,6 @@
 //
 
 #import "AOStaff.h"
-@interface AOStaff ()
-@property(nonatomic, assign)    AOStaffState   currentState;
-
-@end
 
 @implementation AOStaff
 
@@ -33,44 +29,6 @@
         self.experience = experience;
     }
     return self;
-}
-
-#pragma mark -
-#pragma mark - Public Methods
-
-- (void)performSpecificJob {
-    if (self.currentState == AOStaffStateFree) {
-        [self beginJob];
-        [self doJob];
-        [self finishJob];
-    }
-}
-
-- (void)beginJob {
-    self.state = AOStateBeginWork;
-    self.currentState = AOStaffStateBusy;
-}
-
-- (void)doJob {
-    self.state = AOStateMakeWork;
-}
-
-- (void)finishJob {
-    //  self.state = AOStateFinishWork;
-    [self performSelectorOnMainThread:@selector(setStateToFinishWork)
-                           withObject:nil
-                        waitUntilDone:YES];
-    self.currentState = AOStaffStateFree;
-}
-
-- (void)setStateToFinishWork {
-    self.state = AOStateFinishWork;
-}
-
-- (void)mayBeFree {
-    if (self.currentState == AOStaffStateBusy) {
-        self.currentState = AOStaffStateFree;
-    }
 }
 
 @end
