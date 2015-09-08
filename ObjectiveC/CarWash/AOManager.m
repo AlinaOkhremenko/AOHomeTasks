@@ -15,7 +15,7 @@
 
 - (void)doJob {
     [self getMoneyByPrice:kWashPrice fromObject:self.objectToProcess];
-    self.state = AOStateFinishedJob;
+
 }
 
 @end

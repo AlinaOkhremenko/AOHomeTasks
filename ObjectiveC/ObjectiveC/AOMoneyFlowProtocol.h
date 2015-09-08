@@ -6,17 +6,15 @@
 //  Copyright (c) 2015 Alina Okhremenko. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
 @protocol AOMoneyFlowProtocol <NSObject>
 
-@property (nonatomic, assign) float account;
+@property (nonatomic, assign) int account;
 
-- (BOOL)getMoneyByPrice:(float)price fromObject:(id<AOMoneyFlowProtocol>)object;
-- (BOOL)giveMoneyByPrice:(float)price toObject:(id<AOMoneyFlowProtocol>)object;
+- (BOOL)getMoneyByPrice:(int)price fromObject:(id<AOMoneyFlowProtocol>)object;
+- (BOOL)giveMoneyByPrice:(int)price toObject:(id<AOMoneyFlowProtocol>)object;
 
-- (void)debitAmount:(float)amount;
-- (void)creditAmount:(float)amount;
+- (void)debitAmount:(int)amount;
+- (void)creditAmount:(int)amount;
 
 
 @end

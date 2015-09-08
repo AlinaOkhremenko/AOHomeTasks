@@ -5,7 +5,6 @@
 //  Created by Alina Okhremenko on 31.08.15.
 //  Copyright (c) 2015 Alina Okhremenko. All rights reserved.
 //
-
 #import "AODispatcher.h"
 #import "AOStaff.h"
 #import "AOWasher.h"
@@ -38,8 +37,8 @@
 - (instancetype)init {
     self = [super init];
     if (nil != self) {
-        self.mutableHandlers = [[NSMutableArray alloc] init];
-        self.queue = [[AOQueue alloc] init];
+        self.mutableHandlers = [[[NSMutableArray alloc] init] autorelease];
+        self.queue = [[[AOQueue alloc] init] autorelease];
     }
     
     return self;
@@ -125,7 +124,7 @@
         if (nil != object) {
             freeHandler.objectToProcess = object;
             [freeHandler performSpecificJob];
-        }
+    }
     }
 }
 

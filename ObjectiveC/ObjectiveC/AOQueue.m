@@ -27,7 +27,7 @@
 - (instancetype)init {
     self = [super init];
     if (nil != self) {
-        self.array = [[NSMutableArray alloc] init];
+        self.array = [[[NSMutableArray alloc] init] autorelease];
     }
     return self;
 }

@@ -7,7 +7,6 @@
 //
 
 #import "AOEnterprise.h"
-#import "Defines.h"
 #import "AOQueue.h"
 #import "AOWasher.h"
 #import "AODispatcher.h"
@@ -88,7 +87,7 @@
         
         AOWasher *washer = (AOWasher*)handler;
         AOCar *car = (AOCar*)object;
-        NSLog(@"Washer %@ has taken money %d from Car %@",handler.name, kWashPrice,car.name);
+        NSLog(@"Washer %@ has taken money %f from Car %@",handler.name, kWashPrice,car.name);
         NSLog(@"Washer's account = %f", washer.account);
         
         [self.accountantsDispatcher processWithObject:handler];
@@ -97,7 +96,7 @@
     else if ([object isKindOfClass:[AOWasher class]] && [handler isKindOfClass:[AOAccountant class]]) {
         
         AOAccountant *accountant =(AOAccountant*)handler;
-        NSLog(@"Accountant %@ has taken money %d from Washer",accountant.name, kWashPrice);
+        NSLog(@"Accountant %@ has taken money %f from Washer",accountant.name, kWashPrice);
         
         [self.managersDispatcher processWithObject:handler];
     }

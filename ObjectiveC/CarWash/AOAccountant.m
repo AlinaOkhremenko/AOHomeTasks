@@ -21,8 +21,7 @@
     [NSThread sleepForTimeInterval:delay];
 
     [self getMoneyByPrice:kWashPrice fromObject:self.objectToProcess];
-    
-    self.state = AOStateFinishedJob;
+
 }
 
 @end

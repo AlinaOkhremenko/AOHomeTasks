@@ -9,6 +9,6 @@
 #ifndef ObjectiveC_Defines_h
 #define ObjectiveC_Defines_h
 
-#define kWashPrice 50 
+static int const kWashPrice = 50;
 
 #endif

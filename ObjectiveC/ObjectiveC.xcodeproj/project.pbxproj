@@ -83,6 +83,8 @@
 		C708CF8C1B77995D006B540B /* CarWashTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CarWashTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C708CF8F1B77995D006B540B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C708CF901B77995D006B540B /* CarWashTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarWashTests.m; sourceTree = "<group>"; };
+		C74727671B9E176A00E621A7 /* AOCarWash_prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOCarWash_prefix.pch; sourceTree = "<group>"; };
+		C74727681B9E19B900E621A7 /* AOCarWashTests_prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOCarWashTests_prefix.pch; sourceTree = "<group>"; };
 		C7552C541B7DD5F5005B1D21 /* AOQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOQueue.h; sourceTree = "<group>"; };
 		C7552C551B7DD5F5005B1D21 /* AOQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AOQueue.m; sourceTree = "<group>"; };
 		C7DA0B621B9644E300983A32 /* AOEmployeeStateDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AOEmployeeStateDelegateProtocol.h; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 			children = (
 				C708CF901B77995D006B540B /* CarWashTests.m */,
 				C708CF8E1B77995D006B540B /* Supporting Files */,
+				C74727681B9E19B900E621A7 /* AOCarWashTests_prefix.pch */,
 			);
 			path = CarWashTests;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				C7EDE0111B6568CA0036E63E /* AOCar */,
 				C7EDE0101B6568A40036E63E /* AOStaff */,
 				C708CF741B70045D006B540B /* Defines.h */,
+				C74727671B9E176A00E621A7 /* AOCarWash_prefix.pch */,
 			);
 			name = Source;
 			path = ../ObjectiveC;
@@ -611,6 +615,8 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = CarWashTests/AOCarWashTests_prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -629,6 +635,8 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = CarWashTests/AOCarWashTests_prefix.pch;
 				INFOPLIST_FILE = CarWashTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -786,6 +794,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
+				GCC_ENABLE_BUILTIN_FUNCTIONS = YES;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ObjectiveC/AOCarWash_prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -798,6 +810,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
+				GCC_ENABLE_BUILTIN_FUNCTIONS = YES;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ObjectiveC/AOCarWash_prefix.pch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

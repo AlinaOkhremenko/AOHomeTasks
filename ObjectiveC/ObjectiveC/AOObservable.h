@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 Alina Okhremenko. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "AOMoneyFlowProtocol.h"
 #import "AOCarWashObserver.h"
 
@@ -17,7 +16,7 @@ typedef NS_ENUM(NSUInteger, AOState){
 };
 
 @interface AOObservable : NSObject <AOMoneyFlowProtocol>
-@property (nonatomic, assign)    float       account;
+@property (nonatomic, assign)    int       account;
 
 @property (nonatomic, readonly)  NSArray     *observers;
 @property (nonatomic, assign)    AOState     state;
